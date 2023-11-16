@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		CE0867502B01BA8600D0FEC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08674F2B01BA8600D0FEC6 /* AppDelegate.swift */; };
 		CE0867522B01BA8600D0FEC6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0867512B01BA8600D0FEC6 /* SceneDelegate.swift */; };
-		CE0867542B01BA8600D0FEC6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0867532B01BA8600D0FEC6 /* ViewController.swift */; };
+		CE0867542B01BA8600D0FEC6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0867532B01BA8600D0FEC6 /* MainViewController.swift */; };
 		CE0867572B01BA8600D0FEC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE0867552B01BA8600D0FEC6 /* Main.storyboard */; };
 		CE0867592B01BA8B00D0FEC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE0867582B01BA8B00D0FEC6 /* Assets.xcassets */; };
 		CE08675C2B01BA8B00D0FEC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE08675A2B01BA8B00D0FEC6 /* LaunchScreen.storyboard */; };
+		CEC3A30E2B06ACE1001B513A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC3A30D2B06ACE1001B513A /* SettingsViewController.swift */; };
+		CEC3A3102B06AF24001B513A /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC3A30F2B06AF24001B513A /* CalendarViewController.swift */; };
+		CEC3A3122B06B06E001B513A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC3A3112B06B06E001B513A /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CE08674C2B01BA8600D0FEC6 /* Odnako.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Odnako.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE08674F2B01BA8600D0FEC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE0867512B01BA8600D0FEC6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CE0867532B01BA8600D0FEC6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CE0867532B01BA8600D0FEC6 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CE0867562B01BA8600D0FEC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE0867582B01BA8B00D0FEC6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE08675B2B01BA8B00D0FEC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE08675D2B01BA8B00D0FEC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEC3A30D2B06ACE1001B513A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		CEC3A30F2B06AF24001B513A /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		CEC3A3112B06B06E001B513A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,11 +64,14 @@
 			children = (
 				CE08674F2B01BA8600D0FEC6 /* AppDelegate.swift */,
 				CE0867512B01BA8600D0FEC6 /* SceneDelegate.swift */,
-				CE0867532B01BA8600D0FEC6 /* ViewController.swift */,
+				CE0867532B01BA8600D0FEC6 /* MainViewController.swift */,
 				CE0867552B01BA8600D0FEC6 /* Main.storyboard */,
 				CE0867582B01BA8B00D0FEC6 /* Assets.xcassets */,
 				CE08675A2B01BA8B00D0FEC6 /* LaunchScreen.storyboard */,
 				CE08675D2B01BA8B00D0FEC6 /* Info.plist */,
+				CEC3A30D2B06ACE1001B513A /* SettingsViewController.swift */,
+				CEC3A30F2B06AF24001B513A /* CalendarViewController.swift */,
+				CEC3A3112B06B06E001B513A /* TabBarController.swift */,
 			);
 			path = Odnako;
 			sourceTree = "<group>";
@@ -138,9 +147,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE0867542B01BA8600D0FEC6 /* ViewController.swift in Sources */,
+				CEC3A3102B06AF24001B513A /* CalendarViewController.swift in Sources */,
+				CE0867542B01BA8600D0FEC6 /* MainViewController.swift in Sources */,
 				CE0867502B01BA8600D0FEC6 /* AppDelegate.swift in Sources */,
+				CEC3A3122B06B06E001B513A /* TabBarController.swift in Sources */,
 				CE0867522B01BA8600D0FEC6 /* SceneDelegate.swift in Sources */,
+				CEC3A30E2B06ACE1001B513A /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

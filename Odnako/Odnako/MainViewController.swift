@@ -15,7 +15,7 @@ extension UIColor{
     static let customAccentColor = UIColor(red: 255/255, green: 217/255, blue: 183/255, alpha: 1.0)
 }
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
     
     private let label = UILabel()
     private let deadlineMainView = UIView()
