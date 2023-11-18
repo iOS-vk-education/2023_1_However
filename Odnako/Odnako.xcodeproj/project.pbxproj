@@ -16,6 +16,7 @@
 		CEC3A30E2B06ACE1001B513A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC3A30D2B06ACE1001B513A /* SettingsViewController.swift */; };
 		CEC3A3102B06AF24001B513A /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC3A30F2B06AF24001B513A /* CalendarViewController.swift */; };
 		CEC3A3122B06B06E001B513A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC3A3112B06B06E001B513A /* TabBarController.swift */; };
+		CEFB36AC2B093A8C0020DEAA /* addDeadLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFB36AB2B093A8C0020DEAA /* addDeadLineViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		CEC3A30D2B06ACE1001B513A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CEC3A30F2B06AF24001B513A /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		CEC3A3112B06B06E001B513A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		CEFB36AB2B093A8C0020DEAA /* addDeadLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addDeadLineViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				CEC3A30D2B06ACE1001B513A /* SettingsViewController.swift */,
 				CEC3A30F2B06AF24001B513A /* CalendarViewController.swift */,
 				CEC3A3112B06B06E001B513A /* TabBarController.swift */,
+				CEFB36AB2B093A8C0020DEAA /* addDeadLineViewController.swift */,
 			);
 			path = Odnako;
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEFB36AC2B093A8C0020DEAA /* addDeadLineViewController.swift in Sources */,
 				CEC3A3102B06AF24001B513A /* CalendarViewController.swift in Sources */,
 				CE0867542B01BA8600D0FEC6 /* MainViewController.swift in Sources */,
 				CE0867502B01BA8600D0FEC6 /* AppDelegate.swift in Sources */,

@@ -12,23 +12,28 @@ final class TabBarController : UITabBarController{
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
+        setUpTabs()
+         
+    }
+    
+    func setUpTabs(){
         let settingsViewController = SettingsViewController()
         let settingsBarItem = UITabBarItem()
         settingsBarItem.title = "Настройки"
-        settingsBarItem.image = UIImage(systemName: "person")
+        settingsBarItem.image = UIImage(named: "settingsImageTabBarItem")
         settingsViewController.tabBarItem = settingsBarItem
         
         let mainViewController = MainViewController()
         let mainBarItem = UITabBarItem()
-        mainBarItem.title = "Настройки"
-        mainBarItem.image = UIImage(systemName: "person")
+        mainBarItem.title = "Задачи"
+        mainBarItem.image = UIImage(named: "tickImageTabBarItem")
         mainViewController.tabBarItem = mainBarItem
         
         
         let calendarViewController = CalendarViewController()
         let calendarBarItem = UITabBarItem()
-        calendarBarItem.title = "Настройки"
-        calendarBarItem.image = UIImage(systemName: "person")
+        calendarBarItem.title = "Календарь"
+        calendarBarItem.image = UIImage(named: "calendarImageTabBarItem")
         calendarViewController.tabBarItem = calendarBarItem
         
         viewControllers = [
@@ -36,8 +41,7 @@ final class TabBarController : UITabBarController{
             mainViewController,
             calendarViewController
         ]
-        
-        
+       
     }
     
     required init?(coder: NSCoder) {
@@ -53,3 +57,13 @@ final class TabBarController : UITabBarController{
        
     }
 }
+
+//extension TabBarController: UITabBarControllerDelegate{
+//    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+//        if viewController is MainViewController{
+//            let navigationController = UINavigationController(rootViewController: viewController)
+//            present(navigationController, animated: true)
+//        }
+//        return true
+//    }
+//}

@@ -17,7 +17,6 @@ extension UIColor{
 
 class MainViewController: UIViewController {
     
-    private let label = UILabel()
     private let deadlineMainView = UIView()
     private let deadlineLeftView = UIView()
     private let deadlineRightView = UIView()
@@ -26,6 +25,7 @@ class MainViewController: UIViewController {
     private let days = UILabel()
     private let deadlineTextView = UIView()
     private let mainText = UILabel()
+    private var addDeadlineButton = UIButton()
     
 
 
@@ -36,10 +36,7 @@ class MainViewController: UIViewController {
         deadlineRightView.backgroundColor = UIColor.customDarkGreenColor
         deadlineLeftView.backgroundColor = UIColor.customDarkGreenColor
 
-        
-        
-        label.text = "Hello world"
-        label.textAlignment = .center
+
         emoji.text = "💀"
         emoji.textAlignment = .center
         emoji.font.withSize(30)
@@ -50,10 +47,19 @@ class MainViewController: UIViewController {
         
         mainText.text = "Check all emails on your web-site before deadline rvrkrwbvlbewlvbwlbvlwhrblvhbrvhbwververberb"
         mainText.textAlignment = .center
+        addDeadlineButton.setTitle("+", for: .normal)
+        addDeadlineButton.setTitleColor( .black, for: .normal)
+        addDeadlineButton.setTitleColor( .white, for: .highlighted)
+        addDeadlineButton.backgroundColor = UIColor.customAccentColor
+        addDeadlineButton.layer.cornerRadius = 10
+        addDeadlineButton.addTarget(self, action: #selector(addButtonTouched), for: .touchUpInside)
         
         
         
-        view.addSubview(label)
+        
+        
+        
+        view.addSubview(addDeadlineButton)
         view.addSubview(deadlineMainView)
         
         deadlineMainView.addSubview(deadlineRightView)
@@ -71,18 +77,25 @@ class MainViewController: UIViewController {
         dayAmount.translatesAutoresizingMaskIntoConstraints = false
         days.translatesAutoresizingMaskIntoConstraints = false
         mainText.translatesAutoresizingMaskIntoConstraints = false
+        addDeadlineButton.translatesAutoresizingMaskIntoConstraints = false
 
 
+        // safeArea
+        addDeadlineButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -20.0).isActive = true
+        addDeadlineButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20.0).isActive = true
+        addDeadlineButton.widthAnchor.constraint(equalToConstant: 50.0).isActive = true
+        addDeadlineButton.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
 
         
         // Main
         
         deadlineMainView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100).isActive = true
         deadlineMainView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor).isActive = true
-        deadlineMainView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor).isActive = true
+
         deadlineMainView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: 10/11).isActive = true
-        deadlineMainView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 1/10).isActive = true
+
         deadlineMainView.layer.cornerRadius = 12
+        deadlineMainView.heightAnchor.constraint(equalToConstant: 70.0).isActive = true
         
         
         
@@ -94,11 +107,11 @@ class MainViewController: UIViewController {
         deadlineLeftView.layer.cornerRadius = 12
         deadlineLeftView.centerYAnchor.constraint(equalTo: deadlineMainView.centerYAnchor).isActive = true
         
-        dayAmount.topAnchor.constraint(equalTo: deadlineLeftView.topAnchor).isActive = true
         dayAmount.centerXAnchor.constraint(equalTo: deadlineLeftView.centerXAnchor).isActive = true
-        dayAmount.heightAnchor.constraint(equalTo: deadlineLeftView.heightAnchor).isActive = true
+        dayAmount.centerYAnchor.constraint(equalTo: deadlineLeftView.centerYAnchor, constant: -10).isActive = true
+
         
-        days.bottomAnchor.constraint(equalTo: deadlineLeftView.bottomAnchor).isActive = true
+        days.topAnchor.constraint(equalTo: dayAmount.bottomAnchor).isActive = true
         days.centerXAnchor.constraint(equalTo: deadlineLeftView.centerXAnchor).isActive = true
         
         
@@ -124,21 +137,11 @@ class MainViewController: UIViewController {
         //mainText.adjustsFontSizeToFitWidth = true
         mainText.numberOfLines = 2
 
-        
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        label.topAnchor.constraint(equalTo:
-                                    view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
-        
-        label.leftAnchor.constraint(equalTo: view.leftAnchor, constant: -10).isActive = true
-        
-        label.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
-        
-        
-        
-        
-
+    }
+    
+    @objc
+    func addButtonTouched (sender: UIButton){
+        present(addDeadLineViewController(), animated: true)
     }
 
 
