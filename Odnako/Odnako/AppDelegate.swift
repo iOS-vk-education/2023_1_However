@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  Odnako
 //
-//  Created by User on 13.11.2023.
+//  Created by User on 20.11.2023.
 //
 
 import UIKit

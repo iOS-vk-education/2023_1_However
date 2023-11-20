@@ -2,10 +2,9 @@
 //  SettingsViewController.swift
 //  Odnako
 //
-//  Created by User on 16.11.2023.
+//  Created by User on 20.11.2023.
 //
 
-import Foundation
 import UIKit
 
 class SettingsViewController: UIViewController {
@@ -22,3 +21,4 @@ class SettingsViewController: UIViewController {
         
     }
 }
+
