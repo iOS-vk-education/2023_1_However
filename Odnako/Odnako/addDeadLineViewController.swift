@@ -35,7 +35,7 @@ final class addDeadLineViewController : UIViewController{
         deadlineRemindLabel.text = "Напоминание"
         deadlineDifficultyLabel.text = "Сложность"
         
-        deadlineNameTextField.backgroundColor = UIColor.customLightGreenColor
+        deadlineNameTextField.backgroundColor = UIColor.customDeadlineMainColor
         deadlineNameTextField.layer.cornerRadius = 10
 
         

@@ -8,11 +8,11 @@
 import UIKit
 
 extension UIColor{
-    static let customBackGroundColor = UIColor(red: 126/255, green: 170/255, blue: 146/255, alpha: 1.0)
-    static let customLightGreenColor = UIColor(red: 190/255, green: 228/255, blue: 192/255, alpha: 1.0)
-    static let customDarkGreenColor = UIColor(red: 107/255, green: 175/255, blue: 105/255, alpha: 1.0)
-    static let customTabBarColor = UIColor(red: 147/255, green: 201/255, blue: 149/255, alpha: 1.0)
-    static let customAccentColor = UIColor(red: 255/255, green: 217/255, blue: 183/255, alpha: 1.0)
+    static let customBackGroundColor = UIColor.white
+    static let customDeadlineMainColor = UIColor(red: 224/255, green: 193/255, blue: 255/255, alpha: 1.0)
+    static let customDeadlineCellColor = UIColor(red: 210/255, green: 172/255, blue: 249/255, alpha: 1.0)
+    static let customTabBarColor = UIColor(red: 197/255, green: 168/255, blue: 228/255, alpha: 1.0)
+    static let customAccentColor = UIColor(red: 175/255, green: 120/255, blue: 234/255, alpha: 1.0)
     static let customDarkPurpleColor = UIColor.purple // темно-фиолетовый
     static let customLightPurpleColor = UIColor(red: 190/255, green: 179/255, blue: 228/255, alpha: 1.0) // фиолетовый
     static let customBackGroundColor_new = UIColor.white
@@ -70,8 +70,8 @@ class MainViewController: UIViewController {
         NSLayoutConstraint.activate([
             cv.topAnchor.constraint(equalTo: filterButton.bottomAnchor, constant: 15),
             cv.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            cv.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            cv.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            cv.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            cv.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
         
         self.collectionView = cv
@@ -150,7 +150,7 @@ class MainCell: UICollectionViewCell {
         ])
         deadlineLeftView.layer.cornerRadius = 30
         deadlineLeftView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
-        deadlineLeftView.backgroundColor = UIColor.customDarkGreenColor
+        deadlineLeftView.backgroundColor = UIColor.customDeadlineCellColor
         deadlineLeftView.layer.borderWidth = 1.0
         deadlineLeftView.layer.borderColor = UIColor.black.cgColor
         
@@ -161,7 +161,7 @@ class MainCell: UICollectionViewCell {
         ])
         deadlineRightView.layer.cornerRadius = 30
         deadlineRightView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]
-        deadlineRightView.backgroundColor = UIColor.customDarkGreenColor
+        deadlineRightView.backgroundColor = UIColor.customDeadlineCellColor
         deadlineRightView.layer.borderWidth = 1.0
         deadlineRightView.layer.borderColor = UIColor.black.cgColor
         
@@ -196,7 +196,7 @@ class MainCell: UICollectionViewCell {
         mainText.font = .boldSystemFont(ofSize: 20)
         mainText.adjustsFontSizeToFitWidth = true
         
-        contentView.backgroundColor = UIColor.customLightGreenColor
+        contentView.backgroundColor = UIColor.customDeadlineMainColor
         contentView.layer.cornerRadius = 30
         
     }
