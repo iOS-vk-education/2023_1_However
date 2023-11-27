@@ -125,18 +125,13 @@ class MainCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        //deadlineRightView.addSubview(emoji)
-        //deadlineLeftView.addSubview(dayAmount)
-        //deadlineLeftView.addSubview(days)
-        
+ 
         contentView.addSubview(deadlineLeftView)
         contentView.addSubview(deadlineRightView)
         deadlineLeftView.addSubview(dayAmount)
         deadlineRightView.addSubview(emoji)
         contentView.addSubview(mainText)
-        
-        //days.translatesAutoresizingMaskIntoConstraints = false
+
         
         deadlineLeftView.translatesAutoresizingMaskIntoConstraints = false
         deadlineRightView.translatesAutoresizingMaskIntoConstraints = false
@@ -149,7 +144,6 @@ class MainCell: UICollectionViewCell {
             deadlineLeftView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             deadlineLeftView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1/4.8),
             deadlineLeftView.heightAnchor.constraint(equalTo: contentView.heightAnchor),
-            deadlineLeftView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
         deadlineLeftView.layer.cornerRadius = 30
         deadlineLeftView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
@@ -161,7 +155,6 @@ class MainCell: UICollectionViewCell {
             deadlineRightView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             deadlineRightView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1/4.8),
             deadlineRightView.heightAnchor.constraint(equalTo: contentView.heightAnchor),
-            deadlineRightView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
         deadlineRightView.layer.cornerRadius = 30
         deadlineRightView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]
@@ -173,15 +166,16 @@ class MainCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             dayAmount.topAnchor.constraint(equalTo: contentView.topAnchor),
             dayAmount.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            dayAmount.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            dayAmount.centerXAnchor.constraint(equalTo: deadlineLeftView.centerXAnchor),
+            dayAmount.centerYAnchor.constraint(equalTo: deadlineLeftView.centerYAnchor)
         ])
-        
         
         
         NSLayoutConstraint.activate([
             emoji.topAnchor.constraint(equalTo: contentView.topAnchor),
             emoji.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            emoji.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20)
+            emoji.centerXAnchor.constraint(equalTo: deadlineRightView.centerXAnchor),
+            emoji.centerYAnchor.constraint(equalTo: deadlineRightView.centerYAnchor)
         ])
         dayAmount.textAlignment = .center
         dayAmount.numberOfLines = 0
