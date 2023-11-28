@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CE35BB682B0BF2D900196A57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB672B0BF2D900196A57 /* AppDelegate.swift */; };
 		CE35BB6A2B0BF2D900196A57 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB692B0BF2D900196A57 /* SceneDelegate.swift */; };
+		CE35BB6C2B0BF2D900196A57 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB6B2B0BF2D900196A57 /* ViewController.swift */; };
 		CE35BB6F2B0BF2D900196A57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE35BB6D2B0BF2D900196A57 /* Main.storyboard */; };
 		CE35BB712B0BF2DD00196A57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE35BB702B0BF2DD00196A57 /* Assets.xcassets */; };
 		CE35BB742B0BF2DD00196A57 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE35BB722B0BF2DD00196A57 /* LaunchScreen.storyboard */; };
@@ -17,12 +18,14 @@
 		CE35BB802B0BF3C900196A57 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB7F2B0BF3C900196A57 /* MainViewController.swift */; };
 		CE35BB822B0BF41400196A57 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB812B0BF41400196A57 /* SettingsViewController.swift */; };
 		CE35BB842B0BF43F00196A57 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB832B0BF43F00196A57 /* TabBarController.swift */; };
+		CE7D69BB2B0D0C22006F2815 /* AutorizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D69BA2B0D0C22006F2815 /* AutorizeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CE35BB642B0BF2D900196A57 /* Odnako.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Odnako.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE35BB672B0BF2D900196A57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE35BB692B0BF2D900196A57 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		CE35BB6B2B0BF2D900196A57 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CE35BB6E2B0BF2D900196A57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE35BB702B0BF2DD00196A57 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE35BB732B0BF2DD00196A57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -32,6 +35,7 @@
 		CE35BB7F2B0BF3C900196A57 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CE35BB812B0BF41400196A57 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CE35BB832B0BF43F00196A57 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		CE7D69BA2B0D0C22006F2815 /* AutorizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorizeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,15 +70,17 @@
 			children = (
 				CE35BB672B0BF2D900196A57 /* AppDelegate.swift */,
 				CE35BB692B0BF2D900196A57 /* SceneDelegate.swift */,
+				CE35BB6B2B0BF2D900196A57 /* ViewController.swift */,
 				CE35BB6D2B0BF2D900196A57 /* Main.storyboard */,
 				CE35BB702B0BF2DD00196A57 /* Assets.xcassets */,
 				CE35BB722B0BF2DD00196A57 /* LaunchScreen.storyboard */,
 				CE35BB752B0BF2DD00196A57 /* Info.plist */,
 				CE35BB7B2B0BF31500196A57 /* addDeadLineViewController.swift */,
-				CE35BB7D2B0BF3A900196A57 /* CalendarViewController.swift */,
 				CE35BB7F2B0BF3C900196A57 /* MainViewController.swift */,
+				CE35BB7D2B0BF3A900196A57 /* CalendarViewController.swift */,
 				CE35BB812B0BF41400196A57 /* SettingsViewController.swift */,
 				CE35BB832B0BF43F00196A57 /* TabBarController.swift */,
+				CE7D69BA2B0D0C22006F2815 /* AutorizeViewController.swift */,
 			);
 			path = Odnako;
 			sourceTree = "<group>";
@@ -152,8 +158,10 @@
 			files = (
 				CE35BB7E2B0BF3A900196A57 /* CalendarViewController.swift in Sources */,
 				CE35BB842B0BF43F00196A57 /* TabBarController.swift in Sources */,
+				CE7D69BB2B0D0C22006F2815 /* AutorizeViewController.swift in Sources */,
 				CE35BB7C2B0BF31500196A57 /* addDeadLineViewController.swift in Sources */,
 				CE35BB822B0BF41400196A57 /* SettingsViewController.swift in Sources */,
+				CE35BB6C2B0BF2D900196A57 /* ViewController.swift in Sources */,
 				CE35BB802B0BF3C900196A57 /* MainViewController.swift in Sources */,
 				CE35BB682B0BF2D900196A57 /* AppDelegate.swift in Sources */,
 				CE35BB6A2B0BF2D900196A57 /* SceneDelegate.swift in Sources */,
@@ -309,6 +317,7 @@
 				DEVELOPMENT_TEAM = 3GBZ34S3JW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Odnako/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FireLine;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -338,6 +347,7 @@
 				DEVELOPMENT_TEAM = 3GBZ34S3JW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Odnako/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FireLine;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

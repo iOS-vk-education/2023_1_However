@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "photo_5305406611092788474_x-fotor-bg-remover-2023112714497.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
