@@ -67,8 +67,8 @@ class MainViewController: UIViewController {
         NSLayoutConstraint.activate([
             cv.topAnchor.constraint(equalTo: filterButton.bottomAnchor, constant: 15),
             cv.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            cv.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            cv.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            cv.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            cv.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
         
         self.collectionView = cv
