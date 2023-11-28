@@ -30,6 +30,12 @@ class MainViewController: UIViewController {
     private let mainText = UILabel()
     private var addDeadlineButton = UIButton()
     
+    /*override func viewDidAppear(_ animated: Bool) {
+            super.viewDidAppear(animated)
+            
+            let authorizeVC = AutorizeViewController()
+            present(authorizeVC, animated: true, completion: nil)
+    }*/
 
 
     override func viewDidLoad() {
