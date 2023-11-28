@@ -317,6 +317,7 @@
 				DEVELOPMENT_TEAM = 3GBZ34S3JW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Odnako/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FireLine;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -346,6 +347,7 @@
 				DEVELOPMENT_TEAM = 3GBZ34S3JW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Odnako/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FireLine;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

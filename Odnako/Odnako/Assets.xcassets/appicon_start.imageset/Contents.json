@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "енот.png",
+      "filename" : "photo_5305406611092788474_x-fotor-bg-remover-2023112714497.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "енот-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "енот-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
