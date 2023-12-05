@@ -35,7 +35,7 @@ class MainViewController: UIViewController {
         filterButton.setImage(buttonImage, for: .normal)
         filterButton.backgroundColor = UIColor.customAccentColor
         filterButton.layer.cornerRadius = 15
-
+        
         let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 30, weight: .medium)
         let symbolImage = UIImage(systemName: "plus", withConfiguration: symbolConfiguration)
         addDeadlineButton.setImage(symbolImage, for: .normal)
@@ -54,7 +54,7 @@ class MainViewController: UIViewController {
         cv.translatesAutoresizingMaskIntoConstraints = false
         filterButton.translatesAutoresizingMaskIntoConstraints = false
         addDeadlineButton.translatesAutoresizingMaskIntoConstraints = false
-
+        
         NSLayoutConstraint.activate([
             filterButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             filterButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
@@ -128,13 +128,13 @@ class MainCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
- 
+        
         contentView.addSubview(deadlineLeftView)
         contentView.addSubview(deadlineRightView)
         deadlineLeftView.addSubview(dayAmount)
         deadlineRightView.addSubview(emoji)
         contentView.addSubview(mainText)
-
+        
         
         deadlineLeftView.translatesAutoresizingMaskIntoConstraints = false
         deadlineRightView.translatesAutoresizingMaskIntoConstraints = false
