@@ -37,22 +37,22 @@ final class addDeadLineViewController : UIViewController{
         
         deadlineNameTextField.backgroundColor = UIColor.customDeadlineMainColor
         deadlineNameTextField.layer.cornerRadius = 10
-
+        
         
         view.addSubview(closeButton)
         view.addSubview(addDeadlineImage)
         
         view.addSubview(deadlineNameLabel)
-//        view.addSubview(deadlineDateLabel)
-//        view.addSubview(deadlineTimeLabel)
-//        view.addSubview(deadlineRemindLabel)
-//        view.addSubview(deadlineDifficultyLabel)
+        //        view.addSubview(deadlineDateLabel)
+        //        view.addSubview(deadlineTimeLabel)
+        //        view.addSubview(deadlineRemindLabel)
+        //        view.addSubview(deadlineDifficultyLabel)
         
         view.addSubview(deadlineNameTextField)
-//        view.addSubview(deadlineDateTextField)
-//        view.addSubview(deadlineTimeTextField)
-//        view.addSubview(deadlineRemindTextField)
-//        view.addSubview(deadlineDifficultyTextField)
+        //        view.addSubview(deadlineDateTextField)
+        //        view.addSubview(deadlineTimeTextField)
+        //        view.addSubview(deadlineRemindTextField)
+        //        view.addSubview(deadlineDifficultyTextField)
         
         closeButton.setTitle("x", for: .normal)
         closeButton.setTitleColor( .black, for: .normal)
@@ -60,13 +60,13 @@ final class addDeadLineViewController : UIViewController{
         closeButton.backgroundColor = UIColor.customAccentColor
         closeButton.layer.cornerRadius = 10
         closeButton.addTarget(self, action: #selector(didTapCloseButton), for: .touchUpInside)
-    
         
         
         
         
         
-      
+        
+        
         addDeadlineImage.translatesAutoresizingMaskIntoConstraints = false
         
         addDeadlineImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
@@ -84,7 +84,7 @@ final class addDeadLineViewController : UIViewController{
         deadlineNameTextField.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
         
         
-
+        
         // safeArea
         closeButton.translatesAutoresizingMaskIntoConstraints = false
         closeButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -20.0).isActive = true
