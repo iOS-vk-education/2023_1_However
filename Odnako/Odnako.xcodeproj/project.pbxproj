@@ -19,6 +19,8 @@
 		CE35BB822B0BF41400196A57 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB812B0BF41400196A57 /* SettingsViewController.swift */; };
 		CE35BB842B0BF43F00196A57 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB832B0BF43F00196A57 /* TabBarController.swift */; };
 		CE7D69BB2B0D0C22006F2815 /* AutorizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D69BA2B0D0C22006F2815 /* AutorizeViewController.swift */; };
+		D4B0CD782B20BA9D00407607 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B0CD772B20BA9D00407607 /* MainPresenter.swift */; };
+		D4B0CD7A2B20BC7F00407607 /* MainBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B0CD792B20BC7F00407607 /* MainBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		CE35BB812B0BF41400196A57 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CE35BB832B0BF43F00196A57 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		CE7D69BA2B0D0C22006F2815 /* AutorizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorizeViewController.swift; sourceTree = "<group>"; };
+		D4B0CD772B20BA9D00407607 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		D4B0CD792B20BC7F00407607 /* MainBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,13 +80,39 @@
 				CE35BB722B0BF2DD00196A57 /* LaunchScreen.storyboard */,
 				CE35BB752B0BF2DD00196A57 /* Info.plist */,
 				CE35BB7B2B0BF31500196A57 /* addDeadLineViewController.swift */,
-				CE35BB7F2B0BF3C900196A57 /* MainViewController.swift */,
+				D4B0CD7B2B20BD8C00407607 /* MainModule */,
 				CE35BB7D2B0BF3A900196A57 /* CalendarViewController.swift */,
 				CE35BB812B0BF41400196A57 /* SettingsViewController.swift */,
 				CE35BB832B0BF43F00196A57 /* TabBarController.swift */,
 				CE7D69BA2B0D0C22006F2815 /* AutorizeViewController.swift */,
 			);
 			path = Odnako;
+			sourceTree = "<group>";
+		};
+		D4B0CD7B2B20BD8C00407607 /* MainModule */ = {
+			isa = PBXGroup;
+			children = (
+				D4B0CD7C2B20BD9600407607 /* View */,
+				D4B0CD7D2B20BD9A00407607 /* Presenter */,
+				D4B0CD792B20BC7F00407607 /* MainBuilder.swift */,
+			);
+			path = MainModule;
+			sourceTree = "<group>";
+		};
+		D4B0CD7C2B20BD9600407607 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE35BB7F2B0BF3C900196A57 /* MainViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D4B0CD7D2B20BD9A00407607 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				D4B0CD772B20BA9D00407607 /* MainPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,8 +189,10 @@
 				CE35BB7E2B0BF3A900196A57 /* CalendarViewController.swift in Sources */,
 				CE35BB842B0BF43F00196A57 /* TabBarController.swift in Sources */,
 				CE7D69BB2B0D0C22006F2815 /* AutorizeViewController.swift in Sources */,
+				D4B0CD7A2B20BC7F00407607 /* MainBuilder.swift in Sources */,
 				CE35BB7C2B0BF31500196A57 /* addDeadLineViewController.swift in Sources */,
 				CE35BB822B0BF41400196A57 /* SettingsViewController.swift in Sources */,
+				D4B0CD782B20BA9D00407607 /* MainPresenter.swift in Sources */,
 				CE35BB6C2B0BF2D900196A57 /* ViewController.swift in Sources */,
 				CE35BB802B0BF3C900196A57 /* MainViewController.swift in Sources */,
 				CE35BB682B0BF2D900196A57 /* AppDelegate.swift in Sources */,

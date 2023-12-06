@@ -18,54 +18,108 @@ extension UIColor{
     static let customBackGroundColor_new = UIColor.white
 }
 
+
+extension UIImage {
+    
+    static let filterImage = UIImage(named: "mainFilterImage")
+}
+protocol MainViewInput: AnyObject {
+    
+    /// Добавляет модуль.
+    /// - Parameter vc: Модуль.
+    func addModule(_ vc: UIViewController)
+}
+
 class MainViewController: UIViewController {
     
     var collectionView: UICollectionView!
+    
+    // MARK: - Private properties
+    
+    private struct Constants {
+        static let buttonSize = CGSize(width: 50.0, height: 50.0)
+    }
+    
     private var filterButton = UIButton()
     private var addDeadlineButton = UIButton()
     
+    private var output: MainPresenterOutput?
+    
+    // MARK: - Init
+    
+    init(output: MainPresenterOutput?) {
+        self.output = output
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configureUI()
+        self.output?.viewDidLoad()
+    }
+    
+    // MARK: - Private methods
+    
+    private func addFilterButton() {
+        filterButton.setImage(.filterImage, for: .normal)
+        filterButton.backgroundColor = .customAccentColor
+        filterButton.layer.cornerRadius = 15.0
+        filterButton.addTarget(self, action: #selector(addButtonFilter), for: .touchUpInside)
+        filterButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(filterButton)
+        NSLayoutConstraint.activate([
+            filterButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            filterButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20.0),
+            filterButton.heightAnchor.constraint(equalToConstant: Constants.buttonSize.height),
+            filterButton.widthAnchor.constraint(equalToConstant: Constants.buttonSize.width)
+        ])
+    }
+    
+    private func addCollectionView() {
+        
+    }
+    
+    private func configureUI() {
+        self.addFilterButton()
+        self.addCollectionView()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         
         view.backgroundColor = UIColor.customBackGroundColor
         cv.backgroundColor = UIColor.customBackGroundColor
         
-        let buttonImage = UIImage(named: "mainFilterImage")
-        filterButton.setImage(buttonImage, for: .normal)
-        filterButton.backgroundColor = UIColor.customAccentColor
-        filterButton.layer.cornerRadius = 15
+        
 
-        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 30, weight: .medium)
+        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 30.0, weight: .medium)
         let symbolImage = UIImage(systemName: "plus", withConfiguration: symbolConfiguration)
         addDeadlineButton.setImage(symbolImage, for: .normal)
         addDeadlineButton.tintColor = UIColor.black
         addDeadlineButton.setTitleColor(.black, for: .normal)
         addDeadlineButton.backgroundColor = UIColor.customAccentColor
-        addDeadlineButton.layer.cornerRadius = 15
+        addDeadlineButton.layer.cornerRadius = 15.0
         
-        addDeadlineButton.addTarget(self, action: #selector(addButtonTouched), for: .touchUpInside)
-        filterButton.addTarget(self, action: #selector(addButtonFilter), for: .touchUpInside)
+        addDeadlineButton.addTarget(self, action: #selector(addDeadlineButtonTapped), for: .touchUpInside)
+        
         
         view.addSubview(cv)
         view.addSubview(addDeadlineButton)
-        view.addSubview(filterButton)
+        
         
         cv.translatesAutoresizingMaskIntoConstraints = false
-        filterButton.translatesAutoresizingMaskIntoConstraints = false
+        
         addDeadlineButton.translatesAutoresizingMaskIntoConstraints = false
 
-        NSLayoutConstraint.activate([
-            filterButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            filterButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            filterButton.heightAnchor.constraint(equalToConstant: 50),
-            filterButton.widthAnchor.constraint(equalToConstant: 50)
-        ])
+        
         NSLayoutConstraint.activate([
             addDeadlineButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             addDeadlineButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            addDeadlineButton.widthAnchor.constraint(equalToConstant: 50),
-            addDeadlineButton.heightAnchor.constraint(equalToConstant: 50)
+            addDeadlineButton.widthAnchor.constraint(equalToConstant: Constants.buttonSize.width),
+            addDeadlineButton.heightAnchor.constraint(equalToConstant: Constants.buttonSize.height)
         ])
         NSLayoutConstraint.activate([
             cv.topAnchor.constraint(equalTo: filterButton.bottomAnchor, constant: 15),
@@ -81,13 +135,13 @@ class MainViewController: UIViewController {
     }
     
     @objc
-    func addButtonTouched (sender: UIButton){
-        present(addDeadLineViewController(), animated: true)
+    func addDeadlineButtonTapped(sender: UIButton) {
+        self.output?.addDeadlineButtonDidTapped()
     }
     
     @objc
-    func addButtonFilter (sender: UIButton){
-        print("Button tapped!")
+    func addButtonFilter(sender: UIButton){
+        self.output?.addButtonFilterDidTapped()
     }
 }
 
@@ -106,6 +160,13 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         cell.emoji.text = "💀"
         cell.mainText.text = "Check all emails please"
         return cell
+    }
+}
+
+extension MainViewController: MainViewInput {
+    
+    func addModule(_ vc: UIViewController) {
+        self.present(vc, animated: true)
     }
 }
 

@@ -13,6 +13,7 @@ final class TabBarController : UITabBarController{
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
         setUpTabs()
+        self.selectedIndex = 1
         self.tabBar.backgroundColor = UIColor.customTabBarColor
         view.backgroundColor = UIColor.customTabBarColor
                  
@@ -27,7 +28,7 @@ final class TabBarController : UITabBarController{
 //        settingsBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 2)
         settingsViewController.tabBarItem = settingsBarItem
         
-        let mainViewController = MainViewController()
+        let mainViewController = MainBuilder.build()
         let mainBarItem = UITabBarItem()
         mainBarItem.title = "Задачи"
         mainBarItem.image = UIImage(named: "tickImageTabBarItem")
@@ -43,6 +44,8 @@ final class TabBarController : UITabBarController{
 //        calendarBarItem.imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: -4, right: 0)
 //        calendarBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 3)
         calendarViewController.tabBarItem = calendarBarItem
+        
+        
                 
         viewControllers = [
             settingsViewController,
