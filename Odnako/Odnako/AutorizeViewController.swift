@@ -26,7 +26,7 @@ final class AutorizeViewController : UIViewController{
         super.viewDidLoad()
         
         view.backgroundColor = UIColor.customBackGroundColor_new
-    
+        
         
         view.addSubview(closeButton)
         view.addSubview(addDeadlineImage)
@@ -38,14 +38,14 @@ final class AutorizeViewController : UIViewController{
         closeButton.backgroundColor = UIColor.customLightPurpleColor
         closeButton.layer.cornerRadius = 10
         closeButton.addTarget(self, action: #selector(didTapCloseButton), for: .touchUpInside)
-    
+        
         
         //
         // Username text field
         
         ask_username_Field.text = "Введите имя пользователя:"
         view.addSubview(ask_username_Field)
-
+        
         ask_username_Field.translatesAutoresizingMaskIntoConstraints = false
         ////ask_username_Field.topAnchor.constraint(equalTo: addDeadlineImage.bottomAnchor, constant: 15).isActive = true
         ask_username_Field.font = UIFont.systemFont(ofSize: 24)
@@ -59,7 +59,7 @@ final class AutorizeViewController : UIViewController{
         NSLayoutConstraint.activate([
             ask_username_Field.topAnchor.constraint(equalTo: addDeadlineImage.bottomAnchor, constant: 40),
             ask_username_Field.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-
+            
             usernameTextField.topAnchor.constraint(equalTo: ask_username_Field.bottomAnchor, constant: 10),
             usernameTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             usernameTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20)
@@ -69,7 +69,7 @@ final class AutorizeViewController : UIViewController{
         
         ask_password_Field.text = "Введите пароль:"
         view.addSubview(ask_password_Field)
-
+        
         ask_password_Field.translatesAutoresizingMaskIntoConstraints = false
         ask_password_Field.font = UIFont.systemFont(ofSize: 24)
         ask_password_Field.topAnchor.constraint(equalTo: usernameTextField.bottomAnchor, constant: 35).isActive = true
@@ -87,7 +87,7 @@ final class AutorizeViewController : UIViewController{
         NSLayoutConstraint.activate([
             ask_password_Field.topAnchor.constraint(equalTo: usernameTextField.bottomAnchor, constant: 30),
             ask_password_Field.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-
+            
             passwordTextField.topAnchor.constraint(equalTo: ask_password_Field.bottomAnchor, constant: 10),
             passwordTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             passwordTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20)
@@ -97,7 +97,7 @@ final class AutorizeViewController : UIViewController{
         
         ask2_password_Field.text = "Повторите ввод пароля:"
         view.addSubview(ask2_password_Field)
-
+        
         ask2_password_Field.translatesAutoresizingMaskIntoConstraints = false
         ask2_password_Field.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 35).isActive = true
         ask2_password_Field.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor).isActive = true
@@ -115,7 +115,7 @@ final class AutorizeViewController : UIViewController{
         NSLayoutConstraint.activate([
             ask2_password_Field.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 30),
             ask2_password_Field.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-
+            
             password2TextField.topAnchor.constraint(equalTo: ask2_password_Field.bottomAnchor, constant: 10),
             password2TextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             password2TextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20)
@@ -125,7 +125,7 @@ final class AutorizeViewController : UIViewController{
         Error_label.text = ""
         Error_label.textColor = .red
         view.addSubview(Error_label)
-
+        
         Error_label.translatesAutoresizingMaskIntoConstraints = false
         Error_label.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor).isActive = true
         Error_label.font = UIFont.systemFont(ofSize: 18)
@@ -155,8 +155,8 @@ final class AutorizeViewController : UIViewController{
             saveButton.heightAnchor.constraint(equalToConstant: 40)
         ])
         //
-
-      
+        
+        
         addDeadlineImage.translatesAutoresizingMaskIntoConstraints = false
         
         addDeadlineImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
@@ -164,7 +164,7 @@ final class AutorizeViewController : UIViewController{
         addDeadlineImage.widthAnchor.constraint(equalToConstant: 230).isActive = true
         addDeadlineImage.heightAnchor.constraint(equalToConstant: 230).isActive = true
         
-
+        
         // safeArea
         closeButton.translatesAutoresizingMaskIntoConstraints = false
         closeButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -20.0).isActive = true
@@ -187,7 +187,7 @@ final class AutorizeViewController : UIViewController{
         let password = passwordTextField.text ?? ""
         let password2 = password2TextField.text ?? ""
         // Получаем значение поля ввода пароля или оставляем пустую строку, если поле пустое
-    // Добавлено условие для проверки, что оба поля имени пользователя и пароля не пусты
+        // Добавлено условие для проверки, что оба поля имени пользователя и пароля не пусты
         guard !username.isEmpty && !password.isEmpty && !password2.isEmpty && (password == password2) else {
             if (username.isEmpty) {
                 Error_label.text = "Ошибка! Пустое имя пользователя(" }
@@ -199,10 +199,10 @@ final class AutorizeViewController : UIViewController{
                 Error_label.text = "Пароль и его повтор не совпадают(" }
             Error_label.isHidden = false
             return }
-
-    // Call the delegate method
-    delegate?.saveButtonTapped(username: username, password: password)
-    // Закрываем представление настроек
+        
+        // Call the delegate method
+        delegate?.saveButtonTapped(username: username, password: password)
+        // Закрываем представление настроек
         dismiss(animated: true, completion: nil)
     }
     //
