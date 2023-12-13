@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A5C13E862B2A1E0C004EABD5 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C13E852B2A1E0C004EABD5 /* UIColor+Extension.swift */; };
+		A5C13E892B2A1E96004EABD5 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C13E882B2A1E96004EABD5 /* UIImage+Extension.swift */; };
+		A5C13E8D2B2A2D63004EABD5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C13E8C2B2A2D63004EABD5 /* Constants.swift */; };
+		A5C13E8F2B2A501D004EABD5 /* TaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C13E8E2B2A501D004EABD5 /* TaskData.swift */; };
+		A5C13E912B2A5BC6004EABD5 /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C13E902B2A5BC6004EABD5 /* MainCell.swift */; };
 		CE35BB682B0BF2D900196A57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB672B0BF2D900196A57 /* AppDelegate.swift */; };
 		CE35BB6A2B0BF2D900196A57 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB692B0BF2D900196A57 /* SceneDelegate.swift */; };
 		CE35BB6C2B0BF2D900196A57 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB6B2B0BF2D900196A57 /* ViewController.swift */; };
@@ -24,6 +29,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A5C13E852B2A1E0C004EABD5 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		A5C13E882B2A1E96004EABD5 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		A5C13E8C2B2A2D63004EABD5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A5C13E8E2B2A501D004EABD5 /* TaskData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskData.swift; sourceTree = "<group>"; };
+		A5C13E902B2A5BC6004EABD5 /* MainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
 		CE35BB642B0BF2D900196A57 /* Odnako.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Odnako.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE35BB672B0BF2D900196A57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE35BB692B0BF2D900196A57 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +63,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A5C13E872B2A1E65004EABD5 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A5C13E852B2A1E0C004EABD5 /* UIColor+Extension.swift */,
+				A5C13E882B2A1E96004EABD5 /* UIImage+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		A5C13E8B2B2A2D0C004EABD5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A5C13E8E2B2A501D004EABD5 /* TaskData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		CE35BB5B2B0BF2D900196A57 = {
 			isa = PBXGroup;
 			children = (
@@ -81,10 +108,12 @@
 				CE35BB752B0BF2DD00196A57 /* Info.plist */,
 				CE35BB7B2B0BF31500196A57 /* addDeadLineViewController.swift */,
 				D4B0CD7B2B20BD8C00407607 /* MainModule */,
+				A5C13E8C2B2A2D63004EABD5 /* Constants.swift */,
 				CE35BB7D2B0BF3A900196A57 /* CalendarViewController.swift */,
 				CE35BB812B0BF41400196A57 /* SettingsViewController.swift */,
 				CE35BB832B0BF43F00196A57 /* TabBarController.swift */,
 				CE7D69BA2B0D0C22006F2815 /* AutorizeViewController.swift */,
+				A5C13E872B2A1E65004EABD5 /* Extension */,
 			);
 			path = Odnako;
 			sourceTree = "<group>";
@@ -92,6 +121,7 @@
 		D4B0CD7B2B20BD8C00407607 /* MainModule */ = {
 			isa = PBXGroup;
 			children = (
+				A5C13E8B2B2A2D0C004EABD5 /* Model */,
 				D4B0CD7C2B20BD9600407607 /* View */,
 				D4B0CD7D2B20BD9A00407607 /* Presenter */,
 				D4B0CD792B20BC7F00407607 /* MainBuilder.swift */,
@@ -103,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				CE35BB7F2B0BF3C900196A57 /* MainViewController.swift */,
+				A5C13E902B2A5BC6004EABD5 /* MainCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -186,16 +217,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5C13E892B2A1E96004EABD5 /* UIImage+Extension.swift in Sources */,
+				A5C13E8F2B2A501D004EABD5 /* TaskData.swift in Sources */,
 				CE35BB7E2B0BF3A900196A57 /* CalendarViewController.swift in Sources */,
 				CE35BB842B0BF43F00196A57 /* TabBarController.swift in Sources */,
 				CE7D69BB2B0D0C22006F2815 /* AutorizeViewController.swift in Sources */,
+				A5C13E862B2A1E0C004EABD5 /* UIColor+Extension.swift in Sources */,
 				D4B0CD7A2B20BC7F00407607 /* MainBuilder.swift in Sources */,
 				CE35BB7C2B0BF31500196A57 /* addDeadLineViewController.swift in Sources */,
 				CE35BB822B0BF41400196A57 /* SettingsViewController.swift in Sources */,
 				D4B0CD782B20BA9D00407607 /* MainPresenter.swift in Sources */,
 				CE35BB6C2B0BF2D900196A57 /* ViewController.swift in Sources */,
 				CE35BB802B0BF3C900196A57 /* MainViewController.swift in Sources */,
+				A5C13E8D2B2A2D63004EABD5 /* Constants.swift in Sources */,
 				CE35BB682B0BF2D900196A57 /* AppDelegate.swift in Sources */,
+				A5C13E912B2A5BC6004EABD5 /* MainCell.swift in Sources */,
 				CE35BB6A2B0BF2D900196A57 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
