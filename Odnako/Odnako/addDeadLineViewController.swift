@@ -21,6 +21,7 @@ final class addDeadLineViewController : UIViewController{
     
     // Buttons
     var closeButton = UIButton()
+    var saveButton = UIButton()
     let datePicker = UIDatePicker()
     let deadlineDateToggleSwitch = UISwitch()
     let deadlineComplexitySegmentedControl = UISegmentedControl(items: ["😴", "😉", "😳", "🔥", "☠️"])
@@ -54,6 +55,17 @@ final class addDeadLineViewController : UIViewController{
         closeButton.layer.cornerRadius = 10
         closeButton.addTarget(self, action: #selector(didTapCloseButton), for: .touchUpInside)
         closeButton.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private func configureSaveButton(){
+        saveButton.setTitle("Сохранить", for: .normal)
+//        saveButton.titleLabel?.textAlignment = .center
+        saveButton.setTitleColor( .black, for: .normal)
+        saveButton.setTitleColor( .white, for: .highlighted)
+        saveButton.backgroundColor = UIColor.customAccentColor
+        saveButton.layer.cornerRadius = 10
+        saveButton.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
+        saveButton.translatesAutoresizingMaskIntoConstraints = false
     }
     
     private func configureImages() {
@@ -102,6 +114,7 @@ final class addDeadLineViewController : UIViewController{
         configureCloseButton()
         configureLabels()
         configureTextFields()
+        configureSaveButton()
         
         // addSubViews
         view.addSubview(addDeadlineImage)
@@ -116,6 +129,7 @@ final class addDeadLineViewController : UIViewController{
         view.addSubview(datePicker)
         view.addSubview(deadlineComplexitySegmentedControl)
         view.addSubview(deadlineDateToggleSwitch)
+        view.addSubview(saveButton)
         
         // Constraints
         NSLayoutConstraint.activate([
@@ -188,6 +202,14 @@ final class addDeadLineViewController : UIViewController{
             deadlineCommentaryTextView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: 9/10),
             deadlineCommentaryTextView.heightAnchor.constraint(equalToConstant: 100.0)
         ])
+        
+        // saveButton
+        NSLayoutConstraint.activate([
+            saveButton.topAnchor.constraint(equalTo: deadlineCommentaryTextView.bottomAnchor, constant: 20.0),
+            saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            saveButton.widthAnchor.constraint(equalToConstant: 120.0),
+            saveButton.heightAnchor.constraint(equalToConstant: 50.0)
+        ])
 
             
     }
@@ -218,6 +240,9 @@ final class addDeadLineViewController : UIViewController{
         let selectedVariant = sender.titleForSegment(at: selectedSegmentIndex)
     }
 
-
+    @objc
+    func didTapSaveButton(sender: UIButton){
+        dismiss(animated: true)
+    }
 
 }

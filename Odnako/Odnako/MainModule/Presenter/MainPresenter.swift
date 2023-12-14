@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol MainPresenterOutput: AnyObject {
     
@@ -14,7 +15,7 @@ protocol MainPresenterOutput: AnyObject {
     /// Сообщает, что была нажата кнопка добавления дедлайн.
     func addDeadlineButtonDidTapped()
     
-    func addButtonFilterDidTapped()
+    func addButtonFilterDidTapped(_ vc: UITableView)
 }
 
 class MainPresenter: MainPresenterOutput {
@@ -28,8 +29,9 @@ class MainPresenter: MainPresenterOutput {
         self.viewInput?.addModule(addDeadLineViewController())
     }
     
-    func addButtonFilterDidTapped() {
+    func addButtonFilterDidTapped(_ vc: UITableView) {
         print("addDeadlineButtonDidTapped")
+        self.viewInput?.showDropdownFilterMenu(vc)
     }
     
     func viewDidLoad() {
