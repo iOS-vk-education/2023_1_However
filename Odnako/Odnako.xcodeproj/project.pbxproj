@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE03B6462B2F72D90029DDCA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE03B6452B2F72D90029DDCA /* GoogleService-Info.plist */; };
+		CE03B64E2B2F9FD20029DDCA /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE03B64D2B2F9FD20029DDCA /* AuthService.swift */; };
+		CE03B6512B2F9FEC0029DDCA /* RegisterUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE03B6502B2F9FEC0029DDCA /* RegisterUserRequest.swift */; };
 		CE35BB682B0BF2D900196A57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB672B0BF2D900196A57 /* AppDelegate.swift */; };
 		CE35BB6A2B0BF2D900196A57 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB692B0BF2D900196A57 /* SceneDelegate.swift */; };
 		CE35BB6C2B0BF2D900196A57 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB6B2B0BF2D900196A57 /* ViewController.swift */; };
@@ -19,11 +22,23 @@
 		CE35BB822B0BF41400196A57 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB812B0BF41400196A57 /* SettingsViewController.swift */; };
 		CE35BB842B0BF43F00196A57 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB832B0BF43F00196A57 /* TabBarController.swift */; };
 		CE7D69BB2B0D0C22006F2815 /* AutorizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D69BA2B0D0C22006F2815 /* AutorizeViewController.swift */; };
+		CECA1A6A2B2FAA7D00C760CA /* LoginUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA1A692B2FAA7D00C760CA /* LoginUserRequest.swift */; };
+		CECA1A6C2B2FC01C00C760CA /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA1A6B2B2FC01C00C760CA /* RegistrationViewController.swift */; };
+		CECA1A702B2FC1F300C760CA /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA1A6F2B2FC1F300C760CA /* CustomTextField.swift */; };
+		CECA1A722B2FC46400C760CA /* CustomAuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA1A712B2FC46400C760CA /* CustomAuthButton.swift */; };
+		CECA1A742B2FCA6400C760CA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA1A732B2FCA6400C760CA /* LoginViewController.swift */; };
+		CECA1A762B2FD0DA00C760CA /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA1A752B2FD0DA00C760CA /* UIColor+Extension.swift */; };
 		D4B0CD782B20BA9D00407607 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B0CD772B20BA9D00407607 /* MainPresenter.swift */; };
 		D4B0CD7A2B20BC7F00407607 /* MainBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B0CD792B20BC7F00407607 /* MainBuilder.swift */; };
+		F3254C02C41AE43F5C07FDE7 /* Pods_Odnako.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E74E5729BD8D3774AE0556E9 /* Pods_Odnako.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		14EF8833DE2050CC3AF8D574 /* Pods-Odnako.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Odnako.release.xcconfig"; path = "Target Support Files/Pods-Odnako/Pods-Odnako.release.xcconfig"; sourceTree = "<group>"; };
+		A1C8AC2F1445F50F7AD93E1D /* Pods-Odnako.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Odnako.debug.xcconfig"; path = "Target Support Files/Pods-Odnako/Pods-Odnako.debug.xcconfig"; sourceTree = "<group>"; };
+		CE03B6452B2F72D90029DDCA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CE03B64D2B2F9FD20029DDCA /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		CE03B6502B2F9FEC0029DDCA /* RegisterUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserRequest.swift; sourceTree = "<group>"; };
 		CE35BB642B0BF2D900196A57 /* Odnako.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Odnako.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE35BB672B0BF2D900196A57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE35BB692B0BF2D900196A57 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,8 +53,15 @@
 		CE35BB812B0BF41400196A57 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CE35BB832B0BF43F00196A57 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		CE7D69BA2B0D0C22006F2815 /* AutorizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorizeViewController.swift; sourceTree = "<group>"; };
+		CECA1A692B2FAA7D00C760CA /* LoginUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserRequest.swift; sourceTree = "<group>"; };
+		CECA1A6B2B2FC01C00C760CA /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		CECA1A6F2B2FC1F300C760CA /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		CECA1A712B2FC46400C760CA /* CustomAuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAuthButton.swift; sourceTree = "<group>"; };
+		CECA1A732B2FCA6400C760CA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		CECA1A752B2FD0DA00C760CA /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		D4B0CD772B20BA9D00407607 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		D4B0CD792B20BC7F00407607 /* MainBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBuilder.swift; sourceTree = "<group>"; };
+		E74E5729BD8D3774AE0556E9 /* Pods_Odnako.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Odnako.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,17 +69,58 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3254C02C41AE43F5C07FDE7 /* Pods_Odnako.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		23933A2AEFF80151EB5E23B3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A1C8AC2F1445F50F7AD93E1D /* Pods-Odnako.debug.xcconfig */,
+				14EF8833DE2050CC3AF8D574 /* Pods-Odnako.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		8E9EEA85543554136DFD060F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E74E5729BD8D3774AE0556E9 /* Pods_Odnako.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE03B64C2B2F9FB50029DDCA /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				CECA1A6D2B2FC15500C760CA /* View */,
+				CE03B64F2B2F9FD60029DDCA /* Models */,
+				CE03B64D2B2F9FD20029DDCA /* AuthService.swift */,
+				CECA1A6F2B2FC1F300C760CA /* CustomTextField.swift */,
+				CECA1A712B2FC46400C760CA /* CustomAuthButton.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		CE03B64F2B2F9FD60029DDCA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE03B6502B2F9FEC0029DDCA /* RegisterUserRequest.swift */,
+				CECA1A692B2FAA7D00C760CA /* LoginUserRequest.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		CE35BB5B2B0BF2D900196A57 = {
 			isa = PBXGroup;
 			children = (
 				CE35BB662B0BF2D900196A57 /* Odnako */,
 				CE35BB652B0BF2D900196A57 /* Products */,
+				23933A2AEFF80151EB5E23B3 /* Pods */,
+				8E9EEA85543554136DFD060F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -72,6 +135,7 @@
 		CE35BB662B0BF2D900196A57 /* Odnako */ = {
 			isa = PBXGroup;
 			children = (
+				CE03B64C2B2F9FB50029DDCA /* Auth */,
 				CE35BB672B0BF2D900196A57 /* AppDelegate.swift */,
 				CE35BB692B0BF2D900196A57 /* SceneDelegate.swift */,
 				CE35BB6B2B0BF2D900196A57 /* ViewController.swift */,
@@ -83,10 +147,21 @@
 				D4B0CD7B2B20BD8C00407607 /* MainModule */,
 				CE35BB7D2B0BF3A900196A57 /* CalendarViewController.swift */,
 				CE35BB812B0BF41400196A57 /* SettingsViewController.swift */,
+				CE03B6452B2F72D90029DDCA /* GoogleService-Info.plist */,
 				CE35BB832B0BF43F00196A57 /* TabBarController.swift */,
 				CE7D69BA2B0D0C22006F2815 /* AutorizeViewController.swift */,
+				CECA1A752B2FD0DA00C760CA /* UIColor+Extension.swift */,
 			);
 			path = Odnako;
+			sourceTree = "<group>";
+		};
+		CECA1A6D2B2FC15500C760CA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CECA1A6B2B2FC01C00C760CA /* RegistrationViewController.swift */,
+				CECA1A732B2FCA6400C760CA /* LoginViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		D4B0CD7B2B20BD8C00407607 /* MainModule */ = {
@@ -122,9 +197,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE35BB782B0BF2DD00196A57 /* Build configuration list for PBXNativeTarget "Odnako" */;
 			buildPhases = (
+				A853AF779BDA4FA2E048FBFA /* [CP] Check Pods Manifest.lock */,
 				CE35BB602B0BF2D900196A57 /* Sources */,
 				CE35BB612B0BF2D900196A57 /* Frameworks */,
 				CE35BB622B0BF2D900196A57 /* Resources */,
+				3C53F7A0037960C4A0031344 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -174,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE35BB742B0BF2DD00196A57 /* LaunchScreen.storyboard in Resources */,
+				CE03B6462B2F72D90029DDCA /* GoogleService-Info.plist in Resources */,
 				CE35BB712B0BF2DD00196A57 /* Assets.xcassets in Resources */,
 				CE35BB6F2B0BF2D900196A57 /* Main.storyboard in Resources */,
 			);
@@ -181,18 +259,68 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3C53F7A0037960C4A0031344 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Odnako/Pods-Odnako-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Odnako/Pods-Odnako-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Odnako/Pods-Odnako-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A853AF779BDA4FA2E048FBFA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Odnako-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CE35BB602B0BF2D900196A57 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CECA1A742B2FCA6400C760CA /* LoginViewController.swift in Sources */,
+				CECA1A762B2FD0DA00C760CA /* UIColor+Extension.swift in Sources */,
 				CE35BB7E2B0BF3A900196A57 /* CalendarViewController.swift in Sources */,
+				CECA1A722B2FC46400C760CA /* CustomAuthButton.swift in Sources */,
 				CE35BB842B0BF43F00196A57 /* TabBarController.swift in Sources */,
 				CE7D69BB2B0D0C22006F2815 /* AutorizeViewController.swift in Sources */,
+				CE03B64E2B2F9FD20029DDCA /* AuthService.swift in Sources */,
+				CECA1A702B2FC1F300C760CA /* CustomTextField.swift in Sources */,
+				CECA1A6A2B2FAA7D00C760CA /* LoginUserRequest.swift in Sources */,
 				D4B0CD7A2B20BC7F00407607 /* MainBuilder.swift in Sources */,
 				CE35BB7C2B0BF31500196A57 /* addDeadLineViewController.swift in Sources */,
 				CE35BB822B0BF41400196A57 /* SettingsViewController.swift in Sources */,
 				D4B0CD782B20BA9D00407607 /* MainPresenter.swift in Sources */,
+				CECA1A6C2B2FC01C00C760CA /* RegistrationViewController.swift in Sources */,
+				CE03B6512B2F9FEC0029DDCA /* RegisterUserRequest.swift in Sources */,
 				CE35BB6C2B0BF2D900196A57 /* ViewController.swift in Sources */,
 				CE35BB802B0BF3C900196A57 /* MainViewController.swift in Sources */,
 				CE35BB682B0BF2D900196A57 /* AppDelegate.swift in Sources */,
@@ -340,6 +468,7 @@
 		};
 		CE35BB792B0BF2DD00196A57 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1C8AC2F1445F50F7AD93E1D /* Pods-Odnako.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -370,6 +499,7 @@
 		};
 		CE35BB7A2B0BF2DD00196A57 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 14EF8833DE2050CC3AF8D574 /* Pods-Odnako.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

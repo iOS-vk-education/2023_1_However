@@ -25,7 +25,7 @@ class SettingsViewController: UIViewController, AutorizeDelegate {
         view.backgroundColor = UIColor.customBackGroundColor_new
         
         // Кнопка переавторизации
-        signInButton.setTitle("sign in", for: .normal)
+        signInButton.setTitle("Выйти", for: .normal)
         signInButton.setTitleColor(.white, for: .normal)
         signInButton.setTitleColor(.black, for: .highlighted)
         signInButton.backgroundColor = UIColor.customDarkPurpleColor
@@ -168,9 +168,17 @@ class SettingsViewController: UIViewController, AutorizeDelegate {
     
     @objc
     func addButtonTouched(sender: UIButton) {
-        let autorizeViewController = AutorizeViewController()
-        autorizeViewController.delegate = self
-        present(autorizeViewController, animated: true)
+        AuthService.shared.signOut { [weak self] error in
+            guard let self = self else { return }
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            
+            if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+                sceneDelegate.checkAuthorization()
+            }
+        }
     }
     
     @objc func change_Avatar_Touched() {

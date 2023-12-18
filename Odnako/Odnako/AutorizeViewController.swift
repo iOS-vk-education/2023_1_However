@@ -43,7 +43,7 @@ final class AutorizeViewController : UIViewController{
         //
         // Username text field
         
-        ask_username_Field.text = "Введите имя пользователя:"
+        ask_username_Field.text = "Имя пользователя:"
         view.addSubview(ask_username_Field)
 
         ask_username_Field.translatesAutoresizingMaskIntoConstraints = false
@@ -67,7 +67,7 @@ final class AutorizeViewController : UIViewController{
         
         // Password text field
         
-        ask_password_Field.text = "Введите пароль:"
+        ask_password_Field.text = "Электронная почта:"
         view.addSubview(ask_password_Field)
 
         ask_password_Field.translatesAutoresizingMaskIntoConstraints = false
@@ -95,7 +95,7 @@ final class AutorizeViewController : UIViewController{
         
         // Repeat password text field
         
-        ask2_password_Field.text = "Повторите ввод пароля:"
+        ask2_password_Field.text = "Пароль"
         view.addSubview(ask2_password_Field)
 
         ask2_password_Field.translatesAutoresizingMaskIntoConstraints = false
@@ -188,17 +188,27 @@ final class AutorizeViewController : UIViewController{
         let password2 = password2TextField.text ?? ""
         // Получаем значение поля ввода пароля или оставляем пустую строку, если поле пустое
     // Добавлено условие для проверки, что оба поля имени пользователя и пароля не пусты
-        guard !username.isEmpty && !password.isEmpty && !password2.isEmpty && (password == password2) else {
-            if (username.isEmpty) {
-                Error_label.text = "Ошибка! Пустое имя пользователя(" }
-            else if (password.isEmpty) {
-                Error_label.text = "Ошибка! Пустой пароль(" }
-            else if (password2.isEmpty) {
-                Error_label.text = "Ошибка! Пустой повтор пароля(" }
-            else if (password != password2) {
-                Error_label.text = "Пароль и его повтор не совпадают(" }
+   
+        if (username.isEmpty) {
+            Error_label.text = "Ошибка! Пустое имя пользователя("
             Error_label.isHidden = false
-            return }
+            return
+        }
+        if (password.isEmpty) {
+            Error_label.text = "Ошибка! Пустое поле почты"
+            Error_label.isHidden = false
+            return
+        }
+        if (password2.isEmpty) {
+            Error_label.text = "Ошибка! Пустой пароль"
+            Error_label.isHidden = false
+            return
+        }
+        if (password2.count < 6 ) {
+            Error_label.text = "Пароль меньше 6 символов"
+            Error_label.isHidden = false
+            return
+        }
 
     // Call the delegate method
     delegate?.saveButtonTapped(username: username, password: password)
