@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct loginUserRequest {
     let email: String
     let password: String

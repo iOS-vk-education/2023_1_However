@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 final class RegistrationViewController : UIViewController{
     
@@ -24,6 +25,7 @@ final class RegistrationViewController : UIViewController{
     
     private func configureUI(){
         self.view.backgroundColor = .customBackGroundColor
+        
         
         self.view.addSubview(usernameField)
         self.view.addSubview(emailField)
@@ -90,6 +92,65 @@ final class RegistrationViewController : UIViewController{
     @objc
     func didTapSignUpButton(sender: UIButton){
         print("tapped didTapSignUpButton")
+        let registerUserRequest = RegisterUserRequest(
+            username: self.usernameField.text ?? "",
+            email: self.emailField.text ?? "",
+            password: self.passwordField.text ?? ""
+        )
+        
+        if !Validator.isValidUsername(for: registerUserRequest.username){
+            let alert = UIAlertController(title: "Ошибка", message: "Ввод имени пользователя некорректен", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "Закрыть", style: .default, handler: nil)
+            alert.addAction(alertAction)
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        if !Validator.isValidEmail(for: registerUserRequest.email){
+            let alert = UIAlertController(title: "Ошибка", message: "Ввод электронной почты некорректен", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "Закрыть", style: .default, handler: nil)
+            alert.addAction(alertAction)
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        if !Validator.isValidPassword(for: registerUserRequest.password){
+            let alert = UIAlertController(title: "Слабый пароль", message: "Используйте цифры, строчные, прописные буквы, спец. символы", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "Закрыть", style: .default, handler: nil)
+            alert.addAction(alertAction)
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        AuthService.shared.registerUser(with: registerUserRequest) { [weak self] wasRegistered, error in
+            
+            guard let self = self else { return }
+            
+            if let error = error {
+                let alert = UIAlertController(title: "Ошибка регистрации", message: error.localizedDescription, preferredStyle: .alert)
+                let alertAction = UIAlertAction(title: "Закрыть", style: .default, handler: nil)
+                alert.addAction(alertAction)
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+            
+            if wasRegistered {
+                if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+                    sceneDelegate.checkAuthorization()
+                } else {
+                    let alert = UIAlertController(title: "Ошибка регистрации", message: "", preferredStyle: .alert)
+                    let alertAction = UIAlertAction(title: "Закрыть", style: .default, handler: nil)
+                    alert.addAction(alertAction)
+                    self.present(alert, animated: true, completion: nil)
+                    return
+                }
+            }
+            
+            
+            
+        }
+        
+        
     }
     
     @objc func didTapSignInButton(sender: UIButton){

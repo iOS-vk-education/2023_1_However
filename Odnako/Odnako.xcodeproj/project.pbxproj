@@ -21,7 +21,7 @@
 		CE35BB802B0BF3C900196A57 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB7F2B0BF3C900196A57 /* MainViewController.swift */; };
 		CE35BB822B0BF41400196A57 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB812B0BF41400196A57 /* SettingsViewController.swift */; };
 		CE35BB842B0BF43F00196A57 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB832B0BF43F00196A57 /* TabBarController.swift */; };
-		CE7D69BB2B0D0C22006F2815 /* AutorizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D69BA2B0D0C22006F2815 /* AutorizeViewController.swift */; };
+		CE68566C2B325AB500C69E67 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE68566B2B325AB500C69E67 /* Validator.swift */; };
 		CECA1A6A2B2FAA7D00C760CA /* LoginUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA1A692B2FAA7D00C760CA /* LoginUserRequest.swift */; };
 		CECA1A6C2B2FC01C00C760CA /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA1A6B2B2FC01C00C760CA /* RegistrationViewController.swift */; };
 		CECA1A702B2FC1F300C760CA /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA1A6F2B2FC1F300C760CA /* CustomTextField.swift */; };
@@ -52,7 +52,7 @@
 		CE35BB7F2B0BF3C900196A57 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CE35BB812B0BF41400196A57 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CE35BB832B0BF43F00196A57 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		CE7D69BA2B0D0C22006F2815 /* AutorizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorizeViewController.swift; sourceTree = "<group>"; };
+		CE68566B2B325AB500C69E67 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		CECA1A692B2FAA7D00C760CA /* LoginUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserRequest.swift; sourceTree = "<group>"; };
 		CECA1A6B2B2FC01C00C760CA /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		CECA1A6F2B2FC1F300C760CA /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -100,6 +100,7 @@
 				CE03B64F2B2F9FD60029DDCA /* Models */,
 				CE03B64D2B2F9FD20029DDCA /* AuthService.swift */,
 				CECA1A6F2B2FC1F300C760CA /* CustomTextField.swift */,
+				CE68566B2B325AB500C69E67 /* Validator.swift */,
 				CECA1A712B2FC46400C760CA /* CustomAuthButton.swift */,
 			);
 			path = Auth;
@@ -149,7 +150,6 @@
 				CE35BB812B0BF41400196A57 /* SettingsViewController.swift */,
 				CE03B6452B2F72D90029DDCA /* GoogleService-Info.plist */,
 				CE35BB832B0BF43F00196A57 /* TabBarController.swift */,
-				CE7D69BA2B0D0C22006F2815 /* AutorizeViewController.swift */,
 				CECA1A752B2FD0DA00C760CA /* UIColor+Extension.swift */,
 			);
 			path = Odnako;
@@ -311,13 +311,13 @@
 				CE35BB7E2B0BF3A900196A57 /* CalendarViewController.swift in Sources */,
 				CECA1A722B2FC46400C760CA /* CustomAuthButton.swift in Sources */,
 				CE35BB842B0BF43F00196A57 /* TabBarController.swift in Sources */,
-				CE7D69BB2B0D0C22006F2815 /* AutorizeViewController.swift in Sources */,
 				CE03B64E2B2F9FD20029DDCA /* AuthService.swift in Sources */,
 				CECA1A702B2FC1F300C760CA /* CustomTextField.swift in Sources */,
 				CECA1A6A2B2FAA7D00C760CA /* LoginUserRequest.swift in Sources */,
 				D4B0CD7A2B20BC7F00407607 /* MainBuilder.swift in Sources */,
 				CE35BB7C2B0BF31500196A57 /* addDeadLineViewController.swift in Sources */,
 				CE35BB822B0BF41400196A57 /* SettingsViewController.swift in Sources */,
+				CE68566C2B325AB500C69E67 /* Validator.swift in Sources */,
 				D4B0CD782B20BA9D00407607 /* MainPresenter.swift in Sources */,
 				CECA1A6C2B2FC01C00C760CA /* RegistrationViewController.swift in Sources */,
 				CE03B6512B2F9FEC0029DDCA /* RegisterUserRequest.swift in Sources */,

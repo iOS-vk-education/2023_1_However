@@ -8,8 +8,8 @@ final class LoginViewController : UIViewController{
     private let emailField = CustomTextField(fieldType: .email)
     private let passwordField = CustomTextField(fieldType: .password)
     
-    private let signUpButton = CustomAuthButton(title: "Зарегистрироваться", fontSize: .big)
-    private let signInButton = CustomAuthButton(title: "Войти", fontSize: .med)
+    private let signUpButton = CustomAuthButton(title: "Зарегистрироваться", fontSize: .med)
+    private let signInButton = CustomAuthButton(title: "Войти", fontSize: .big)
     
     
     private func configureUI(){
@@ -66,10 +66,51 @@ final class LoginViewController : UIViewController{
     }
     
     @objc func didTapSignInButton(sender: UIButton){
-        let vc = TabBarController()
-        let nav = UINavigationController(rootViewController: vc)
-        nav.modalPresentationStyle = .fullScreen
-        self.present(nav, animated: false, completion: nil)
+        let loginUserRequest = loginUserRequest(
+            email: emailField.text ?? "",
+            password: passwordField.text ?? ""
+        )
+        
+        if !Validator.isValidEmail(for: loginUserRequest.email){
+            let alert = UIAlertController(title: "Ошибка", message: "Ввод электронной почты некорректен", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "Закрыть", style: .default, handler: nil)
+            alert.addAction(alertAction)
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        if !Validator.isValidPassword(for: loginUserRequest.password){
+            let alert = UIAlertController(title: "Слабый пароль", message: "Используйте цифры, строчные, прописные буквы, спец. символы", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "Закрыть", style: .default, handler: nil)
+            alert.addAction(alertAction)
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        AuthService.shared.signIn(with: loginUserRequest) { [weak self] error in
+           
+            guard let self = self else { return }
+            
+            if let error = error {
+                let alert = UIAlertController(title: "Ошибка Входа", message: error.localizedDescription, preferredStyle: .alert)
+                let alertAction = UIAlertAction(title: "Закрыть", style: .default, handler: nil)
+                alert.addAction(alertAction)
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+            
+            if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+                sceneDelegate.checkAuthorization()
+            } else {
+                let alert = UIAlertController(title: "Ошибка Входа", message: "", preferredStyle: .alert)
+                let alertAction = UIAlertAction(title: "Закрыть", style: .default, handler: nil)
+                alert.addAction(alertAction)
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+        }
+        
+        
     }
 }
 
