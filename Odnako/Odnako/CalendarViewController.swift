@@ -6,12 +6,22 @@
 //
 
 import UIKit
+import SwiftUI
 
+var dates: [String] = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37"]
 class CalendarViewController: UIViewController {
+    
     private let year = UIButton()
     private let month = UIButton()
     private let calendar = UIButton()
     private let selectMonthYaer = UILabel()
+    
+
+
+    private let collectionView:UICollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout.init())
+
+    
+   
     
     //only button only hardcore
     private let Cell1 = UIButton()
@@ -52,10 +62,10 @@ class CalendarViewController: UIViewController {
     private let Cell36 = UIButton()
     private let Cell37 = UIButton()
     
+ 
     
     
-    
-    //private let collectionCellsOfCalendar = UICollectionView()
+     
     
 
     
@@ -121,18 +131,22 @@ class CalendarViewController: UIViewController {
         view.addSubview(Cell37)
         
         
+
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        collectionView.register(Cell.self, forCellWithReuseIdentifier: "Cell")
+        
+        calendar.addSubview(collectionView)
+        
+        
+        
         update()
         
         
-        /*
-        for row in 1...5{
-            for colums in 1...7{
-                calendar.addSubview(ButtomCellOfCalendar)
-            }
-        }
-         */
+        
+        
     }
-    
     
     
     func update(){
@@ -313,7 +327,7 @@ class CalendarViewController: UIViewController {
         selectMonthYaer.topAnchor.constraint(equalTo: calendar.topAnchor, constant: 5).isActive = true
         selectMonthYaer.leftAnchor.constraint(equalTo: calendar.leftAnchor, constant: 10).isActive = true
         selectMonthYaer.rightAnchor.constraint(equalTo: calendar.rightAnchor, constant: -10).isActive = true
-        //selectMonthYaer.textAlignment = .center
+        selectMonthYaer.textAlignment = .center
         /*
         collectionCellsOfCalendar.topAnchor.constraint(equalTo: selectMonthYaer.bottomAnchor,constant: 5).isActive = true
         collectionCellsOfCalendar.leftAnchor.constraint(equalTo: selectMonthYaer.leftAnchor,constant: 5).isActive = true
@@ -329,7 +343,7 @@ class CalendarViewController: UIViewController {
         let distanceBetweenObjects = CGFloat((widthOfCalendar - CGFloat(7 * widthOfCellsCalendar)) * 0.125)
         let width2 = widthOfCellsCalendar + distanceBetweenObjects
         print (" \(widthOfCalendar)   \(widthOfCellsCalendar)    \(distanceBetweenObjects) \n \n \n \n \n \n \n \n \n \n \n \n")
-        
+        /*
         Cell1.translatesAutoresizingMaskIntoConstraints = false
         Cell1.layer.borderColor = UIColor.black.cgColor
         Cell1.layer.borderWidth = 2
@@ -736,9 +750,22 @@ class CalendarViewController: UIViewController {
         Cell37.leftAnchor.constraint(equalTo: Cell36.rightAnchor, constant: distanceBetweenObjects).isActive = true
         Cell37.rightAnchor.constraint(equalTo: Cell36.rightAnchor, constant: width2).isActive = true
         Cell37.bottomAnchor.constraint(equalTo: Cell29.bottomAnchor, constant: 50).isActive = true
+        */
+        calendar.bottomAnchor.constraint(equalTo: month.bottomAnchor, constant: 200).isActive = true
         
-        
-        calendar.bottomAnchor.constraint(equalTo: Cell37.bottomAnchor, constant: 10).isActive = true
+        /*
+        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: -100).isActive = true
+        collectionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor,constant: 20).isActive = true
+        collectionView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor,constant: -20).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: -500).isActive = true
+         */
+        collectionView.frame = calendar.bounds
+        /*
+        collectionView.topAnchor.constraint(equalTo: calendar.bottomAnchor, constant: 20).isActive = true
+        collectionView.leftAnchor.constraint(equalTo: calendar.leftAnchor, constant: 0).isActive = true
+        collectionView.rightAnchor.constraint(equalTo: calendar.rightAnchor, constant: 0).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: calendar.bottomAnchor, constant: 300).isActive = true
+         */
     }
     
     
@@ -806,8 +833,53 @@ class CalendarViewController: UIViewController {
         
     }
     
+}
+
+
+
+
+
+extension CalendarViewController: UICollectionViewDataSource{
     
     
     
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        dates.count
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! Cell
+        //cell. = dates[indexPath.row]
+        //cell.addSubview(cell.label)
+        
+        cell.backgroundColor = UIColor.purple
+        /*
+         cell.label.text = dates[indexPath.row]
+         cell.label.center = cell.center
+         cell.label.textColor = UIColor.black
+         cell.label.backgroundColor = UIColor.blue
+        */
+        
+        cell.label = UILabel(frame: CGRect(x: 0, y: 0, width: cell.bounds.size.width, height: cell.bounds.size.height))
+   
+        cell.label.text = dates[indexPath.row]
+        cell.label.preferredMaxLayoutWidth = CGFloat(cell.bounds.size.width)
+        cell.label.font = UIFont(name: "AvenirNext-Bold", size: 15)
+        cell.label.textAlignment = .center
+        cell.contentView.addSubview(cell.label)
+        
+        
+        return cell
+    }
     
 }
+
+extension CalendarViewController: UICollectionViewDelegate{
+    
+}
+
+final class Cell: UICollectionViewCell{
+    var label = UILabel()
+    
+}
+
+
