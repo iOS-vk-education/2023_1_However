@@ -42,6 +42,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             nav.isNavigationBarHidden = true
             nav.modalPresentationStyle = .fullScreen
             self.window?.rootViewController = nav
+            
+//            APIManager.shared.getPost(collection: "deadlines", docName: "deadline1") { deadline in
+//                guard deadline != nil else { return }
+//                print(deadline)
+//            }
+            let uid = Auth.auth().currentUser?.uid as! String
+            
+            APIManager.shared.getUserDeadlines(collection: "deadlines", userID: uid) { deadlines, error in
+                if let error = error {
+                    // Обрабатываем ошибку, если она произошла
+                    print("Error fetching deadlines: \(error.localizedDescription)")
+                } else if let deadlines = deadlines {
+                    // Используем полученные дедлайны
+                    for deadline in deadlines {
+                        // ... ваша логика обработки каждого дедлайна
+                        print(deadline) // Пример: выводим заголовок каждого дедлайна
+                    }
+                }
+            }
+            
         }
     }
 

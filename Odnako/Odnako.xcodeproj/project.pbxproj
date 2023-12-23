@@ -28,6 +28,8 @@
 		CECA1A722B2FC46400C760CA /* CustomAuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA1A712B2FC46400C760CA /* CustomAuthButton.swift */; };
 		CECA1A742B2FCA6400C760CA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA1A732B2FCA6400C760CA /* LoginViewController.swift */; };
 		CECA1A762B2FD0DA00C760CA /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA1A752B2FD0DA00C760CA /* UIColor+Extension.swift */; };
+		CEEBE7A62B377779009F91F7 /* deadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEBE7A52B377779009F91F7 /* deadline.swift */; };
+		CEEBE7A92B377BB9009F91F7 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEBE7A82B377BB9009F91F7 /* APIManager.swift */; };
 		D4B0CD782B20BA9D00407607 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B0CD772B20BA9D00407607 /* MainPresenter.swift */; };
 		D4B0CD7A2B20BC7F00407607 /* MainBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B0CD792B20BC7F00407607 /* MainBuilder.swift */; };
 		F3254C02C41AE43F5C07FDE7 /* Pods_Odnako.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E74E5729BD8D3774AE0556E9 /* Pods_Odnako.framework */; };
@@ -59,6 +61,8 @@
 		CECA1A712B2FC46400C760CA /* CustomAuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAuthButton.swift; sourceTree = "<group>"; };
 		CECA1A732B2FCA6400C760CA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CECA1A752B2FD0DA00C760CA /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		CEEBE7A52B377779009F91F7 /* deadline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deadline.swift; sourceTree = "<group>"; };
+		CEEBE7A82B377BB9009F91F7 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		D4B0CD772B20BA9D00407607 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		D4B0CD792B20BC7F00407607 /* MainBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBuilder.swift; sourceTree = "<group>"; };
 		E74E5729BD8D3774AE0556E9 /* Pods_Odnako.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Odnako.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,10 +148,10 @@
 				CE35BB702B0BF2DD00196A57 /* Assets.xcassets */,
 				CE35BB722B0BF2DD00196A57 /* LaunchScreen.storyboard */,
 				CE35BB752B0BF2DD00196A57 /* Info.plist */,
-				CE35BB7B2B0BF31500196A57 /* addDeadLineViewController.swift */,
 				D4B0CD7B2B20BD8C00407607 /* MainModule */,
 				CE35BB7D2B0BF3A900196A57 /* CalendarViewController.swift */,
 				CE35BB812B0BF41400196A57 /* SettingsViewController.swift */,
+				CEEBE7A82B377BB9009F91F7 /* APIManager.swift */,
 				CE03B6452B2F72D90029DDCA /* GoogleService-Info.plist */,
 				CE35BB832B0BF43F00196A57 /* TabBarController.swift */,
 				CECA1A752B2FD0DA00C760CA /* UIColor+Extension.swift */,
@@ -164,9 +168,18 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		CEEBE7A42B37775C009F91F7 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				CEEBE7A52B377779009F91F7 /* deadline.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
 		D4B0CD7B2B20BD8C00407607 /* MainModule */ = {
 			isa = PBXGroup;
 			children = (
+				CEEBE7A42B37775C009F91F7 /* models */,
 				D4B0CD7C2B20BD9600407607 /* View */,
 				D4B0CD7D2B20BD9A00407607 /* Presenter */,
 				D4B0CD792B20BC7F00407607 /* MainBuilder.swift */,
@@ -177,6 +190,7 @@
 		D4B0CD7C2B20BD9600407607 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CE35BB7B2B0BF31500196A57 /* addDeadLineViewController.swift */,
 				CE35BB7F2B0BF3C900196A57 /* MainViewController.swift */,
 			);
 			path = View;
@@ -306,11 +320,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEEBE7A62B377779009F91F7 /* deadline.swift in Sources */,
 				CECA1A742B2FCA6400C760CA /* LoginViewController.swift in Sources */,
 				CECA1A762B2FD0DA00C760CA /* UIColor+Extension.swift in Sources */,
 				CE35BB7E2B0BF3A900196A57 /* CalendarViewController.swift in Sources */,
 				CECA1A722B2FC46400C760CA /* CustomAuthButton.swift in Sources */,
 				CE35BB842B0BF43F00196A57 /* TabBarController.swift in Sources */,
+				CEEBE7A92B377BB9009F91F7 /* APIManager.swift in Sources */,
 				CE03B64E2B2F9FD20029DDCA /* AuthService.swift in Sources */,
 				CECA1A702B2FC1F300C760CA /* CustomTextField.swift in Sources */,
 				CECA1A6A2B2FAA7D00C760CA /* LoginUserRequest.swift in Sources */,

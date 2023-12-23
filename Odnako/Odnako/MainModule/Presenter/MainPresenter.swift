@@ -26,11 +26,12 @@ class MainPresenter: MainPresenterOutput {
     
     func addDeadlineButtonDidTapped() {
         print("addDeadlineButtonDidTapped")
+        // build addDeadLineViewController
         self.viewInput?.addModule(addDeadLineViewController())
     }
     
     func addButtonFilterDidTapped(_ vc: UITableView) {
-        print("addDeadlineButtonDidTapped")
+        print("addButtonFilterDidTapped")
         self.viewInput?.showDropdownFilterMenu(vc)
     }
     
