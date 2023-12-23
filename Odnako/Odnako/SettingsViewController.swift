@@ -6,16 +6,14 @@
 //
 
 import UIKit
+import FirebaseAuth
 
-class SettingsViewController: UIViewController, AutorizeDelegate {
+class SettingsViewController: UIViewController {
     private let mainText = UILabel()
     let signInButton = UIButton()
     let change_Avatar_Button = UIButton()
     let Avatar_Image = UIImageView(image: UIImage(named: "avatar_image"))
     let nameLabel = UILabel()
-    let usernameTextField = UITextField()
-    let passwordLabel = UILabel()
-    let passwordTextField = UITextField()
     let switchLabel = UILabel()
     var switchButton: UISwitch!
 
@@ -25,7 +23,7 @@ class SettingsViewController: UIViewController, AutorizeDelegate {
         view.backgroundColor = UIColor.customBackGroundColor_new
         
         // Кнопка переавторизации
-        signInButton.setTitle("sign in", for: .normal)
+        signInButton.setTitle("Выйти", for: .normal)
         signInButton.setTitleColor(.white, for: .normal)
         signInButton.setTitleColor(.black, for: .highlighted)
         signInButton.backgroundColor = UIColor.customDarkPurpleColor
@@ -51,62 +49,17 @@ class SettingsViewController: UIViewController, AutorizeDelegate {
         Avatar_Image.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
         
         // Создание лейбла "Имя пользователя:"
-        nameLabel.text = "Имя пользователя:"
+        nameLabel.text = Auth.auth().currentUser?.email
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         // Установка шрифта для лейбла "Имя пользователя:"
         nameLabel.font = UIFont.systemFont(ofSize: 24)
         view.addSubview(nameLabel)
-
-        // Создание поля ввода
-        usernameTextField.placeholder = "Username"
-        usernameTextField.translatesAutoresizingMaskIntoConstraints = false
-        // Устанавливаем размер шрифта для поля ввода
-        usernameTextField.font = UIFont.systemFont(ofSize: 24)
-        // Установка цвета обводки для поля ввода
-        usernameTextField.layer.borderWidth = 1
-        usernameTextField.borderStyle = .bezel
-        usernameTextField.layer.borderColor = UIColor.darkGray.cgColor
-        view.addSubview(usernameTextField)
         
 
         // Установка ограничений для лейбла "Имя пользователя:" и поля ввода
         NSLayoutConstraint.activate([
             nameLabel.topAnchor.constraint(equalTo: Avatar_Image.bottomAnchor, constant: 30),
-            nameLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-
-            usernameTextField.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10),
-            usernameTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            usernameTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20)
-        ])
-        
-        // Создание лейбла "Имя пользователя:"
-        passwordLabel.text = "Пароль:"
-        passwordLabel.translatesAutoresizingMaskIntoConstraints = false
-        // Установка шрифта для лейбла "Имя пользователя:"
-        passwordLabel.font = UIFont.systemFont(ofSize: 24)
-        view.addSubview(passwordLabel)
-
-        // Создание поля ввода
-        passwordTextField.placeholder = "Password"
-        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        // Устанавливаем размер шрифта для поля ввода
-        passwordTextField.font = UIFont.systemFont(ofSize: 24)
-        // Установка цвета обводки для поля ввода
-        passwordTextField.isSecureTextEntry = true
-        passwordTextField.layer.borderWidth = 1
-        passwordTextField.borderStyle = .bezel
-        passwordTextField.layer.borderColor = UIColor.darkGray.cgColor
-        view.addSubview(passwordTextField)
-        
-
-        // Установка ограничений для лейбла "Пароль:" и поля ввода
-        NSLayoutConstraint.activate([
-            passwordLabel.topAnchor.constraint(equalTo: usernameTextField.bottomAnchor, constant: 30),
-            passwordLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-
-            passwordTextField.topAnchor.constraint(equalTo: passwordLabel.bottomAnchor, constant: 10),
-            passwordTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            passwordTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20)
+            nameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         
         
@@ -168,9 +121,17 @@ class SettingsViewController: UIViewController, AutorizeDelegate {
     
     @objc
     func addButtonTouched(sender: UIButton) {
-        let autorizeViewController = AutorizeViewController()
-        autorizeViewController.delegate = self
-        present(autorizeViewController, animated: true)
+        AuthService.shared.signOut { [weak self] error in
+            guard let self = self else { return }
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            
+            if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+                sceneDelegate.checkAuthorization()
+            }
+        }
     }
     
     @objc func change_Avatar_Touched() {
@@ -179,13 +140,4 @@ class SettingsViewController: UIViewController, AutorizeDelegate {
         alert.addAction(alertAction)
         present(alert, animated: true, completion: nil)
     }
-    
-    func saveButtonTapped(username: String, password: String) {
-            // Use the username and password values here in the SettingsViewController
-            // For example:
-            usernameTextField.text = username
-            passwordTextField.text = password
-        }
-    
-    
 }

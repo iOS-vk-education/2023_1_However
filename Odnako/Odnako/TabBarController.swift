@@ -22,7 +22,6 @@ final class TabBarController : UITabBarController{
     func setUpTabs(){
         let settingsViewController = SettingsViewController()
         let settingsBarItem = UITabBarItem()
-        settingsBarItem.title = "Настройки"
         settingsBarItem.image = UIImage(named: "settingsImageTabBarItem")
 //        settingsBarItem.imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: -4, right: 0)
 //        settingsBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 2)
@@ -30,7 +29,6 @@ final class TabBarController : UITabBarController{
         
         let mainViewController = MainBuilder.build()
         let mainBarItem = UITabBarItem()
-        mainBarItem.title = "Задачи"
         mainBarItem.image = UIImage(named: "tickImageTabBarItem")
 //        mainBarItem.imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: -4, right: 0)
 //        mainBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 2)
@@ -39,7 +37,6 @@ final class TabBarController : UITabBarController{
         
         let calendarViewController = CalendarViewController()
         let calendarBarItem = UITabBarItem()
-        calendarBarItem.title = "Календарь"
         calendarBarItem.image = UIImage(named: "calendarImageTabBarItem")
 //        calendarBarItem.imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: -4, right: 0)
 //        calendarBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 3)

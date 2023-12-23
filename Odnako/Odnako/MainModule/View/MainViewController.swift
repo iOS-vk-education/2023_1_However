@@ -7,31 +7,29 @@
 
 import UIKit
 
-extension UIColor{
-    static let customBackGroundColor = UIColor.white
-    static let customDeadlineMainColor = UIColor(red: 224/255, green: 193/255, blue: 255/255, alpha: 1.0)
-    static let customDeadlineCellColor = UIColor(red: 210/255, green: 172/255, blue: 249/255, alpha: 1.0)
-    static let customTabBarColor = UIColor(red: 197/255, green: 168/255, blue: 228/255, alpha: 1.0)
-    static let customAccentColor = UIColor(red: 175/255, green: 120/255, blue: 234/255, alpha: 1.0)
-    static let customDarkPurpleColor = UIColor.purple // темно-фиолетовый
-    static let customLightPurpleColor = UIColor(red: 190/255, green: 179/255, blue: 228/255, alpha: 1.0) // фиолетовый
-    static let customBackGroundColor_new = UIColor.white
+enum filterButtonOptions : String {
+    case alphabet = "По алфавиту"
+    case date = "По дате"
+    case complexity = "По сложности"
+    
+    static let allOptions = [alphabet, date, complexity]
 }
 
 
 extension UIImage {
-    
     static let filterImage = UIImage(named: "mainFilterImage")
 }
+
 protocol MainViewInput: AnyObject {
-    
     /// Добавляет модуль.
     /// - Parameter vc: Модуль.
     func addModule(_ vc: UIViewController)
+    func showDropdownFilterMenu(_ vc: UITableView)
 }
 
 class MainViewController: UIViewController {
     
+    var filterButtonTableView = UITableView()
     var collectionView: UICollectionView!
     
     // MARK: - Private properties
@@ -62,8 +60,14 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         self.configureUI()
         self.output?.viewDidLoad()
+        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
+    }
+            
     // MARK: - Private methods
     
     private func addFilterButton() {
@@ -89,9 +93,13 @@ class MainViewController: UIViewController {
         self.addFilterButton()
         self.addCollectionView()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        let tv = UITableView(frame: .zero)
         
         view.backgroundColor = UIColor.customBackGroundColor
-        cv.backgroundColor = UIColor.customBackGroundColor
+        cv.backgroundColor = .customBackGroundColor
+        tv.backgroundColor = .customBackGroundColor
+        tv.tintColor = .customBackGroundColor
+        tv.layer.borderWidth = 1.0
         
         
 
@@ -107,10 +115,12 @@ class MainViewController: UIViewController {
         
         
         view.addSubview(cv)
+        view.addSubview(tv)
         view.addSubview(addDeadlineButton)
         
         
         cv.translatesAutoresizingMaskIntoConstraints = false
+        tv.translatesAutoresizingMaskIntoConstraints = false
         
         addDeadlineButton.translatesAutoresizingMaskIntoConstraints = false
 
@@ -132,6 +142,10 @@ class MainViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(MainCell.self, forCellWithReuseIdentifier: "MainCell")
+        
+        self.filterButtonTableView = tv
+        filterButtonTableView.dataSource = self
+        filterButtonTableView.delegate = self
     }
     
     @objc
@@ -141,7 +155,7 @@ class MainViewController: UIViewController {
     
     @objc
     func addButtonFilter(sender: UIButton){
-        self.output?.addButtonFilterDidTapped()
+        self.output?.addButtonFilterDidTapped(filterButtonTableView)
     }
 }
 
@@ -163,10 +177,47 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
 }
 
+extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return filterButtonOptions.allOptions.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
+        cell.textLabel?.text = filterButtonOptions.allOptions[indexPath.row].rawValue
+        cell.backgroundColor = .white
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedOption = filterButtonOptions.allOptions[indexPath.row]
+        print("Selected option: \(selectedOption)")
+        
+        // Processing what filter option was tapped
+        switch selectedOption {
+        case filterButtonOptions.alphabet:
+            print("Alpabet")
+        case filterButtonOptions.complexity:
+            print("Compolexity")
+        case filterButtonOptions.date:
+            print("Date")
+        }
+        tableView.frame = CGRect(x: 20, y: 110, width: 170, height: 0)
+    }
+}
+
 extension MainViewController: MainViewInput {
     
     func addModule(_ vc: UIViewController) {
         self.present(vc, animated: true)
+    }
+    
+    func showDropdownFilterMenu(_ vc: UITableView){
+        if vc.frame.height == 0 {
+            vc.frame = CGRect(x: 20, y: 110, width: 170, height: 125)
+        } else {
+            vc.frame = CGRect(x: 20, y: 110, width: 170, height: 0)
+        }
     }
 }
 
@@ -178,6 +229,10 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 15
     }
+}
+
+class filterButtonTableViewCell: UITableViewCell {
+    
 }
 
 class MainCell: UICollectionViewCell {
