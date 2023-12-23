@@ -7,6 +7,9 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
+import FirebaseStorage
+import SDWebImage
 
 enum Theme: Int {
     case light
@@ -39,6 +42,8 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "BackgroundColor")
+        // Fetch and load user avatar from Firebase Storage
+        loadUserAvatar()
         
         // Кнопка переавторизации
         signInButton.setTitle("Выйти", for: .normal)
@@ -60,8 +65,8 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         Avatar_Image.layer.masksToBounds = true
         Avatar_Image.widthAnchor.constraint(equalToConstant: 230).isActive = true
         Avatar_Image.heightAnchor.constraint(equalToConstant: 230).isActive = true
-        Avatar_Image.layer.cornerRadius = Avatar_Image.frame.size.width / 1.2
-        Avatar_Image.layer.cornerRadius = Avatar_Image.frame.size.height / 1.2
+        Avatar_Image.layer.cornerRadius = Avatar_Image.frame.size.width / 0.6
+        Avatar_Image.layer.cornerRadius = Avatar_Image.frame.size.height / 0.6
         Avatar_Image.clipsToBounds = true
         Avatar_Image.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         Avatar_Image.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
@@ -208,25 +213,30 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         }
     }
     
+    // Метод вызывается при нажатии кнопки "Изменить аватарку"
     @objc func change_Avatar_Touched() {
+        // Создание экземпляра UIImagePickerController для выбора или создания фото
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
 
+        // Создание контроллера для выбора источника фото (галерея или камера)
         let alertController = UIAlertController(title: "Выберите источник", message: nil, preferredStyle: .actionSheet)
 
+        // Добавление действия для выбора из галереи
         let galleryAction = UIAlertAction(title: "Выбрать из галереи", style: .default) { [weak self] _ in
             imagePicker.sourceType = .photoLibrary
             self?.present(imagePicker, animated: true, completion: nil)
         }
         alertController.addAction(galleryAction)
 
+        // Добавление действия для выбора из камеры
         let cameraAction = UIAlertAction(title: "Сделать фото", style: .default) { [weak self] _ in
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
                 imagePicker.sourceType = .camera
                 self?.present(imagePicker, animated: true, completion: nil)
             } else {
-                // Камера не доступна, выведите уведомление
+                // Вывод предупреждения, если камера не доступна
                 let alert = UIAlertController(title: "Ошибка", message: "Камера не доступна на вашем устройстве", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alert.addAction(okAction)
@@ -235,25 +245,140 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         }
         alertController.addAction(cameraAction)
 
+        // Добавление действия для отмены
         let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
 
+        // Отображение контроллера выбора источника
         present(alertController, animated: true, completion: nil)
+    }
+    // Function to load user avatar from Firebase Storage
+    func loadUserAvatar() {
+        guard let userEmail = Auth.auth().currentUser?.email else {
+            // Handle the case where the user's email is not available
+            return
+        }
+        let db = Firestore.firestore()
+        let avatarRef = db.collection("your_collection").document(userEmail)
+        avatarRef.getDocument { [weak self] (document, error) in
+            guard let self = self, let document = document, document.exists else {
+                // Handle the case where the document doesn't exist or there is an error
+                return
+            }
+            if let avatarURLString = document.data()?["avatarURL"] as? String, let avatarURL = URL(string: avatarURLString) {
+                // Load the user's avatar image from the Firebase Storage URL
+                self.Avatar_Image.sd_setImage(with: avatarURL, placeholderImage: UIImage(named: "avatar_image"))
+            }
+        }
     }
 }
 
+// Расширение для обработки выбора и загрузки изображения
 extension SettingsViewController {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-            if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                // Сохраняем выбранное изображение в UserDefaults
-                UserDefaults.standard.set(pickedImage.pngData(), forKey: "userAvatar")
-                // Обновляем аватар пользователя выбранным изображением
-                Avatar_Image.image = pickedImage
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            // Сохранение данных изображения в UserDefaults
+            UserDefaults.standard.set(pickedImage.pngData(), forKey: "userAvatar")
+            
+            // Обновление аватара пользователя выбранным изображением
+            Avatar_Image.image = pickedImage
+
+            // Сохранение данных изображения в Firestore
+            saveImageToFirestore(pickedImage)
+        }
+        // Закрытие контроллера выбора изображения
+        picker.dismiss(animated: true, completion: nil)
+    }
+
+    // Обработка отмены выбора изображения
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        // Закрытие контроллера выбора изображения
+        picker.dismiss(animated: true, completion: nil)
+    }
+
+    // Сохранение изображения в Firebase Storage и URL в Firestore
+    func saveImageToFirestore(_ image: UIImage) {
+        guard let userEmail = Auth.auth().currentUser?.email else {
+            // Обработка случая, когда электронная почта пользователя недоступна
+            print("Ошибка - электронная почта не доступна.")
+            return
+        }
+        
+        // Correcting the image orientation
+        guard let correctedImage = image.correctOrientation() else {
+            print("Error correcting image orientation.")
+            return
+        }
+        // Resize the image
+        guard let resizedImage = correctedImage.resize(to: CGSize(width: 250, height: 250)) else {
+                print("Error resizing image.")
+            return
+        }
+        // Ссылка на место хранения изображения в Firebase Storage
+        let storageRef = Storage.storage().reference().child("avatars").child("\(userEmail).png")
+
+        if let imageData = resizedImage.pngData() {
+            // Загрузка данных изображения в хранилище Firebase
+            storageRef.putData(imageData, metadata: nil) { (metadata, error) in
+                if let error = error {
+                    // Обработка ошибки при загрузке изображения в хранилище
+                    print("Error uploading image to storage: \(error.localizedDescription)")
+                    return
+                }
+
+                // Изображение успешно загружено, теперь сохранение URL в Firestore
+                storageRef.downloadURL { (url, error) in
+                    if let error = error {
+                        // Обработка ошибки при получении URL изображения
+                        print("Error getting download URL: \(error.localizedDescription)")
+                        return
+                    }
+
+                    guard let downloadURL = url else {
+                        // Обработка случая, когда URL изображения равен nil
+                        print("Download URL is nil")
+                        return
+                    }
+
+                    // Сохранение URL изображения в Firestore
+                    let db = Firestore.firestore()
+                    db.collection("your_collection").document(userEmail).setData(["avatarURL": downloadURL.absoluteString], merge: true) { error in
+                        if let error = error {
+                            // Обработка ошибки при сохранении URL в Firestore
+                            print("Error saving avatar URL to Firestore: \(error.localizedDescription)")
+                            return
+                        }
+
+                        // Успешное сохранение URL изображения в Firestore
+                        print("Avatar URL saved successfully.")
+                    }
+                }
             }
-            picker.dismiss(animated: true, completion: nil)
+        }
+    }
+}
+
+// Extension to correct image orientation
+extension UIImage {
+    func correctOrientation() -> UIImage? {
+        if imageOrientation == .up {
+            return self
         }
 
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        draw(in: CGRect(origin: .zero, size: size))
+        let normalizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        return normalizedImage
+    }
+}
+
+extension UIImage {
+    func resize(to size: CGSize) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
+        defer { UIGraphicsEndImageContext() }
+        draw(in: CGRect(origin: .zero, size: size))
+        return UIGraphicsGetImageFromCurrentImageContext()
     }
 }
