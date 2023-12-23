@@ -35,6 +35,7 @@ class MainPresenter: MainPresenterOutput {
     }
     
     func viewDidLoad() {
+        
         print("Стартуем загрузку из сети")
     }
 }
