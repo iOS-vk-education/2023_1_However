@@ -15,7 +15,7 @@ final class TabBarController : UITabBarController{
         setUpTabs()
         self.selectedIndex = 1
         self.tabBar.backgroundColor = UIColor.customTabBarColor
-        view.backgroundColor = UIColor.customTabBarColor
+        view.backgroundColor = UIColor(named: "BackgroundColor")
                  
     }
     

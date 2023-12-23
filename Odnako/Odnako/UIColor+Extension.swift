@@ -18,3 +18,16 @@ extension UIColor{
     static let customLightPurpleColor = UIColor(red: 190/255, green: 179/255, blue: 228/255, alpha: 1.0) // фиолетовый
     static let customBackGroundColor_new = UIColor.white
 }
+
+struct MTUserDefaults {
+    static var shared = MTUserDefaults()
+    
+    var theme: Theme {
+        get {
+            Theme(rawValue: UserDefaults.standard.integer(forKey: "selectedTheme")) ?? .light
+        }
+        set {
+            UserDefaults.standard.set(newValue.rawValue, forKey: "selectedTheme")
+        }
+    }
+}
