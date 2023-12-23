@@ -8,6 +8,7 @@ pod 'FirebaseCore'
 pod 'FirebaseAuth'
 pod 'FirebaseFirestore'
 pod 'FirebaseStorage'
+pod 'SDWebImage'
   # Pods for Odnako
 
 end
