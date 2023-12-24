@@ -40,12 +40,16 @@ class APIManager {
                     let data = document.data()
                     // Извлекаем данные и создаем объекты Deadline
                     if let title = data["title"] as? String,
-                       let date = (data["date"] as? Timestamp)?.dateValue(),
+                       let hasDate = data["hasDate"] as? Bool,
+                       var date = (data["date"] as? Timestamp)?.dateValue(),
                        let complexity = data["complexity"] as? Int,
                        let commentary = data["commentary"] as? String,
                        let userId = data["userId"] as? String {
+                        if !hasDate {
+                            date = Date()
+                        }
                            // Создаем объект Deadline
-                           let deadline = Deadline(title: title, date: date, complexity: complexity, commentary: commentary, userId: userId)
+                        let deadline = Deadline(title: title, hasDate: hasDate, date: date, complexity: complexity, commentary: commentary, userId: userId)
                         deadlinesArray.append(deadline)
                     }
                 }
@@ -62,6 +66,7 @@ class APIManager {
             // Преобразуем объект Deadline в формат, который можно сохранить в Firestore
             let documentData: [String: Any] = [
                 "title": deadline.title,
+                "hasDate": deadline.hasDate,
                 "date": deadline.date,
                 "complexity": deadline.complexity,
                 "commentary": deadline.commentary,

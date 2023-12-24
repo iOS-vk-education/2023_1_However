@@ -160,9 +160,13 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         let deadline = self.deadlines[indexPath.item]
         cell.mainText.text = deadline.title
         cell.emoji.text = EmojiComplexity.getEmojiFromValue(id: deadline.complexity)
+        if deadline.hasDate {
+            let timeDelta = TimeDelta.DaysBetween(Date(), and: deadline.date)
+            cell.dayAmount.text = String(timeDelta) +  " \nдней"
+        } else {
+            cell.dayAmount.text = Deadline.noDate
+        }
         
-        let timeDelta = TimeDelta.DaysBetween(Date(), and: deadline.date)
-        cell.dayAmount.text = String(timeDelta) +  " \nдней"
         
         return cell
     }
@@ -187,20 +191,15 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         // Processing what filter option was tapped
         switch selectedOption {
         case filterButtonOptions.alphabet:
-            self.deadlines.sort {
-                $0.title < $1.title
-            }
+            self.deadlines = SortingDeadline.sortByTitle(deadlines: self.deadlines)
+            self.collectionView.reloadData()
+    
+        case filterButtonOptions.complexity:
+            self.deadlines = SortingDeadline.sortByComplexity(deadlines: self.deadlines)
             self.collectionView.reloadData()
             
-        case filterButtonOptions.complexity:
-            self.deadlines.sort {
-                $0.complexity > $1.complexity
-            }
-            self.collectionView.reloadData()
         case filterButtonOptions.date:
-            self.deadlines.sort {
-                $0.date < $1.date
-            }
+            self.deadlines = SortingDeadline.sortByDate(deadlines: self.deadlines)
             self.collectionView.reloadData()
         }
         tableView.frame = CGRect(x: 20, y: 110, width: 170, height: 0)

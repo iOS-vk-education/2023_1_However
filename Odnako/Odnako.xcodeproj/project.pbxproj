@@ -13,6 +13,7 @@
 		CE03B6462B2F72D90029DDCA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE03B6452B2F72D90029DDCA /* GoogleService-Info.plist */; };
 		CE03B64E2B2F9FD20029DDCA /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE03B64D2B2F9FD20029DDCA /* AuthService.swift */; };
 		CE03B6512B2F9FEC0029DDCA /* RegisterUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE03B6502B2F9FEC0029DDCA /* RegisterUserRequest.swift */; };
+		CE301B4C2B38C4A400E50044 /* SortingDeadlines.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE301B4B2B38C4A400E50044 /* SortingDeadlines.swift */; };
 		CE35BB682B0BF2D900196A57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB672B0BF2D900196A57 /* AppDelegate.swift */; };
 		CE35BB6A2B0BF2D900196A57 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB692B0BF2D900196A57 /* SceneDelegate.swift */; };
 		CE35BB6C2B0BF2D900196A57 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB6B2B0BF2D900196A57 /* ViewController.swift */; };
@@ -24,7 +25,7 @@
 		CE35BB802B0BF3C900196A57 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB7F2B0BF3C900196A57 /* MainViewController.swift */; };
 		CE35BB822B0BF41400196A57 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB812B0BF41400196A57 /* SettingsViewController.swift */; };
 		CE35BB842B0BF43F00196A57 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB832B0BF43F00196A57 /* TabBarController.swift */; };
-		CE68566C2B325AB500C69E67 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE68566B2B325AB500C69E67 /* Validator.swift */; };
+		CE68566C2B325AB500C69E67 /* AuthenticationValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE68566B2B325AB500C69E67 /* AuthenticationValidator.swift */; };
 		CEBAE3D22B3875EC00ED7F49 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBAE3D12B3875EC00ED7F49 /* APIManager.swift */; };
 		CEBAE3D52B3875FF00ED7F49 /* deadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBAE3D32B3875FF00ED7F49 /* deadline.swift */; };
 		CEBAE3D62B3875FF00ED7F49 /* EmojiComplexity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBAE3D42B3875FF00ED7F49 /* EmojiComplexity.swift */; };
@@ -49,6 +50,7 @@
 		CE03B6452B2F72D90029DDCA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CE03B64D2B2F9FD20029DDCA /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		CE03B6502B2F9FEC0029DDCA /* RegisterUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserRequest.swift; sourceTree = "<group>"; };
+		CE301B4B2B38C4A400E50044 /* SortingDeadlines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingDeadlines.swift; sourceTree = "<group>"; };
 		CE35BB642B0BF2D900196A57 /* Odnako.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Odnako.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE35BB672B0BF2D900196A57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE35BB692B0BF2D900196A57 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,7 +64,7 @@
 		CE35BB7F2B0BF3C900196A57 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CE35BB812B0BF41400196A57 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CE35BB832B0BF43F00196A57 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		CE68566B2B325AB500C69E67 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		CE68566B2B325AB500C69E67 /* AuthenticationValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationValidator.swift; sourceTree = "<group>"; };
 		CEBAE3D12B3875EC00ED7F49 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		CEBAE3D32B3875FF00ED7F49 /* deadline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = deadline.swift; sourceTree = "<group>"; };
 		CEBAE3D42B3875FF00ED7F49 /* EmojiComplexity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiComplexity.swift; sourceTree = "<group>"; };
@@ -132,7 +134,7 @@
 				CE03B64F2B2F9FD60029DDCA /* Models */,
 				CE03B64D2B2F9FD20029DDCA /* AuthService.swift */,
 				CECA1A6F2B2FC1F300C760CA /* CustomTextField.swift */,
-				CE68566B2B325AB500C69E67 /* Validator.swift */,
+				CE68566B2B325AB500C69E67 /* AuthenticationValidator.swift */,
 				CECA1A712B2FC46400C760CA /* CustomAuthButton.swift */,
 			);
 			path = Auth;
@@ -173,6 +175,7 @@
 				CE35BB692B0BF2D900196A57 /* SceneDelegate.swift */,
 				CEBAE3D72B3878E300ED7F49 /* TimeDelta.swift */,
 				CE35BB6B2B0BF2D900196A57 /* ViewController.swift */,
+				CE301B4B2B38C4A400E50044 /* SortingDeadlines.swift */,
 				CE35BB6D2B0BF2D900196A57 /* Main.storyboard */,
 				CE35BB702B0BF2DD00196A57 /* Assets.xcassets */,
 				CE35BB722B0BF2DD00196A57 /* LaunchScreen.storyboard */,
@@ -351,6 +354,7 @@
 				A59E38722B37C59400809705 /* MainCell.swift in Sources */,
 				CEBAE3D82B3878E300ED7F49 /* TimeDelta.swift in Sources */,
 				CECA1A722B2FC46400C760CA /* CustomAuthButton.swift in Sources */,
+				CE301B4C2B38C4A400E50044 /* SortingDeadlines.swift in Sources */,
 				CE35BB842B0BF43F00196A57 /* TabBarController.swift in Sources */,
 				CE03B64E2B2F9FD20029DDCA /* AuthService.swift in Sources */,
 				CECA1A702B2FC1F300C760CA /* CustomTextField.swift in Sources */,
@@ -360,7 +364,7 @@
 				CE35BB7C2B0BF31500196A57 /* addDeadLineViewController.swift in Sources */,
 				A59E386D2B37C2C200809705 /* Constants.swift in Sources */,
 				CE35BB822B0BF41400196A57 /* SettingsViewController.swift in Sources */,
-				CE68566C2B325AB500C69E67 /* Validator.swift in Sources */,
+				CE68566C2B325AB500C69E67 /* AuthenticationValidator.swift in Sources */,
 				D4B0CD782B20BA9D00407607 /* MainPresenter.swift in Sources */,
 				CECA1A6C2B2FC01C00C760CA /* RegistrationViewController.swift in Sources */,
 				CEBAE3D62B3875FF00ED7F49 /* EmojiComplexity.swift in Sources */,
