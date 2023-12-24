@@ -1,4 +1,5 @@
 import UIKit
+import FirebaseAuth
 
 
 final class addDeadLineViewController : UIViewController{
@@ -25,7 +26,7 @@ final class addDeadLineViewController : UIViewController{
     let datePicker = UIDatePicker()
     let deadlineDateToggleSwitch = UISwitch()
     let deadlineComplexitySegmentedControl = UISegmentedControl(items: ["😴", "😉", "😳", "🔥", "☠️"])
-
+    
     // MARK: - Configure
     
     private func configureSegmentedControll(){
@@ -35,7 +36,7 @@ final class addDeadLineViewController : UIViewController{
     }
     
     private func configureDatePicker(){
-        datePicker.datePickerMode = .dateAndTime
+        datePicker.datePickerMode = .date
         datePicker.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
         datePicker.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -229,20 +230,37 @@ final class addDeadLineViewController : UIViewController{
     
     @objc func dateChanged(_ datePicker: UIDatePicker) {
         let selectedDate = datePicker.date
+        print(selectedDate)
     }
     
     @objc func switchToggled(_ sender: UISwitch) {
         datePicker.isHidden = !sender.isOn
     }
     
-    @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+    @objc
+    func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         let selectedSegmentIndex = sender.selectedSegmentIndex
         let selectedVariant = sender.titleForSegment(at: selectedSegmentIndex)
+        print(selectedVariant)
     }
 
     @objc
     func didTapSaveButton(sender: UIButton){
         dismiss(animated: true)
+        
+        let title: String = deadlineNameTextField.text ?? ""
+        let date: Date = datePicker.date
+        let complexity: Int = deadlineComplexitySegmentedControl.selectedSegmentIndex
+        let commentary: String = deadlineCommentaryTextView.text ?? ""
+        let userID: String = Auth.auth().currentUser?.uid ?? ""
+        
+        let dl = Deadline(title: title,
+                          date: date,
+                          complexity: complexity,
+                          commentary: commentary,
+                          userId: userID)
+        
+        APIManager.shared.saveDeadlineToFirestore(collection: "deadlines", deadline: dl)
     }
 
 }
