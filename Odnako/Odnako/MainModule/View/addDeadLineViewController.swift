@@ -237,7 +237,8 @@ final class addDeadLineViewController : UIViewController{
         datePicker.isHidden = !sender.isOn
     }
     
-    @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+    @objc
+    func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         let selectedSegmentIndex = sender.selectedSegmentIndex
         let selectedVariant = sender.titleForSegment(at: selectedSegmentIndex)
         print(selectedVariant)
