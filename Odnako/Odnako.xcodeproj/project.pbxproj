@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A59E386B2B37C28500809705 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59E386A2B37C28500809705 /* UIImage+Extension.swift */; };
+		A59E386D2B37C2C200809705 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59E386C2B37C2C200809705 /* Constants.swift */; };
+		A59E38702B37C45A00809705 /* TaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59E386F2B37C45A00809705 /* TaskData.swift */; };
+		A59E38722B37C59400809705 /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59E38712B37C59400809705 /* MainCell.swift */; };
 		CE03B6462B2F72D90029DDCA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE03B6452B2F72D90029DDCA /* GoogleService-Info.plist */; };
 		CE03B64E2B2F9FD20029DDCA /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE03B64D2B2F9FD20029DDCA /* AuthService.swift */; };
 		CE03B6512B2F9FEC0029DDCA /* RegisterUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE03B6502B2F9FEC0029DDCA /* RegisterUserRequest.swift */; };
@@ -36,6 +40,10 @@
 /* Begin PBXFileReference section */
 		14EF8833DE2050CC3AF8D574 /* Pods-Odnako.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Odnako.release.xcconfig"; path = "Target Support Files/Pods-Odnako/Pods-Odnako.release.xcconfig"; sourceTree = "<group>"; };
 		A1C8AC2F1445F50F7AD93E1D /* Pods-Odnako.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Odnako.debug.xcconfig"; path = "Target Support Files/Pods-Odnako/Pods-Odnako.debug.xcconfig"; sourceTree = "<group>"; };
+		A59E386A2B37C28500809705 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		A59E386C2B37C2C200809705 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A59E386F2B37C45A00809705 /* TaskData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskData.swift; sourceTree = "<group>"; };
+		A59E38712B37C59400809705 /* MainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
 		CE03B6452B2F72D90029DDCA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CE03B64D2B2F9FD20029DDCA /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		CE03B6502B2F9FEC0029DDCA /* RegisterUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserRequest.swift; sourceTree = "<group>"; };
@@ -93,6 +101,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A59E38692B37C23A00809705 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CECA1A752B2FD0DA00C760CA /* UIColor+Extension.swift */,
+				A59E386A2B37C28500809705 /* UIImage+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		A59E386E2B37C44900809705 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A59E386F2B37C45A00809705 /* TaskData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		CE03B64C2B2F9FB50029DDCA /* Auth */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,9 +173,10 @@
 				D4B0CD7B2B20BD8C00407607 /* MainModule */,
 				CE35BB7D2B0BF3A900196A57 /* CalendarViewController.swift */,
 				CE35BB812B0BF41400196A57 /* SettingsViewController.swift */,
+				A59E386C2B37C2C200809705 /* Constants.swift */,
 				CE03B6452B2F72D90029DDCA /* GoogleService-Info.plist */,
 				CE35BB832B0BF43F00196A57 /* TabBarController.swift */,
-				CECA1A752B2FD0DA00C760CA /* UIColor+Extension.swift */,
+				A59E38692B37C23A00809705 /* Extension */,
 			);
 			path = Odnako;
 			sourceTree = "<group>";
@@ -167,6 +193,7 @@
 		D4B0CD7B2B20BD8C00407607 /* MainModule */ = {
 			isa = PBXGroup;
 			children = (
+				A59E386E2B37C44900809705 /* Model */,
 				D4B0CD7C2B20BD9600407607 /* View */,
 				D4B0CD7D2B20BD9A00407607 /* Presenter */,
 				D4B0CD792B20BC7F00407607 /* MainBuilder.swift */,
@@ -178,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				CE35BB7F2B0BF3C900196A57 /* MainViewController.swift */,
+				A59E38712B37C59400809705 /* MainCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -309,15 +337,19 @@
 				CECA1A742B2FCA6400C760CA /* LoginViewController.swift in Sources */,
 				CECA1A762B2FD0DA00C760CA /* UIColor+Extension.swift in Sources */,
 				CE35BB7E2B0BF3A900196A57 /* CalendarViewController.swift in Sources */,
+				A59E38722B37C59400809705 /* MainCell.swift in Sources */,
 				CECA1A722B2FC46400C760CA /* CustomAuthButton.swift in Sources */,
 				CE35BB842B0BF43F00196A57 /* TabBarController.swift in Sources */,
 				CE03B64E2B2F9FD20029DDCA /* AuthService.swift in Sources */,
 				CECA1A702B2FC1F300C760CA /* CustomTextField.swift in Sources */,
+				A59E386B2B37C28500809705 /* UIImage+Extension.swift in Sources */,
 				CECA1A6A2B2FAA7D00C760CA /* LoginUserRequest.swift in Sources */,
 				D4B0CD7A2B20BC7F00407607 /* MainBuilder.swift in Sources */,
 				CE35BB7C2B0BF31500196A57 /* addDeadLineViewController.swift in Sources */,
+				A59E386D2B37C2C200809705 /* Constants.swift in Sources */,
 				CE35BB822B0BF41400196A57 /* SettingsViewController.swift in Sources */,
 				CE68566C2B325AB500C69E67 /* Validator.swift in Sources */,
+				A59E38702B37C45A00809705 /* TaskData.swift in Sources */,
 				D4B0CD782B20BA9D00407607 /* MainPresenter.swift in Sources */,
 				CECA1A6C2B2FC01C00C760CA /* RegistrationViewController.swift in Sources */,
 				CE03B6512B2F9FEC0029DDCA /* RegisterUserRequest.swift in Sources */,
