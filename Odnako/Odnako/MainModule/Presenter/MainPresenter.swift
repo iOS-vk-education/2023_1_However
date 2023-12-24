@@ -13,7 +13,7 @@ protocol MainPresenterOutput: AnyObject {
     func viewDidLoad()
     
     /// Сообщает, что была нажата кнопка добавления дедлайн.
-    func addDeadlineButtonDidTapped()
+    func addDeadlineButtonDidTapped(_ vc: addDeadLineViewController)
     
     func addButtonFilterDidTapped(_ vc: UITableView)
     
@@ -26,10 +26,11 @@ class MainPresenter: MainPresenterOutput {
     
     init() { }
     
-    func addDeadlineButtonDidTapped() {
-        print("addDeadlineButtonDidTapped")
+    func addDeadlineButtonDidTapped(_ vc: addDeadLineViewController) {
+        // print("addDeadlineButtonDidTapped")
         // build addDeadLineViewController
-        self.viewInput?.addModule(addDeadLineViewController())
+        self.viewInput?.addModule(vc)
+        
     }
     
     func addButtonFilterDidTapped(_ vc: UITableView) {
@@ -50,7 +51,6 @@ class MainPresenter: MainPresenterOutput {
         }
     
     func viewDidLoad() {
-        
         print("Стартуем загрузку из сети")
     }
 }

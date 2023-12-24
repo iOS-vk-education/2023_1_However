@@ -6,6 +6,8 @@ final class addDeadLineViewController : UIViewController{
     
     // MARK: - Private let
     
+    weak var addDeadlineDelegate: AddDeadlineDelegate?
+    
     // Image
     let addDeadlineImage = UIImageView(image: UIImage(named: "addDeadlineImage"))
     
@@ -261,6 +263,7 @@ final class addDeadLineViewController : UIViewController{
                           userId: userID)
         
         APIManager.shared.saveDeadlineToFirestore(collection: "deadlines", deadline: dl)
+        addDeadlineDelegate?.didAddNewDeadline()
+        print(addDeadlineDelegate)
     }
-
 }

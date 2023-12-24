@@ -14,9 +14,11 @@ class MainCell: UICollectionViewCell {
     private let deadlineLeftView = UIView()
     private let deadlineRightView = UIView()
 
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-
+        
         contentView.addSubview(deadlineLeftView)
         contentView.addSubview(deadlineRightView)
         deadlineLeftView.addSubview(dayAmount)
@@ -52,7 +54,7 @@ class MainCell: UICollectionViewCell {
         deadlineRightView.backgroundColor = UIColor.customDeadlineCellColor
         deadlineRightView.layer.borderWidth = 1.0
         deadlineRightView.layer.borderColor = UIColor.black.cgColor
-
+        
 
         NSLayoutConstraint.activate([
             dayAmount.topAnchor.constraint(equalTo: contentView.topAnchor),

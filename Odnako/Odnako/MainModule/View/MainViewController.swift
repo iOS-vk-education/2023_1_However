@@ -16,6 +16,10 @@ protocol MainViewInput: AnyObject {
     func addDeadlines(deadlines: [Deadline])
 }
 
+protocol AddDeadlineDelegate: AnyObject {
+    func didAddNewDeadline()
+}
+
 class MainViewController: UIViewController {
     
     // MARK: - Private properties
@@ -130,7 +134,9 @@ class MainViewController: UIViewController {
     
     @objc
     func addDeadlineButtonTapped(sender: UIButton) {
-        self.output?.addDeadlineButtonDidTapped()
+        let addDeadlineVC = addDeadLineViewController()
+        addDeadlineVC.addDeadlineDelegate = self
+        self.output?.addDeadlineButtonDidTapped(addDeadlineVC)
     }
     
     @objc
@@ -229,5 +235,13 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 15
+    }
+}
+
+extension MainViewController: AddDeadlineDelegate {
+    func didAddNewDeadline() {
+        let uid = Auth.auth().currentUser?.uid
+        output?.getUserDeadlines(collection: "deadlines", UserID: uid!)
+        
     }
 }
