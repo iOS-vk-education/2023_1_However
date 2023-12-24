@@ -7,18 +7,6 @@
 
 import UIKit
 
-enum filterButtonOptions : String {
-    case alphabet = "По алфавиту"
-    case date = "По дате"
-    case complexity = "По сложности"
-    
-    static let allOptions = [alphabet, date, complexity]
-}
-
-
-extension UIImage {
-    static let filterImage = UIImage(named: "mainFilterImage")
-}
 
 protocol MainViewInput: AnyObject {
     /// Добавляет модуль.
@@ -29,19 +17,15 @@ protocol MainViewInput: AnyObject {
 
 class MainViewController: UIViewController {
     
-    var filterButtonTableView = UITableView()
-    var collectionView: UICollectionView!
-    
     // MARK: - Private properties
     
-    private struct Constants {
-        static let buttonSize = CGSize(width: 50.0, height: 50.0)
-    }
-    
+    var filterButtonTableView = UITableView()
+    private var collectionView: UICollectionView!
     private var filterButton = UIButton()
-    private var addDeadlineButton = UIButton()
-    
+    private var deadlineButton = UIButton()
+    var data = [TaskData(), TaskData(), TaskData(), TaskData()]
     private var output: MainPresenterOutput?
+    
     
     // MARK: - Init
     
@@ -53,6 +37,7 @@ class MainViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     
     // MARK: - Life Cycle
     
@@ -80,70 +65,62 @@ class MainViewController: UIViewController {
         NSLayoutConstraint.activate([
             filterButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             filterButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20.0),
-            filterButton.heightAnchor.constraint(equalToConstant: Constants.buttonSize.height),
-            filterButton.widthAnchor.constraint(equalToConstant: Constants.buttonSize.width)
+            filterButton.heightAnchor.constraint(equalToConstant: Constants.buttonSizeForMain.height),
+            filterButton.widthAnchor.constraint(equalToConstant: Constants.buttonSizeForMain.width)
+        ])
+    }
+    
+    private func addDeadlineButton() {
+        deadlineButton.setImage(.addImage, for: .normal)
+        deadlineButton.tintColor = .black
+        deadlineButton.setTitleColor(.black, for: .normal)
+        deadlineButton.backgroundColor = .customAccentColor
+        deadlineButton.layer.cornerRadius = 15.0
+        deadlineButton.addTarget(self, action: #selector(addDeadlineButtonTapped), for: .touchUpInside)
+        deadlineButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(deadlineButton)
+        NSLayoutConstraint.activate([
+            deadlineButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            deadlineButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20.0),
+            deadlineButton.widthAnchor.constraint(equalToConstant: Constants.buttonSizeForMain.width),
+            deadlineButton.heightAnchor.constraint(equalToConstant: Constants.buttonSizeForMain.height)
         ])
     }
     
     private func addCollectionView() {
-        
-    }
-    
-    private func configureUI() {
-        self.addFilterButton()
-        self.addCollectionView()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        let tv = UITableView(frame: .zero)
-        
-        view.backgroundColor = UIColor.customBackGroundColor
+        view.backgroundColor = .customBackGroundColor
         cv.backgroundColor = .customBackGroundColor
-        tv.backgroundColor = .customBackGroundColor
-        tv.tintColor = .customBackGroundColor
-        tv.layer.borderWidth = 1.0
-        
-        
-
-        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 30.0, weight: .medium)
-        let symbolImage = UIImage(systemName: "plus", withConfiguration: symbolConfiguration)
-        addDeadlineButton.setImage(symbolImage, for: .normal)
-        addDeadlineButton.tintColor = UIColor.black
-        addDeadlineButton.setTitleColor(.black, for: .normal)
-        addDeadlineButton.backgroundColor = UIColor.customAccentColor
-        addDeadlineButton.layer.cornerRadius = 15.0
-        
-        addDeadlineButton.addTarget(self, action: #selector(addDeadlineButtonTapped), for: .touchUpInside)
-        
-        
         view.addSubview(cv)
-        view.addSubview(tv)
-        view.addSubview(addDeadlineButton)
-        
-        
         cv.translatesAutoresizingMaskIntoConstraints = false
-        tv.translatesAutoresizingMaskIntoConstraints = false
-        
-        addDeadlineButton.translatesAutoresizingMaskIntoConstraints = false
-
-        
         NSLayoutConstraint.activate([
-            addDeadlineButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            addDeadlineButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            addDeadlineButton.widthAnchor.constraint(equalToConstant: Constants.buttonSize.width),
-            addDeadlineButton.heightAnchor.constraint(equalToConstant: Constants.buttonSize.height)
-        ])
-        NSLayoutConstraint.activate([
-            cv.topAnchor.constraint(equalTo: filterButton.bottomAnchor, constant: 15),
+            cv.topAnchor.constraint(equalTo: filterButton.bottomAnchor, constant: 15.0),
             cv.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             cv.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             cv.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
-        
         self.collectionView = cv
+    }
+    
+    private func addFilterTableView() {
+        let tv = UITableView(frame: .zero)
+        tv.backgroundColor = .customBackGroundColor
+        tv.tintColor = .customBackGroundColor
+        tv.layer.borderWidth = 1.0
+        view.addSubview(tv)
+        tv.translatesAutoresizingMaskIntoConstraints = false
+        self.filterButtonTableView = tv
+    }
+    
+    private func configureUI() {
+        self.addFilterButton()
+        self.addDeadlineButton()
+        self.addCollectionView()
+        self.addFilterTableView()
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(MainCell.self, forCellWithReuseIdentifier: "MainCell")
+        collectionView.register(MainCell.self, forCellWithReuseIdentifier: Identifier.cellIdentifier)
         
-        self.filterButtonTableView = tv
         filterButtonTableView.dataSource = self
         filterButtonTableView.delegate = self
     }
@@ -165,15 +142,22 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return data.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCell", for: indexPath) as! MainCell
-        cell.dayAmount.text = String(17) + " \nдней"
-        cell.emoji.text = "💀"
-        cell.mainText.text = "Check all emails please"
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifier.cellIdentifier, for: indexPath) as! MainCell
+        fillData(cell)
         return cell
+    }
+    
+    func fillData(_ cell: MainCell) -> Void {
+        for it in data {
+            cell.dayAmount.text = it.amountDay
+            cell.emoji.text = it.emoji
+            cell.mainText.text = it.task
+        }
+        
     }
 }
 
@@ -233,91 +217,4 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 
 class filterButtonTableViewCell: UITableViewCell {
     
-}
-
-class MainCell: UICollectionViewCell {
-    let dayAmount = UILabel()
-    let emoji = UILabel()
-    let mainText = UILabel()
-    private let deadlineLeftView = UIView()
-    private let deadlineRightView = UIView()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
- 
-        contentView.addSubview(deadlineLeftView)
-        contentView.addSubview(deadlineRightView)
-        deadlineLeftView.addSubview(dayAmount)
-        deadlineRightView.addSubview(emoji)
-        contentView.addSubview(mainText)
-
-        
-        deadlineLeftView.translatesAutoresizingMaskIntoConstraints = false
-        deadlineRightView.translatesAutoresizingMaskIntoConstraints = false
-        dayAmount.translatesAutoresizingMaskIntoConstraints = false
-        emoji.translatesAutoresizingMaskIntoConstraints = false
-        mainText.translatesAutoresizingMaskIntoConstraints = false
-        
-        
-        NSLayoutConstraint.activate([
-            deadlineLeftView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            deadlineLeftView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1/4.8),
-            deadlineLeftView.heightAnchor.constraint(equalTo: contentView.heightAnchor),
-        ])
-        deadlineLeftView.layer.cornerRadius = 30
-        deadlineLeftView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
-        deadlineLeftView.backgroundColor = UIColor.customDeadlineCellColor
-        deadlineLeftView.layer.borderWidth = 1.0
-        deadlineLeftView.layer.borderColor = UIColor.black.cgColor
-        
-        NSLayoutConstraint.activate([
-            deadlineRightView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            deadlineRightView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1/4.8),
-            deadlineRightView.heightAnchor.constraint(equalTo: contentView.heightAnchor),
-        ])
-        deadlineRightView.layer.cornerRadius = 30
-        deadlineRightView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]
-        deadlineRightView.backgroundColor = UIColor.customDeadlineCellColor
-        deadlineRightView.layer.borderWidth = 1.0
-        deadlineRightView.layer.borderColor = UIColor.black.cgColor
-        
-        
-        NSLayoutConstraint.activate([
-            dayAmount.topAnchor.constraint(equalTo: contentView.topAnchor),
-            dayAmount.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            dayAmount.centerXAnchor.constraint(equalTo: deadlineLeftView.centerXAnchor),
-            dayAmount.centerYAnchor.constraint(equalTo: deadlineLeftView.centerYAnchor)
-        ])
-        
-        
-        NSLayoutConstraint.activate([
-            emoji.topAnchor.constraint(equalTo: contentView.topAnchor),
-            emoji.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            emoji.centerXAnchor.constraint(equalTo: deadlineRightView.centerXAnchor),
-            emoji.centerYAnchor.constraint(equalTo: deadlineRightView.centerYAnchor)
-        ])
-        dayAmount.textAlignment = .center
-        dayAmount.numberOfLines = 0
-        emoji.font = UIFont.systemFont(ofSize: 30)
-        
-        NSLayoutConstraint.activate([
-            mainText.topAnchor.constraint(equalTo: contentView.topAnchor),
-            mainText.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            mainText.leadingAnchor.constraint(equalTo: deadlineLeftView.leadingAnchor, constant: 80),
-            mainText.trailingAnchor.constraint(equalTo: deadlineRightView.trailingAnchor, constant: -80)
-        ])
-        
-        mainText.textAlignment = .center
-        mainText.numberOfLines = 0
-        mainText.font = .boldSystemFont(ofSize: 20)
-        mainText.adjustsFontSizeToFitWidth = true
-        
-        contentView.backgroundColor = UIColor.customDeadlineMainColor
-        contentView.layer.cornerRadius = 30
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }
