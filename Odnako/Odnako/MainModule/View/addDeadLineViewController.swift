@@ -32,7 +32,7 @@ final class addDeadLineViewController : UIViewController{
     // MARK: - Configure
     
     private func configureSegmentedControll(){
-        deadlineComplexitySegmentedControl.selectedSegmentIndex = 0 // Set the initial selected segment (if needed)
+        deadlineComplexitySegmentedControl.selectedSegmentIndex = 0
         deadlineComplexitySegmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged(_:)), for: .valueChanged)
         deadlineComplexitySegmentedControl.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -248,20 +248,49 @@ final class addDeadLineViewController : UIViewController{
 
     @objc
     func didTapSaveButton(sender: UIButton){
-        dismiss(animated: true)
+        
+        print(self.deadlineDateToggleSwitch.isOn)
+        
+        let date: Date
+        let hasDate: Bool
+        
+        if deadlineDateToggleSwitch.isOn {
+            hasDate = true
+            date = datePicker.date
+        } else {
+            hasDate = false
+            date = Date()
+        }
         
         let title: String = deadlineNameTextField.text ?? ""
-        let date: Date = datePicker.date
         let complexity: Int = deadlineComplexitySegmentedControl.selectedSegmentIndex
         let commentary: String = deadlineCommentaryTextView.text ?? ""
         let userID: String = Auth.auth().currentUser?.uid ?? ""
         
         let dl = Deadline(title: title,
+                          hasDate: hasDate,
                           date: date,
                           complexity: complexity,
                           commentary: commentary,
                           userId: userID)
         
+        if !dl.isCorrectDate() {
+            let alert = UIAlertController(title: "Ошибка", message: "Дата некорректна. Дата задается, начиная с текущего дня и далее", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "Закрыть", style: .default, handler: nil)
+            alert.addAction(alertAction)
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        if !dl.isTitleFilled() {
+            let alert = UIAlertController(title: "Ошибка", message: "Заголовок обязателен для заполнения", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "Закрыть", style: .default, handler: nil)
+            alert.addAction(alertAction)
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        dismiss(animated: true)
         APIManager.shared.saveDeadlineToFirestore(collection: "deadlines", deadline: dl)
         addDeadlineDelegate?.didAddNewDeadline()
     }

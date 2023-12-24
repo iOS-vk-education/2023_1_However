@@ -110,8 +110,8 @@
             filePath = "Odnako/MainModule/View/addDeadLineViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
+            startingLineNumber = "295"
+            endingLineNumber = "295"
             landmarkName = "didTapSaveButton(sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -158,8 +158,8 @@
             filePath = "Odnako/MainModule/View/MainViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
             landmarkName = "didAddNewDeadline()"
             landmarkType = "7">
          </BreakpointContent>
@@ -174,8 +174,8 @@
             filePath = "Odnako/MainModule/View/MainViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "243"
-            endingLineNumber = "243"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
             landmarkName = "didAddNewDeadline()"
             landmarkType = "7">
          </BreakpointContent>

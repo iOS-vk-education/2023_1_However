@@ -83,7 +83,7 @@ final class LoginViewController: UIViewController {
         )
         
         // Проверка валидности введенной электронной почты
-        if !Validator.isValidEmail(for: loginUserRequest.email) {
+        if !AuthenticationValidator.isValidEmail(for: loginUserRequest.email) {
             // Вывод сообщения об ошибке в случае невалидной электронной почты
             let alert = UIAlertController(title: "Ошибка", message: "Ввод электронной почты некорректен", preferredStyle: .alert)
             let alertAction = UIAlertAction(title: "Закрыть", style: .default, handler: nil)
@@ -93,7 +93,7 @@ final class LoginViewController: UIViewController {
         }
         
         // Проверка валидности введенного пароля
-        if !Validator.isValidPassword(for: loginUserRequest.password) {
+        if !AuthenticationValidator.isValidPassword(for: loginUserRequest.password) {
             // Вывод сообщения об ошибке в случае невалидного пароля
             let alert = UIAlertController(title: "Слабый пароль", message: "Используйте цифры, строчные, прописные буквы, спец. символы", preferredStyle: .alert)
             let alertAction = UIAlertAction(title: "Закрыть", style: .default, handler: nil)
