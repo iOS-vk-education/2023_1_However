@@ -14,9 +14,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         self.setupWindow(with: scene)
         self.checkAuthorization()
     }
@@ -41,27 +38,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let nav = UINavigationController(rootViewController: vc)
             nav.isNavigationBarHidden = true
             nav.modalPresentationStyle = .fullScreen
-            self.window?.rootViewController = nav
-            
-//            APIManager.shared.getPost(collection: "deadlines", docName: "deadline1") { deadline in
-//                guard deadline != nil else { return }
-//                print(deadline)
-//            }
-//            let uid = Auth.auth().currentUser?.uid as! String
-//
-//            APIManager.shared.getUserDeadlines(collection: "deadlines", userID: uid) { deadlines, error in
-//                if let error = error {
-//                    // Обрабатываем ошибку, если она произошла
-//                    print("Error fetching deadlines: \(error.localizedDescription)")
-//                } else if let deadlines = deadlines {
-//                    // Используем полученные дедлайны
-//                    for deadline in deadlines {
-//                        // ... ваша логика обработки каждого дедлайна
-//                        print(deadline) // Пример: выводим заголовок каждого дедлайна
-//                    }
-//                }
-//            }
-            
+            self.window?.rootViewController = nav            
         }
     }
 

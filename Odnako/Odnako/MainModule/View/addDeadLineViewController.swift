@@ -264,6 +264,5 @@ final class addDeadLineViewController : UIViewController{
         
         APIManager.shared.saveDeadlineToFirestore(collection: "deadlines", deadline: dl)
         addDeadlineDelegate?.didAddNewDeadline()
-        print(addDeadlineDelegate)
     }
 }
