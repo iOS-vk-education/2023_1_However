@@ -2,30 +2,6 @@ import UIKit
 import FirebaseAuth
 
 
-enum EmojiComplexity: String {
-    case sleeping = "😴"
-    case winking = "😉"
-    case surprised = "😳"
-    case fire = "🔥"
-    case skull = "☠️"
-
-    func complexityValue() -> Int {
-        switch self {
-        case .sleeping:
-            return 1
-        case .winking:
-            return 2
-        case .surprised:
-            return 3
-        case .fire:
-            return 4
-        case .skull:
-            return 5
-        }
-    }
-}
-
-
 final class addDeadLineViewController : UIViewController{
     
     // MARK: - Private let
@@ -283,7 +259,6 @@ final class addDeadLineViewController : UIViewController{
                           commentary: commentary,
                           userId: userID)
         
-        print(dl)
         APIManager.shared.saveDeadlineToFirestore(collection: "deadlines", deadline: dl)
     }
 

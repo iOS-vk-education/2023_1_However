@@ -22,6 +22,8 @@
 		CE35BB822B0BF41400196A57 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB812B0BF41400196A57 /* SettingsViewController.swift */; };
 		CE35BB842B0BF43F00196A57 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB832B0BF43F00196A57 /* TabBarController.swift */; };
 		CE68566C2B325AB500C69E67 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE68566B2B325AB500C69E67 /* Validator.swift */; };
+		CEBAE3CE2B3862BF00ED7F49 /* EmojiComplexity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBAE3CD2B3862BF00ED7F49 /* EmojiComplexity.swift */; };
+		CEBAE3D02B38632200ED7F49 /* TimeDelta.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBAE3CF2B38632200ED7F49 /* TimeDelta.swift */; };
 		CECA1A6A2B2FAA7D00C760CA /* LoginUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA1A692B2FAA7D00C760CA /* LoginUserRequest.swift */; };
 		CECA1A6C2B2FC01C00C760CA /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA1A6B2B2FC01C00C760CA /* RegistrationViewController.swift */; };
 		CECA1A702B2FC1F300C760CA /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA1A6F2B2FC1F300C760CA /* CustomTextField.swift */; };
@@ -55,6 +57,8 @@
 		CE35BB812B0BF41400196A57 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CE35BB832B0BF43F00196A57 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		CE68566B2B325AB500C69E67 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		CEBAE3CD2B3862BF00ED7F49 /* EmojiComplexity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiComplexity.swift; sourceTree = "<group>"; };
+		CEBAE3CF2B38632200ED7F49 /* TimeDelta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDelta.swift; sourceTree = "<group>"; };
 		CECA1A692B2FAA7D00C760CA /* LoginUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserRequest.swift; sourceTree = "<group>"; };
 		CECA1A6B2B2FC01C00C760CA /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		CECA1A6F2B2FC1F300C760CA /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -144,6 +148,7 @@
 				CE35BB672B0BF2D900196A57 /* AppDelegate.swift */,
 				CE35BB692B0BF2D900196A57 /* SceneDelegate.swift */,
 				CE35BB6B2B0BF2D900196A57 /* ViewController.swift */,
+				CEBAE3CF2B38632200ED7F49 /* TimeDelta.swift */,
 				CE35BB6D2B0BF2D900196A57 /* Main.storyboard */,
 				CE35BB702B0BF2DD00196A57 /* Assets.xcassets */,
 				CE35BB722B0BF2DD00196A57 /* LaunchScreen.storyboard */,
@@ -172,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				CEEBE7A52B377779009F91F7 /* deadline.swift */,
+				CEBAE3CD2B3862BF00ED7F49 /* EmojiComplexity.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -320,6 +326,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEBAE3D02B38632200ED7F49 /* TimeDelta.swift in Sources */,
+				CEBAE3CE2B3862BF00ED7F49 /* EmojiComplexity.swift in Sources */,
 				CEEBE7A62B377779009F91F7 /* deadline.swift in Sources */,
 				CECA1A742B2FCA6400C760CA /* LoginViewController.swift in Sources */,
 				CECA1A762B2FD0DA00C760CA /* UIColor+Extension.swift in Sources */,

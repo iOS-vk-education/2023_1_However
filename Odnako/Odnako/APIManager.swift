@@ -11,6 +11,7 @@ import FirebaseFirestore
 
 
 class APIManager {
+    
     static let shared = APIManager()
     
     private func ConfigureFB() -> Firestore {
@@ -20,23 +21,7 @@ class APIManager {
         db = Firestore.firestore()
         return db
     }
-    
-//    func getPost(collection: String, docName: String, completion: @escaping(Deadline?) -> Void){
-//        let db = ConfigureFB()
-//        db.collection(collection).document(docName).getDocument(completion: { (deadline, error) in
-//            guard error == nil else { completion(nil); return }
-//            
-//            let dl = Deadline(title: deadline?.get("title") as! String,
-//                              date: deadline?.get("date") as! Timestamp,
-//                              complexity: deadline?.get("complexity") as! Int,
-//                              commentary: deadline?.get("commentary") as! String)
-//
-//            completion(dl)
-//        })
-//        
-//        
-//    }
-    
+        
     func getUserDeadlines(collection: String, userID: String, completion: @escaping([Deadline]?, Error?) -> Void) {
         
         var deadlinesArray: [Deadline] = []
@@ -67,9 +52,6 @@ class APIManager {
             }
             completion(deadlinesArray, nil)
         }
-
-       // completion(deadlinesArray, nil)
-
     }
     
     

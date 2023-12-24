@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 enum filterButtonOptions : String {
     case alphabet = "По алфавиту"
@@ -25,6 +26,7 @@ protocol MainViewInput: AnyObject {
     /// - Parameter vc: Модуль.
     func addModule(_ vc: UIViewController)
     func showDropdownFilterMenu(_ vc: UITableView)
+    func addDeadlines(deadlines: [Deadline])
 }
 
 class MainViewController: UIViewController {
@@ -40,6 +42,8 @@ class MainViewController: UIViewController {
     
     private var filterButton = UIButton()
     private var addDeadlineButton = UIButton()
+    
+    var deadlines: [Deadline] = []
     
     private var output: MainPresenterOutput?
     
@@ -60,7 +64,9 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         self.configureUI()
         self.output?.viewDidLoad()
-        
+        let uid = Auth.auth().currentUser?.uid
+        self.output?.getUserDeadlines(collection: "deadlines", UserID: uid!)
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -165,14 +171,19 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return self.deadlines.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCell", for: indexPath) as! MainCell
-        cell.dayAmount.text = String(17) + " \nдней"
-        cell.emoji.text = "💀"
-        cell.mainText.text = "Check all emails please"
+        
+        let deadline = self.deadlines[indexPath.item]
+        cell.mainText.text = deadline.title
+        cell.emoji.text = EmojiComplexity.getEmojiFromValue(id: deadline.complexity)
+        
+        let timeDelta = TimeDelta.DaysBetween(Date(), and: deadline.date)
+        cell.dayAmount.text = String(timeDelta) +  " \nдней"
+        
         return cell
     }
 }
@@ -196,11 +207,21 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         // Processing what filter option was tapped
         switch selectedOption {
         case filterButtonOptions.alphabet:
-            print("Alpabet")
+            self.deadlines.sort {
+                $0.title < $1.title
+            }
+            self.collectionView.reloadData()
+            
         case filterButtonOptions.complexity:
-            print("Compolexity")
+            self.deadlines.sort {
+                $0.complexity > $1.complexity
+            }
+            self.collectionView.reloadData()
         case filterButtonOptions.date:
-            print("Date")
+            self.deadlines.sort {
+                $0.date < $1.date
+            }
+            self.collectionView.reloadData()
         }
         tableView.frame = CGRect(x: 20, y: 110, width: 170, height: 0)
     }
@@ -219,6 +240,12 @@ extension MainViewController: MainViewInput {
             vc.frame = CGRect(x: 20, y: 110, width: 170, height: 0)
         }
     }
+    
+    func addDeadlines(deadlines: [Deadline]){
+        self.deadlines = deadlines
+        self.collectionView.reloadData()
+    }
+
 }
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {

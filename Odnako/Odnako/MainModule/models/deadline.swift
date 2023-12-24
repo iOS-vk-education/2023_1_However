@@ -23,5 +23,9 @@ struct Deadline: Codable {
         self.commentary = commentary
         self.userId = userId
     }
+    
+    func popo()->Void {
+        print(1)
+    }
 }
 
