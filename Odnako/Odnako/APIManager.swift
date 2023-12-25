@@ -8,6 +8,7 @@
 import Foundation
 import FirebaseStorage
 import FirebaseFirestore
+import FirebaseAuth
 
 
 class APIManager {
@@ -21,16 +22,16 @@ class APIManager {
         db = Firestore.firestore()
         return db
     }
-        
+    
     func getUserDeadlines(collection: String, userID: String, completion: @escaping([Deadline]?, Error?) -> Void) {
         
         var deadlinesArray: [Deadline] = []
-
+        
         let db = ConfigureFB()
         // Создаем запрос к базе данных с фильтром по userId
         let query = db.collection(collection).whereField("userId", isEqualTo: userID)
         print(query.count)
-
+        
         // Выполняем запрос
         query.getDocuments { (querySnapshot, error) in
             if let error = error {
@@ -48,7 +49,7 @@ class APIManager {
                         if !hasDate {
                             date = Date()
                         }
-                           // Создаем объект Deadline
+                        // Создаем объект Deadline
                         let deadline = Deadline(title: title, hasDate: hasDate, date: date, complexity: complexity, commentary: commentary, userId: userId)
                         deadlinesArray.append(deadline)
                     }
@@ -61,7 +62,7 @@ class APIManager {
     
     func saveDeadlineToFirestore(collection: String, deadline: Deadline) {
         let db = ConfigureFB() // Получаем ссылку на базу данных Firestore
-
+        
         do {
             // Преобразуем объект Deadline в формат, который можно сохранить в Firestore
             let documentData: [String: Any] = [
@@ -73,7 +74,7 @@ class APIManager {
                 "userId": deadline.userId
                 // Добавьте другие поля, если они есть
             ]
-
+            
             // Сохраняем данные в коллекцию "deadlines" в Firestore
             var ref: DocumentReference? = nil  // Объявляем переменную для DocumentReference
             ref = db.collection(collection).addDocument(data: documentData) { error in
@@ -90,6 +91,9 @@ class APIManager {
             print("Error encoding deadline data: \(error.localizedDescription)")
         }
     }
-
     
+    func deleteDeadlineFromFirestore(collection: String, deadline: Deadline) {
+        
+    }
+
 }
