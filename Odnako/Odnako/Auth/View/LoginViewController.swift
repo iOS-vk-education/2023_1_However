@@ -66,7 +66,7 @@ final class LoginViewController: UIViewController {
             self.loginImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             self.loginImage.heightAnchor.constraint(equalTo: view.heightAnchor),
 
-            self.emailField.topAnchor.constraint(equalTo: view.topAnchor, constant: UIScreen.main.bounds.height / 2 - (50 + 20) * 1),
+            self.emailField.topAnchor.constraint(equalTo: view.topAnchor, constant: UIScreen.main.bounds.height / 2 - (50 + 20) * 1 + 20),
             self.emailField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             self.emailField.heightAnchor.constraint(equalToConstant: 50.0),
             self.emailField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
