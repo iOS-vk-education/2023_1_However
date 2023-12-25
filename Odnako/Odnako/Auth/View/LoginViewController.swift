@@ -17,7 +17,16 @@ final class LoginViewController: UIViewController {
     // Метод для настройки интерфейса
     private func configureUI() {
         // Установка цвета фона для контроллера
-        self.view.backgroundColor = .customBackGroundColor
+        self.view.backgroundColor = .white
+        
+        // Установка цвета текста для текстовых полей
+        emailField.textColor = .black
+        passwordField.textColor = .black
+
+        // Установка цвета текста для кнопок
+        signUpButton.setTitleColor(.black, for: .normal)
+        signInButton.setTitleColor(.black, for: .normal)
+
         
         // Установка новых размеров для изображения
         loginImage.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)

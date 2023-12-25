@@ -33,7 +33,7 @@ final class RegistrationViewController: UIViewController {
     // MARK: - UI Configuration
 
     private func configureUI() {
-            view.backgroundColor = .customBackGroundColor
+            view.backgroundColor = .white
 
             let views = [regisrtationImage, usernameField, emailField, passwordField, signUpButton, signInButton]
 
@@ -54,6 +54,16 @@ final class RegistrationViewController: UIViewController {
             signInButton.layer.cornerRadius = 8.0
             signUpButton.tintColor = .white
             signInButton.tintColor = .white
+        
+        // Установка цвета текста для текстовых полей
+        usernameField.textColor = .black
+        emailField.textColor = .black
+        passwordField.textColor = .black
+
+        // Установка цвета текста для кнопок
+        signUpButton.setTitleColor(.black, for: .normal)
+        signInButton.setTitleColor(.black, for: .normal)
+
         
         NSLayoutConstraint.activate([
             regisrtationImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
