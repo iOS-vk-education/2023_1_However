@@ -1,9 +1,12 @@
 import UIKit
+import FirebaseAuth
 
 
 final class addDeadLineViewController : UIViewController{
     
     // MARK: - Private let
+    
+    weak var addDeadlineDelegate: AddDeadlineDelegate?
     
     // Image
     let addDeadlineImage = UIImageView(image: UIImage(named: "addDeadlineImage"))
@@ -25,17 +28,17 @@ final class addDeadLineViewController : UIViewController{
     let datePicker = UIDatePicker()
     let deadlineDateToggleSwitch = UISwitch()
     let deadlineComplexitySegmentedControl = UISegmentedControl(items: ["😴", "😉", "😳", "🔥", "☠️"])
-
+    
     // MARK: - Configure
     
     private func configureSegmentedControll(){
-        deadlineComplexitySegmentedControl.selectedSegmentIndex = 0 // Set the initial selected segment (if needed)
+        deadlineComplexitySegmentedControl.selectedSegmentIndex = 0
         deadlineComplexitySegmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged(_:)), for: .valueChanged)
         deadlineComplexitySegmentedControl.translatesAutoresizingMaskIntoConstraints = false
     }
     
     private func configureDatePicker(){
-        datePicker.datePickerMode = .dateAndTime
+        datePicker.datePickerMode = .date
         datePicker.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
         datePicker.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -229,20 +232,66 @@ final class addDeadLineViewController : UIViewController{
     
     @objc func dateChanged(_ datePicker: UIDatePicker) {
         let selectedDate = datePicker.date
+        print(selectedDate)
     }
     
     @objc func switchToggled(_ sender: UISwitch) {
         datePicker.isHidden = !sender.isOn
     }
     
-    @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+    @objc
+    func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         let selectedSegmentIndex = sender.selectedSegmentIndex
         let selectedVariant = sender.titleForSegment(at: selectedSegmentIndex)
+        print(selectedVariant)
     }
 
     @objc
     func didTapSaveButton(sender: UIButton){
+        
+        print(self.deadlineDateToggleSwitch.isOn)
+        
+        let date: Date
+        let hasDate: Bool
+        
+        if deadlineDateToggleSwitch.isOn {
+            hasDate = true
+            date = datePicker.date
+        } else {
+            hasDate = false
+            date = Date()
+        }
+        
+        let title: String = deadlineNameTextField.text ?? ""
+        let complexity: Int = deadlineComplexitySegmentedControl.selectedSegmentIndex
+        let commentary: String = deadlineCommentaryTextView.text ?? ""
+        let userID: String = Auth.auth().currentUser?.uid ?? ""
+        
+        let dl = Deadline(title: title,
+                          hasDate: hasDate,
+                          date: date,
+                          complexity: complexity,
+                          commentary: commentary,
+                          userId: userID)
+        
+        if !dl.isCorrectDate() {
+            let alert = UIAlertController(title: "Ошибка", message: "Дата некорректна. Дата задается, начиная с текущего дня и далее", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "Закрыть", style: .default, handler: nil)
+            alert.addAction(alertAction)
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        if !dl.isTitleFilled() {
+            let alert = UIAlertController(title: "Ошибка", message: "Заголовок обязателен для заполнения", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "Закрыть", style: .default, handler: nil)
+            alert.addAction(alertAction)
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        
         dismiss(animated: true)
+        APIManager.shared.saveDeadlineToFirestore(collection: "deadlines", deadline: dl)
+        addDeadlineDelegate?.didAddNewDeadline()
     }
-
 }
