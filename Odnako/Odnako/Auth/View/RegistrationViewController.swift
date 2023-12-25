@@ -98,7 +98,7 @@ final class RegistrationViewController : UIViewController{
             password: self.passwordField.text ?? ""
         )
         
-        if !Validator.isValidUsername(for: registerUserRequest.username){
+        if !AuthenticationValidator.isValidUsername(for: registerUserRequest.username){
             let alert = UIAlertController(title: "Ошибка", message: "Ввод имени пользователя некорректен", preferredStyle: .alert)
             let alertAction = UIAlertAction(title: "Закрыть", style: .default, handler: nil)
             alert.addAction(alertAction)
@@ -106,7 +106,7 @@ final class RegistrationViewController : UIViewController{
             return
         }
         
-        if !Validator.isValidEmail(for: registerUserRequest.email){
+        if !AuthenticationValidator.isValidEmail(for: registerUserRequest.email){
             let alert = UIAlertController(title: "Ошибка", message: "Ввод электронной почты некорректен", preferredStyle: .alert)
             let alertAction = UIAlertAction(title: "Закрыть", style: .default, handler: nil)
             alert.addAction(alertAction)
@@ -114,7 +114,7 @@ final class RegistrationViewController : UIViewController{
             return
         }
         
-        if !Validator.isValidPassword(for: registerUserRequest.password){
+        if !AuthenticationValidator.isValidPassword(for: registerUserRequest.password){
             let alert = UIAlertController(title: "Слабый пароль", message: "Используйте цифры, строчные, прописные буквы, спец. символы", preferredStyle: .alert)
             let alertAction = UIAlertAction(title: "Закрыть", style: .default, handler: nil)
             alert.addAction(alertAction)

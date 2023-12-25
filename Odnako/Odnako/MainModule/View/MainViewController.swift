@@ -6,13 +6,18 @@
 //
 
 import UIKit
-
+import FirebaseAuth
 
 protocol MainViewInput: AnyObject {
     /// Добавляет модуль.
     /// - Parameter vc: Модуль.
     func addModule(_ vc: UIViewController)
     func showDropdownFilterMenu(_ vc: UITableView)
+    func addDeadlines(deadlines: [Deadline])
+}
+
+protocol AddDeadlineDelegate: AnyObject {
+    func didAddNewDeadline()
 }
 
 class MainViewController: UIViewController {
@@ -23,7 +28,7 @@ class MainViewController: UIViewController {
     private var collectionView: UICollectionView!
     private var filterButton = UIButton()
     private var deadlineButton = UIButton()
-    var data = [TaskData(), TaskData(), TaskData(), TaskData()]
+    var deadlines: [Deadline] = []
     private var output: MainPresenterOutput?
     
     
@@ -45,7 +50,9 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         self.configureUI()
         self.output?.viewDidLoad()
-        
+        let uid = Auth.auth().currentUser?.uid
+        self.output?.getUserDeadlines(collection: "deadlines", UserID: uid!)
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -127,7 +134,9 @@ class MainViewController: UIViewController {
     
     @objc
     func addDeadlineButtonTapped(sender: UIButton) {
-        self.output?.addDeadlineButtonDidTapped()
+        let addDeadlineVC = addDeadLineViewController()
+        addDeadlineVC.addDeadlineDelegate = self
+        self.output?.addDeadlineButtonDidTapped(addDeadlineVC)
     }
     
     @objc
@@ -142,22 +151,24 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.count
+        return self.deadlines.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifier.cellIdentifier, for: indexPath) as! MainCell
-        fillData(cell)
-        return cell
-    }
-    
-    func fillData(_ cell: MainCell) -> Void {
-        for it in data {
-            cell.dayAmount.text = it.amountDay
-            cell.emoji.text = it.emoji
-            cell.mainText.text = it.task
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCell", for: indexPath) as! MainCell
+        
+        let deadline = self.deadlines[indexPath.item]
+        cell.mainText.text = deadline.title
+        cell.emoji.text = EmojiComplexity.getEmojiFromValue(id: deadline.complexity)
+        if deadline.hasDate {
+            let timeDelta = TimeDelta.DaysBetween(Date(), and: deadline.date)
+            cell.dayAmount.text = String(timeDelta) +  " \nдней"
+        } else {
+            cell.dayAmount.text = Deadline.noDate
         }
         
+        
+        return cell
     }
 }
 
@@ -180,11 +191,16 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         // Processing what filter option was tapped
         switch selectedOption {
         case filterButtonOptions.alphabet:
-            print("Alpabet")
+            self.deadlines = SortingDeadline.sortByTitle(deadlines: self.deadlines)
+            self.collectionView.reloadData()
+    
         case filterButtonOptions.complexity:
-            print("Compolexity")
+            self.deadlines = SortingDeadline.sortByComplexity(deadlines: self.deadlines)
+            self.collectionView.reloadData()
+            
         case filterButtonOptions.date:
-            print("Date")
+            self.deadlines = SortingDeadline.sortByDate(deadlines: self.deadlines)
+            self.collectionView.reloadData()
         }
         tableView.frame = CGRect(x: 20, y: 110, width: 170, height: 0)
     }
@@ -203,6 +219,12 @@ extension MainViewController: MainViewInput {
             vc.frame = CGRect(x: 20, y: 110, width: 170, height: 0)
         }
     }
+    
+    func addDeadlines(deadlines: [Deadline]){
+        self.deadlines = deadlines
+        self.collectionView.reloadData()
+    }
+
 }
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {
@@ -215,6 +237,10 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-class filterButtonTableViewCell: UITableViewCell {
-    
+extension MainViewController: AddDeadlineDelegate {
+    func didAddNewDeadline() {
+        let uid = Auth.auth().currentUser?.uid
+        output?.getUserDeadlines(collection: "deadlines", UserID: uid!)
+        
+    }
 }
