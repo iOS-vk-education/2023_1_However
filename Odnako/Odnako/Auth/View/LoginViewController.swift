@@ -10,15 +10,32 @@ final class LoginViewController: UIViewController {
     // Элементы интерфейса пользователя
     private let emailField = CustomTextField(fieldType: .email)
     private let passwordField = CustomTextField(fieldType: .password)
+    private let loginImage = UIImageView(image: UIImage(named: "cat_image"))
     private let signUpButton = CustomAuthButton(title: "Зарегистрироваться", fontSize: .med)
     private let signInButton = CustomAuthButton(title: "Войти", fontSize: .big)
     
     // Метод для настройки интерфейса
     private func configureUI() {
         // Установка цвета фона для контроллера
-        self.view.backgroundColor = .customBackGroundColor
+        self.view.backgroundColor = .white
+        
+        // Установка цвета текста для текстовых полей
+        emailField.textColor = .black
+        passwordField.textColor = .black
+
+        // Установка цвета текста для кнопок
+        signUpButton.setTitleColor(.black, for: .normal)
+        signInButton.setTitleColor(.black, for: .normal)
+
+        
+        // Установка новых размеров для изображения
+        loginImage.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        loginImage.contentMode = .scaleToFill
+        self.loginImage.translatesAutoresizingMaskIntoConstraints = false // Включаем автолэйаут для изображения
+
         
         // Добавление элементов интерфейса на экран
+        self.view.addSubview(loginImage)
         self.view.addSubview(emailField)
         self.view.addSubview(passwordField)
         self.view.addSubview(signUpButton)
@@ -30,9 +47,26 @@ final class LoginViewController: UIViewController {
         self.signUpButton.translatesAutoresizingMaskIntoConstraints = false
         self.signInButton.translatesAutoresizingMaskIntoConstraints = false
         
+        // Установка границ и цвета границ для текстовых полей
+        let textFieldBorderColor = UIColor.systemGray4.cgColor
+        let textFieldBorderWidth: CGFloat = 1.0
+        
+        emailField.layer.borderColor = textFieldBorderColor
+        emailField.layer.borderWidth = textFieldBorderWidth
+        emailField.layer.cornerRadius = 8.0 // Добавим закругление углов
+        
+        passwordField.layer.borderColor = textFieldBorderColor
+        passwordField.layer.borderWidth = textFieldBorderWidth
+        passwordField.layer.cornerRadius = 8.0 // Добавим закругление углов
+        
         // Установка ограничений для элементов интерфейса
         NSLayoutConstraint.activate([
-            self.emailField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20.0),
+            self.loginImage.topAnchor.constraint(equalTo: view.topAnchor),
+            self.loginImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            self.loginImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            self.loginImage.heightAnchor.constraint(equalTo: view.heightAnchor),
+
+            self.emailField.topAnchor.constraint(equalTo: view.topAnchor, constant: UIScreen.main.bounds.height / 2 - (50 + 20) * 1 + 20),
             self.emailField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             self.emailField.heightAnchor.constraint(equalToConstant: 50.0),
             self.emailField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
