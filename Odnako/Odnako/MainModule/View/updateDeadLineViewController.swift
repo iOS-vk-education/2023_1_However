@@ -1,12 +1,19 @@
+//
+//  updateDeadLineViewController.swift
+//  Odnako
+//
+//  Created by Cyril Kardash on 26.12.2023.
+//
+
 import UIKit
 import FirebaseAuth
 
 
-final class addDeadLineViewController : UIViewController{
+final class updateDeadLineViewController : UIViewController{
     
     // MARK: - Private let
     
-    weak var addDeadlineDelegate: AddDeadlineDelegate?
+    weak var editDeadlineDelegate: EditDeadlineDelegate?
     var deadline = Deadline(title: "", hasDate: false, date: Date(), complexity: 1, commentary: "", userId: "")
     
     // Image
@@ -222,6 +229,13 @@ final class addDeadLineViewController : UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        
+        deadlineNameTextField.text = deadline.title
+        deadlineComplexitySegmentedControl.selectedSegmentIndex = deadline.complexity
+        deadlineCommentaryTextView.text = deadline.commentary
+        if deadlineDateToggleSwitch.isOn {
+            datePicker.date = deadline.date
+        }
     }
     
     // MARK: - Functions
@@ -293,7 +307,8 @@ final class addDeadLineViewController : UIViewController{
         
         dismiss(animated: true)
         
-        APIManager.shared.saveDeadlineToFirestore(collection: "deadlines", deadline: dl)
-        addDeadlineDelegate?.didAddNewDeadline()
+        APIManager.shared.updateDeadlineInFirestore(collection: "deadlines", deadline: dl)
+        editDeadlineDelegate?.didEditNewDeadline()
     }
 }
+

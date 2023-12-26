@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A57B6B852B3B4DC1003E9D32 /* updateDeadLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57B6B842B3B4DC1003E9D32 /* updateDeadLineViewController.swift */; };
 		A59E386B2B37C28500809705 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59E386A2B37C28500809705 /* UIImage+Extension.swift */; };
 		A59E386D2B37C2C200809705 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59E386C2B37C2C200809705 /* Constants.swift */; };
 		A59E38722B37C59400809705 /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59E38712B37C59400809705 /* MainCell.swift */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		14EF8833DE2050CC3AF8D574 /* Pods-Odnako.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Odnako.release.xcconfig"; path = "Target Support Files/Pods-Odnako/Pods-Odnako.release.xcconfig"; sourceTree = "<group>"; };
 		A1C8AC2F1445F50F7AD93E1D /* Pods-Odnako.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Odnako.debug.xcconfig"; path = "Target Support Files/Pods-Odnako/Pods-Odnako.debug.xcconfig"; sourceTree = "<group>"; };
+		A57B6B842B3B4DC1003E9D32 /* updateDeadLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = updateDeadLineViewController.swift; sourceTree = "<group>"; };
 		A59E386A2B37C28500809705 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		A59E386C2B37C2C200809705 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A59E38712B37C59400809705 /* MainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				CE35BB7B2B0BF31500196A57 /* addDeadLineViewController.swift */,
+				A57B6B842B3B4DC1003E9D32 /* updateDeadLineViewController.swift */,
 				CE35BB7F2B0BF3C900196A57 /* MainViewController.swift */,
 				A59E38712B37C59400809705 /* MainCell.swift */,
 			);
@@ -371,6 +374,7 @@
 				CE03B6512B2F9FEC0029DDCA /* RegisterUserRequest.swift in Sources */,
 				CE35BB6C2B0BF2D900196A57 /* ViewController.swift in Sources */,
 				CE35BB802B0BF3C900196A57 /* MainViewController.swift in Sources */,
+				A57B6B852B3B4DC1003E9D32 /* updateDeadLineViewController.swift in Sources */,
 				CE35BB682B0BF2D900196A57 /* AppDelegate.swift in Sources */,
 				CE35BB6A2B0BF2D900196A57 /* SceneDelegate.swift in Sources */,
 			);

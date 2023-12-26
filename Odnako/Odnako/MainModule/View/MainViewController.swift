@@ -20,6 +20,10 @@ protocol AddDeadlineDelegate: AnyObject {
     func didAddNewDeadline()
 }
 
+protocol EditDeadlineDelegate: AnyObject {
+    func didEditNewDeadline()
+}
+
 class MainViewController: UIViewController {
     
     // MARK: - Private properties
@@ -184,10 +188,10 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         alertController.addAction(completeDeadline)
         
         let editDeadline = UIAlertAction(title: "Редактировать", style: .default) { _ in
-            let addDeadlineVC = addDeadLineViewController()
-            addDeadlineVC.addDeadlineDelegate = self
-            addDeadlineVC.deadline = selectedDeadline
-            self.output?.addDeadlineButtonDidTapped(addDeadlineVC)
+            let editDeadlineVC = updateDeadLineViewController()
+            editDeadlineVC.editDeadlineDelegate = self
+            editDeadlineVC.deadline = selectedDeadline
+            self.output?.updateDeadlineButtonDidTapped(editDeadlineVC)
             self.collectionView.reloadData()
         }
         alertController.addAction(editDeadline)
@@ -279,5 +283,12 @@ extension MainViewController: AddDeadlineDelegate {
         let uid = Auth.auth().currentUser?.uid
         output?.getUserDeadlines(collection: "deadlines", UserID: uid!)
         
+    }
+}
+
+extension MainViewController: EditDeadlineDelegate {
+    func didEditNewDeadline() {
+        let uid = Auth.auth().currentUser?.uid
+        output?.getUserDeadlines(collection: "deadlines", UserID: uid!)
     }
 }
