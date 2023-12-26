@@ -69,7 +69,7 @@ final class updateDeadLineViewController : UIViewController{
     }
     
     private func configureSaveButton(){
-        saveButton.setTitle("Сохранить", for: .normal)
+        saveButton.setTitle("Изменить", for: .normal)
 //        saveButton.titleLabel?.textAlignment = .center
         saveButton.setTitleColor( .black, for: .normal)
         saveButton.setTitleColor( .white, for: .highlighted)
