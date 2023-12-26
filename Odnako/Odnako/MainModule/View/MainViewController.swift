@@ -151,7 +151,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.deadlines.count - 1
+        return self.deadlines.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -173,25 +173,34 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedDeadline = deadlines[indexPath.item]
-        print(selectedDeadline)
 
         let alertController = UIAlertController(title: "Выбрана задача \(selectedDeadline.title)", message: "Следующие действия:", preferredStyle: .actionSheet)
         
-        let deleteDeadline = UIAlertAction(title: "Удалить", style: .destructive) { _ in
-            self.deadlines.remove(at: indexPath.item)
-            self.collectionView.deleteItems(at: [indexPath])
-            self.collectionView.reloadData()
-            APIManager.shared.deleteDeadlineFromFirestore(collection: "deadlines", deadline: selectedDeadline)
+        let completeDeadline = UIAlertAction(title: "Завершить", style: .default) { _ in
+            if let cell = collectionView.cellForItem(at: indexPath) as? MainCell {
+                cell.contentView.backgroundColor = .green
+            }
         }
-        alertController.addAction(deleteDeadline)
+        alertController.addAction(completeDeadline)
+        
         let editDeadline = UIAlertAction(title: "Редактировать", style: .default) { _ in
             let addDeadlineVC = addDeadLineViewController()
             addDeadlineVC.addDeadlineDelegate = self
             addDeadlineVC.deadline = selectedDeadline
             self.output?.addDeadlineButtonDidTapped(addDeadlineVC)
-            self.addDeadlineButtonTapped(sender: UIButton())
+            self.collectionView.reloadData()
         }
         alertController.addAction(editDeadline)
+        
+        let deleteDeadline = UIAlertAction(title: "Удалить", style: .destructive) { _ in
+            self.deadlines.remove(at: indexPath.item)
+            self.collectionView.deleteItems(at: [indexPath])
+            APIManager.shared.deleteDeadlineFromFirestore(collection: "deadlines", deadline: selectedDeadline)
+            self.collectionView.reloadData()
+        }
+        alertController.addAction(deleteDeadline)
+        
+        
         let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
         

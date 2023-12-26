@@ -92,8 +92,58 @@ class APIManager {
         }
     }
     
-    func deleteDeadlineFromFirestore(collection: String, deadline: Deadline) {
+    func updateDeadlineInFirestore(collection: String, deadline: Deadline) {
+        let db = ConfigureFB()
         
+        db.collection(collection).whereField("title", isEqualTo: deadline.title).getDocuments { (querySnapshot, error) in
+            if error != nil {
+                self.saveDeadlineToFirestore(collection: collection, deadline: deadline)
+                print("Document missed!")
+            } else {
+                for document in querySnapshot!.documents {
+                    print(document.data())
+                    document.reference.updateData([
+                        "title": deadline.title,
+                        "hasDate": deadline.hasDate,
+                        "date": deadline.date,
+                        "complexity": deadline.complexity,
+                        "commentary": deadline.commentary,
+                    ])
+                    print("Document successfully updated!")
+                }
+                
+            }
+        }
+//        
+//        do {
+//            db.collection(collection).document(deadline.title).updateData([
+//                "title": deadline.title,
+//                "hasDate": deadline.hasDate,
+//                "date": deadline.date,
+//                "complexity": deadline.complexity,
+//                "commentary": deadline.commentary,
+//            ])
+//            print("Document successfully updated!")
+//        } catch {
+//            print("Error updating document: \(error)")
+//        }
+    }
+    
+    func deleteDeadlineFromFirestore(collection: String, deadline: Deadline) {
+        let db = ConfigureFB()
+        
+        db.collection(collection).whereField("title", isEqualTo: deadline.title).getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("Error removing document: \(error.localizedDescription)")
+            } else {
+                for document in querySnapshot!.documents {
+                    print(document.data())
+                    document.reference.delete()
+                    print("Document successfully removed!")
+                }
+                
+            }
+        }
     }
 
 }

@@ -222,7 +222,7 @@ final class addDeadLineViewController : UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        print("делегат - \(deadline)")
+        
         deadlineNameTextField.text = deadline.title
         deadlineComplexitySegmentedControl.selectedSegmentIndex = deadline.complexity
         deadlineCommentaryTextView.text = deadline.commentary
@@ -303,7 +303,8 @@ final class addDeadLineViewController : UIViewController{
         }
         
         dismiss(animated: true)
-        APIManager.shared.saveDeadlineToFirestore(collection: "deadlines", deadline: dl)
+        
+        APIManager.shared.updateDeadlineInFirestore(collection: "deadlines", deadline: dl)
         addDeadlineDelegate?.didAddNewDeadline()
     }
 }
