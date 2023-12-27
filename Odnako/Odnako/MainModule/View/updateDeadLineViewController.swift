@@ -43,6 +43,9 @@ final class updateDeadLineViewController : UIViewController{
         deadlineComplexitySegmentedControl.selectedSegmentIndex = 0
         deadlineComplexitySegmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged(_:)), for: .valueChanged)
         deadlineComplexitySegmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        let font = UIFont.systemFont(ofSize: 32.0) // Установка размера шрифта
+        let attributes = [NSAttributedString.Key.font: font]
+        deadlineComplexitySegmentedControl.setTitleTextAttributes(attributes, for: .normal)
     }
     
     private func configureDatePicker(){
@@ -63,14 +66,13 @@ final class updateDeadLineViewController : UIViewController{
         closeButton.setTitleColor( .black, for: .normal)
         closeButton.setTitleColor( .white, for: .highlighted)
         closeButton.backgroundColor = UIColor.customAccentColor
-        closeButton.layer.cornerRadius = 10
+        closeButton.layer.cornerRadius = closeButton.frame.height / 2
         closeButton.addTarget(self, action: #selector(didTapCloseButton), for: .touchUpInside)
         closeButton.translatesAutoresizingMaskIntoConstraints = false
     }
     
     private func configureSaveButton(){
         saveButton.setTitle("Изменить", for: .normal)
-//        saveButton.titleLabel?.textAlignment = .center
         saveButton.setTitleColor( .black, for: .normal)
         saveButton.setTitleColor( .white, for: .highlighted)
         saveButton.backgroundColor = UIColor.customAccentColor
@@ -101,19 +103,19 @@ final class updateDeadLineViewController : UIViewController{
         deadlineNameTextField.backgroundColor = .customDeadlineMainColor
         deadlineNameTextField.layer.cornerRadius = 10
         deadlineNameTextField.textAlignment = .left
+        deadlineNameTextField.textColor = .black
         deadlineNameTextField.font = UIFont.systemFont(ofSize: 16.0)
         deadlineNameTextField.translatesAutoresizingMaskIntoConstraints = false
-        
+            
         deadlineCommentaryTextView.backgroundColor = .customDeadlineMainColor
         deadlineCommentaryTextView.layer.cornerRadius = 10
         deadlineCommentaryTextView.textContainer.maximumNumberOfLines = 0
         deadlineCommentaryTextView.textAlignment = .left
         deadlineCommentaryTextView.font = UIFont.systemFont(ofSize: 16.0)
+        deadlineCommentaryTextView.textColor = .black
         deadlineCommentaryTextView.translatesAutoresizingMaskIntoConstraints = false
-
-
     }
-    
+
     private func configureUI() {
         
         view.backgroundColor = .customBackGroundColor
@@ -141,6 +143,9 @@ final class updateDeadLineViewController : UIViewController{
         view.addSubview(deadlineComplexitySegmentedControl)
         view.addSubview(deadlineDateToggleSwitch)
         view.addSubview(saveButton)
+        
+        // Установка цвета фона для всего представления
+        view.backgroundColor = UIColor(named: "BackgroundColor")
         
         // Constraints
         NSLayoutConstraint.activate([

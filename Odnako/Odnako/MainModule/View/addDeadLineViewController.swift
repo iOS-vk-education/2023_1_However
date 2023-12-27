@@ -36,6 +36,9 @@ final class addDeadLineViewController : UIViewController{
         deadlineComplexitySegmentedControl.selectedSegmentIndex = 0
         deadlineComplexitySegmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged(_:)), for: .valueChanged)
         deadlineComplexitySegmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        let font = UIFont.systemFont(ofSize: 32.0) // Установка размера шрифта
+        let attributes = [NSAttributedString.Key.font: font]
+        deadlineComplexitySegmentedControl.setTitleTextAttributes(attributes, for: .normal)
     }
     
     private func configureDatePicker(){
@@ -94,17 +97,17 @@ final class addDeadLineViewController : UIViewController{
         deadlineNameTextField.backgroundColor = .customDeadlineMainColor
         deadlineNameTextField.layer.cornerRadius = 10
         deadlineNameTextField.textAlignment = .left
+        deadlineNameTextField.textColor = .black
         deadlineNameTextField.font = UIFont.systemFont(ofSize: 16.0)
         deadlineNameTextField.translatesAutoresizingMaskIntoConstraints = false
-        
+            
         deadlineCommentaryTextView.backgroundColor = .customDeadlineMainColor
         deadlineCommentaryTextView.layer.cornerRadius = 10
         deadlineCommentaryTextView.textContainer.maximumNumberOfLines = 0
         deadlineCommentaryTextView.textAlignment = .left
         deadlineCommentaryTextView.font = UIFont.systemFont(ofSize: 16.0)
+        deadlineCommentaryTextView.textColor = .black
         deadlineCommentaryTextView.translatesAutoresizingMaskIntoConstraints = false
-
-
     }
     
     private func configureUI() {
@@ -134,6 +137,9 @@ final class addDeadLineViewController : UIViewController{
         view.addSubview(deadlineComplexitySegmentedControl)
         view.addSubview(deadlineDateToggleSwitch)
         view.addSubview(saveButton)
+        
+        // Установка цвета фона для всего представления
+        view.backgroundColor = UIColor(named: "BackgroundColor")
         
         // Constraints
         NSLayoutConstraint.activate([

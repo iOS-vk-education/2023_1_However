@@ -14,7 +14,7 @@ class Section1Header: UICollectionReusableView {
 
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = UIColor(named: "TextColor")
         label.font = UIFont.boldSystemFont(ofSize: 18)
         label.text = "TEST 1 section"
         return label
@@ -42,7 +42,7 @@ class Section2Header: UICollectionReusableView {
 
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = UIColor(named: "TextColor")
         label.font = UIFont.boldSystemFont(ofSize: 18)
         label.text = "TEST 2 section"
         return label
@@ -70,7 +70,7 @@ class Section3Header: UICollectionReusableView {
 
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = UIColor(named: "TextColor")
         label.font = UIFont.boldSystemFont(ofSize: 18)
         label.text = "TEST 2 section"
         return label

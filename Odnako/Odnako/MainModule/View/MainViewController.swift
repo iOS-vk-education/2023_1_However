@@ -141,6 +141,13 @@ class MainViewController: UIViewController {
         
         filterButtonTableView.dataSource = self
         filterButtonTableView.delegate = self
+        
+        // Установка цвета фона для всего представления
+        view.backgroundColor = UIColor(named: "BackgroundColor")
+            
+        // Установка цвета текста для filterButton и deadlineButton
+        filterButton.setTitleColor(.black, for: .normal)
+        deadlineButton.setTitleColor(.black, for: .normal)
     }
     
     @objc
@@ -224,11 +231,13 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         switch indexPath.section {
         case 0:
             let deadline = self.deadlines[indexPath.item]
+            cell.mainText.textColor = .black
             cell.mainText.text = deadline.title
             cell.emoji.text = EmojiComplexity.getEmojiFromValue(id: deadline.complexity)
             if deadline.hasDate {
                 let timeDelta = TimeDelta.DaysBetween(Date(), and: deadline.date)
                 cell.dayAmount.text = String(timeDelta) +  " \nдней"
+                cell.dayAmount.textColor = .black
                 if timeDelta >= 0 && !deadline.isComplete {
                     cell.contentView.backgroundColor = .customDeadlineMainColor
                     cell.deadlineLeftView.backgroundColor = .customDeadlineMainColor
@@ -237,9 +246,10 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
             } else {
                 cell.dayAmount.text = Deadline.noDate
             }
-            
+            cell.dayAmount.textColor = .black
         case 1:
             let deadline = self.overdueDeadlines[indexPath.item]
+            cell.mainText.textColor = .black
             cell.mainText.text = deadline.title
             cell.emoji.text = EmojiComplexity.getEmojiFromValue(id: deadline.complexity)
             if deadline.hasDate {
@@ -254,8 +264,10 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
             } else {
                 cell.dayAmount.text = Deadline.noDate
             }
+            cell.dayAmount.textColor = .black
         case 2:
             let deadline = self.doneDeadlines[indexPath.item]
+            cell.mainText.textColor = .black
             cell.mainText.text = deadline.title
             cell.emoji.text = EmojiComplexity.getEmojiFromValue(id: deadline.complexity)
             if deadline.hasDate {
@@ -270,6 +282,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
             } else {
                 cell.dayAmount.text = Deadline.noDate
             }
+            cell.dayAmount.textColor = .black
         default:
             break
         }
@@ -351,7 +364,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
         cell.textLabel?.text = filterButtonOptions.allOptions[indexPath.row].rawValue
-        cell.backgroundColor = .white
+        cell.backgroundColor = UIColor(named: "BackgroundColor")
         return cell
     }
 
