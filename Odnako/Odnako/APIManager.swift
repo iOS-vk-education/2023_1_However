@@ -92,13 +92,12 @@ class APIManager {
         }
     }
     
-    func updateDeadlineInFirestore(collection: String, deadline: Deadline) {
+    func updateDeadlineInFirestore(collection: String, deadline: Deadline, title: String) {
         let db = ConfigureFB()
         
-        db.collection(collection).whereField("title", isEqualTo: deadline.title).getDocuments { (querySnapshot, error) in
+        db.collection(collection).whereField("title", isEqualTo: title).getDocuments { (querySnapshot, error) in
             if error != nil {
-                self.saveDeadlineToFirestore(collection: collection, deadline: deadline)
-                print("Document missed!")
+                print("Document missed! - \(String(describing: error?.localizedDescription))")
             } else {
                 for document in querySnapshot!.documents {
                     print(document.data())
@@ -114,19 +113,6 @@ class APIManager {
                 
             }
         }
-//        
-//        do {
-//            db.collection(collection).document(deadline.title).updateData([
-//                "title": deadline.title,
-//                "hasDate": deadline.hasDate,
-//                "date": deadline.date,
-//                "complexity": deadline.complexity,
-//                "commentary": deadline.commentary,
-//            ])
-//            print("Document successfully updated!")
-//        } catch {
-//            print("Error updating document: \(error)")
-//        }
     }
     
     func deleteDeadlineFromFirestore(collection: String, deadline: Deadline) {
@@ -145,5 +131,4 @@ class APIManager {
             }
         }
     }
-
 }
