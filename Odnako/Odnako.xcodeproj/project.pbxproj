@@ -26,6 +26,7 @@
 		CE35BB802B0BF3C900196A57 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB7F2B0BF3C900196A57 /* MainViewController.swift */; };
 		CE35BB822B0BF41400196A57 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB812B0BF41400196A57 /* SettingsViewController.swift */; };
 		CE35BB842B0BF43F00196A57 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB832B0BF43F00196A57 /* TabBarController.swift */; };
+		CE5892C32B3C7AC300429844 /* HeaderCellCollectionViewMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5892C22B3C7AC300429844 /* HeaderCellCollectionViewMain.swift */; };
 		CE68566C2B325AB500C69E67 /* AuthenticationValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE68566B2B325AB500C69E67 /* AuthenticationValidator.swift */; };
 		CEBAE3D22B3875EC00ED7F49 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBAE3D12B3875EC00ED7F49 /* APIManager.swift */; };
 		CEBAE3D52B3875FF00ED7F49 /* deadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBAE3D32B3875FF00ED7F49 /* deadline.swift */; };
@@ -66,6 +67,7 @@
 		CE35BB7F2B0BF3C900196A57 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CE35BB812B0BF41400196A57 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CE35BB832B0BF43F00196A57 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		CE5892C22B3C7AC300429844 /* HeaderCellCollectionViewMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCellCollectionViewMain.swift; sourceTree = "<group>"; };
 		CE68566B2B325AB500C69E67 /* AuthenticationValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationValidator.swift; sourceTree = "<group>"; };
 		CEBAE3D12B3875EC00ED7F49 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		CEBAE3D32B3875FF00ED7F49 /* deadline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = deadline.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				CE35BB7B2B0BF31500196A57 /* addDeadLineViewController.swift */,
 				A57B6B842B3B4DC1003E9D32 /* updateDeadLineViewController.swift */,
 				CE35BB7F2B0BF3C900196A57 /* MainViewController.swift */,
+				CE5892C22B3C7AC300429844 /* HeaderCellCollectionViewMain.swift */,
 				A59E38712B37C59400809705 /* MainCell.swift */,
 			);
 			path = View;
@@ -366,6 +369,7 @@
 				D4B0CD7A2B20BC7F00407607 /* MainBuilder.swift in Sources */,
 				CE35BB7C2B0BF31500196A57 /* addDeadLineViewController.swift in Sources */,
 				A59E386D2B37C2C200809705 /* Constants.swift in Sources */,
+				CE5892C32B3C7AC300429844 /* HeaderCellCollectionViewMain.swift in Sources */,
 				CE35BB822B0BF41400196A57 /* SettingsViewController.swift in Sources */,
 				CE68566C2B325AB500C69E67 /* AuthenticationValidator.swift in Sources */,
 				D4B0CD782B20BA9D00407607 /* MainPresenter.swift in Sources */,

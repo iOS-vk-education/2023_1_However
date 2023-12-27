@@ -32,7 +32,11 @@ class MainViewController: UIViewController {
     private var collectionView: UICollectionView!
     private var filterButton = UIButton()
     private var deadlineButton = UIButton()
+    
     var deadlines: [Deadline] = []
+    var overdueDeadlines: [Deadline] = []
+    var doneDeadlines: [Deadline] = []
+    
     private var output: MainPresenterOutput?
     
     
@@ -130,7 +134,10 @@ class MainViewController: UIViewController {
         self.addFilterTableView()
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(MainCell.self, forCellWithReuseIdentifier: Identifier.cellIdentifier)
+        collectionView?.register(MainCell.self, forCellWithReuseIdentifier: Identifier.cellIdentifier)
+        collectionView?.register(Section1Header.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Section1Header.reuseIdentifier)
+        collectionView?.register(Section2Header.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Section2Header.reuseIdentifier)
+        collectionView?.register(Section3Header.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Section3Header.reuseIdentifier)
         
         filterButtonTableView.dataSource = self
         filterButtonTableView.delegate = self
@@ -151,40 +158,145 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.deadlines.count
+        switch section{
+        case 0:
+            return self.deadlines.count // self.activeDeadlines
+        case 1:
+            return self.overdueDeadlines.count
+        case 2:
+            return self.doneDeadlines.count
+        default:
+            return 0
+        }
+        
+        
+        //return self.deadlines.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionHeader {
+            // Получаем представление заголовка секции для соответствующего kind и indexPath
+            if indexPath.section == 0 {
+                let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Section1Header", for: indexPath) as! Section1Header
+                headerView.titleLabel.text = "Настоящие дедлайны"
+                return headerView
+            } else if indexPath.section == 1 {
+                let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Section2Header", for: indexPath) as! Section2Header
+                headerView.titleLabel.text = "Просроченные дедлайны"
+                return headerView
+            } else if indexPath.section == 2 {
+                let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Section3Header", for: indexPath) as! Section3Header
+                headerView.titleLabel.text = "Выполненные"
+                return headerView
+            } else {
+                
+            }
+        }
+        return UICollectionReusableView()
+    }
+
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
+        if section == 0 && deadlines.isEmpty {
+            return .zero
+        }
+        
+        if section == 1 && overdueDeadlines.isEmpty {
+            return .zero
+        }
+        
+        if section == 2 && doneDeadlines.isEmpty {
+            return .zero
+        }
+        
+        return CGSize(width: collectionView.bounds.width, height: 50)
+
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifier.cellIdentifier, for: indexPath) as! MainCell
-        
-        let deadline = self.deadlines[indexPath.item]
-        cell.mainText.text = deadline.title
-        cell.emoji.text = EmojiComplexity.getEmojiFromValue(id: deadline.complexity)
-        if deadline.hasDate {
-            let timeDelta = TimeDelta.DaysBetween(Date(), and: deadline.date)
-            cell.dayAmount.text = String(timeDelta) +  " \nдней"
-        } else {
-            cell.dayAmount.text = Deadline.noDate
+                
+        switch indexPath.section {
+        case 0:
+            let deadline = self.deadlines[indexPath.item]
+            cell.mainText.text = deadline.title
+            cell.emoji.text = EmojiComplexity.getEmojiFromValue(id: deadline.complexity)
+            if deadline.hasDate {
+                let timeDelta = TimeDelta.DaysBetween(Date(), and: deadline.date)
+                cell.dayAmount.text = String(timeDelta) +  " \nдней"
+            } else {
+                cell.dayAmount.text = Deadline.noDate
+            }
+        case 1:
+            let deadline = self.overdueDeadlines[indexPath.item]
+            cell.mainText.text = deadline.title
+            cell.emoji.text = EmojiComplexity.getEmojiFromValue(id: deadline.complexity)
+            if deadline.hasDate {
+                let timeDelta = TimeDelta.DaysBetween(Date(), and: deadline.date)
+                cell.dayAmount.text = String(timeDelta) +  " \nдней"
+            } else {
+                cell.dayAmount.text = Deadline.noDate
+            }
+        case 2:
+            let deadline = self.doneDeadlines[indexPath.item]
+            cell.mainText.text = deadline.title
+            cell.emoji.text = EmojiComplexity.getEmojiFromValue(id: deadline.complexity)
+            if deadline.hasDate {
+                let timeDelta = TimeDelta.DaysBetween(Date(), and: deadline.date)
+                cell.dayAmount.text = String(timeDelta) +  " \nдней"
+            } else {
+                cell.dayAmount.text = Deadline.noDate
+            }
+        default:
+            break
         }
+        
+//        let deadline = self.deadlines[indexPath.item]
+//        cell.mainText.text = deadline.title
+//        cell.emoji.text = EmojiComplexity.getEmojiFromValue(id: deadline.complexity)
+//        if deadline.hasDate {
+//            let timeDelta = TimeDelta.DaysBetween(Date(), and: deadline.date)
+//            cell.dayAmount.text = String(timeDelta) +  " \nдней"
+//        } else {
+//            cell.dayAmount.text = Deadline.noDate
+//        }
         
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedDeadline = deadlines[indexPath.item]
-
+        
+        var selectedDeadline: Deadline = .init(title: "", hasDate: true, date: Date(), complexity: 0, commentary: "", userId: "", isComplete: false)
+        
+        if indexPath.section == 0 {
+            selectedDeadline = deadlines[indexPath.item]
+        } else if indexPath.section == 1 {
+            selectedDeadline = overdueDeadlines[indexPath.item]
+        } else if indexPath.section == 2 {
+            selectedDeadline = doneDeadlines[indexPath.item]
+        }
+        
         let alertController = UIAlertController(title: "Выбрана задача \(selectedDeadline.title)", message: "Следующие действия:", preferredStyle: .actionSheet)
         
         let completeDeadline = UIAlertAction(title: "Завершить", style: .default) { _ in
-            if let cell = collectionView.cellForItem(at: indexPath) as? MainCell {
-                cell.contentView.backgroundColor = .green
+            
+//            self.deadlines.remove(at: indexPath.item)
+            
+            selectedDeadline.isComplete = true
+            
+            APIManager.shared.updateDeadlineInFirestore(collection: "deadlines", deadline: selectedDeadline, title: selectedDeadline.title)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                self.didEditDeadline()
             }
+            self.collectionView.reloadData()
         }
+        
         alertController.addAction(completeDeadline)
         
         let editDeadline = UIAlertAction(title: "Открыть", style: .default) { _ in
@@ -197,7 +309,17 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         alertController.addAction(editDeadline)
         
         let deleteDeadline = UIAlertAction(title: "Удалить", style: .destructive) { _ in
-            self.deadlines.remove(at: indexPath.item)
+            if indexPath.section == 0 {
+                self.deadlines.remove(at: indexPath.item)
+            }
+            if indexPath.section == 1 {
+                self.overdueDeadlines.remove(at: indexPath.item)
+            }
+            if indexPath.section == 2 {
+                self.doneDeadlines.remove(at: indexPath.item)
+            }
+            
+//            self.deadlines.remove(at: indexPath.item)
             self.collectionView.deleteItems(at: [indexPath])
             APIManager.shared.deleteDeadlineFromFirestore(collection: "deadlines", deadline: selectedDeadline)
             self.collectionView.reloadData()
@@ -262,7 +384,24 @@ extension MainViewController: MainViewInput {
     }
     
     func addDeadlines(deadlines: [Deadline]){
-        self.deadlines = deadlines
+        self.deadlines.removeAll()
+        self.doneDeadlines.removeAll()
+        self.overdueDeadlines.removeAll()
+        
+        for deadline in deadlines {
+            if deadline.isComplete {
+                self.doneDeadlines.append(deadline)
+                continue
+            }
+            
+            if deadline.hasDate && TimeDelta.DaysBetween(Date(), and: deadline.date) < 0 {
+                self.overdueDeadlines.append(deadline)
+                continue
+            }
+            
+            self.deadlines.append(deadline)
+        }
+//        self.deadlines = deadlines
         self.collectionView.reloadData()
         self.calendarDelegate?.updateDeadlineDates(dates: Deadline.getDates(deadlines: deadlines))
     }
