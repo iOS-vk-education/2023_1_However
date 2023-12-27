@@ -16,7 +16,8 @@ extension UIColor{
     static let customAccentColor = UIColor(red: 175/255, green: 120/255, blue: 234/255, alpha: 1.0)
     static let customDarkPurpleColor = UIColor.purple // темно-фиолетовый
     static let customLightPurpleColor = UIColor(red: 190/255, green: 179/255, blue: 228/255, alpha: 1.0) // фиолетовый
-    static let customBackGroundColor_new = UIColor.white
+    static let customGreenCompletedColor = UIColor(red: 161/255, green: 238/255, blue: 189/255, alpha: 1.0)
+    static let customRedUnCompletedColor = UIColor(red: 226/255, green: 94/255, blue: 62/255, alpha: 1.0)
 }
 
 struct MTUserDefaults {

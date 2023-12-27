@@ -11,8 +11,8 @@ class MainCell: UICollectionViewCell {
     let dayAmount = UILabel()
     let emoji = UILabel()
     let mainText = UILabel()
-    private let deadlineLeftView = UIView()
-    private let deadlineRightView = UIView()
+    let deadlineLeftView = UIView()
+    let deadlineRightView = UIView()
 
     
     

@@ -27,7 +27,7 @@ protocol EditDeadlineDelegate: AnyObject {
 class MainViewController: UIViewController {
     
     // MARK: - Private properties
- //   var calendarDelegate: CalendarViewControllerDelegate?
+    var calendarDelegate: CalendarViewControllerDelegate?
     var filterButtonTableView = UITableView()
     private var collectionView: UICollectionView!
     private var filterButton = UIButton()
@@ -229,14 +229,10 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
             if deadline.hasDate {
                 let timeDelta = TimeDelta.DaysBetween(Date(), and: deadline.date)
                 cell.dayAmount.text = String(timeDelta) +  " \nдней"
-                if timeDelta < 0 && !deadline.isComplete {
-                    cell.contentView.backgroundColor = .red
-                }
-                else if deadline.isComplete {
-                    cell.contentView.backgroundColor = .cyan
-                }
-                else {
+                if timeDelta >= 0 && !deadline.isComplete {
                     cell.contentView.backgroundColor = .customDeadlineMainColor
+                    cell.deadlineLeftView.backgroundColor = .customDeadlineMainColor
+                    cell.deadlineRightView.backgroundColor = .customDeadlineMainColor
                 }
             } else {
                 cell.dayAmount.text = Deadline.noDate
@@ -250,13 +246,9 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
                 let timeDelta = TimeDelta.DaysBetween(Date(), and: deadline.date)
                 cell.dayAmount.text = String(timeDelta) +  " \nдней"
                 if timeDelta < 0 && !deadline.isComplete {
-                    cell.contentView.backgroundColor = .red
-                }
-                else if deadline.isComplete {
-                    cell.contentView.backgroundColor = .cyan
-                }
-                else {
-                    cell.contentView.backgroundColor = .customDeadlineMainColor
+                    cell.contentView.backgroundColor = .customRedUnCompletedColor
+                    cell.deadlineLeftView.backgroundColor = .customRedUnCompletedColor
+                    cell.deadlineRightView.backgroundColor = .customRedUnCompletedColor
                 }
             } else {
                 cell.dayAmount.text = Deadline.noDate
@@ -268,31 +260,18 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
             if deadline.hasDate {
                 let timeDelta = TimeDelta.DaysBetween(Date(), and: deadline.date)
                 cell.dayAmount.text = String(timeDelta) +  " \nдней"
-                if timeDelta < 0 && !deadline.isComplete {
-                    cell.contentView.backgroundColor = .red
+                if deadline.isComplete {
+                    cell.contentView.backgroundColor = .customGreenCompletedColor
+                    cell.deadlineLeftView.backgroundColor = .customGreenCompletedColor
+                    cell.deadlineRightView.backgroundColor = .customGreenCompletedColor
                 }
-                else if deadline.isComplete {
-                    cell.contentView.backgroundColor = .cyan
-                }
-                else {
-                    cell.contentView.backgroundColor = .customDeadlineMainColor
-                }
+                
             } else {
                 cell.dayAmount.text = Deadline.noDate
             }
         default:
             break
         }
-        
-//        let deadline = self.deadlines[indexPath.item]
-//        cell.mainText.text = deadline.title
-//        cell.emoji.text = EmojiComplexity.getEmojiFromValue(id: deadline.complexity)
-//        if deadline.hasDate {
-//            let timeDelta = TimeDelta.DaysBetween(Date(), and: deadline.date)
-//            cell.dayAmount.text = String(timeDelta) +  " \nдней"
-//        } else {
-//            cell.dayAmount.text = Deadline.noDate
-//        }
         
         
         return cell
@@ -431,7 +410,7 @@ extension MainViewController: MainViewInput {
         }
 //        self.deadlines = deadlines
         self.collectionView.reloadData()
- //       self.calendarDelegate?.updateDeadlineDates(dates: Deadline.getDates(deadlines: deadlines))
+        self.calendarDelegate?.updateDeadlineDates(dates: Deadline.getDates(deadlines: deadlines))
     }
 
 }
