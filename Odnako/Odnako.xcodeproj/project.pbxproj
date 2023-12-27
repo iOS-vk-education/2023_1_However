@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A57B6B852B3B4DC1003E9D32 /* updateDeadLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57B6B842B3B4DC1003E9D32 /* updateDeadLineViewController.swift */; };
 		A59E386B2B37C28500809705 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59E386A2B37C28500809705 /* UIImage+Extension.swift */; };
 		A59E386D2B37C2C200809705 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59E386C2B37C2C200809705 /* Constants.swift */; };
 		A59E38722B37C59400809705 /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59E38712B37C59400809705 /* MainCell.swift */; };
@@ -25,6 +26,7 @@
 		CE35BB802B0BF3C900196A57 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB7F2B0BF3C900196A57 /* MainViewController.swift */; };
 		CE35BB822B0BF41400196A57 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB812B0BF41400196A57 /* SettingsViewController.swift */; };
 		CE35BB842B0BF43F00196A57 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB832B0BF43F00196A57 /* TabBarController.swift */; };
+		CE5892C32B3C7AC300429844 /* HeaderCellCollectionViewMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5892C22B3C7AC300429844 /* HeaderCellCollectionViewMain.swift */; };
 		CE68566C2B325AB500C69E67 /* AuthenticationValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE68566B2B325AB500C69E67 /* AuthenticationValidator.swift */; };
 		CEBAE3D22B3875EC00ED7F49 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBAE3D12B3875EC00ED7F49 /* APIManager.swift */; };
 		CEBAE3D52B3875FF00ED7F49 /* deadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBAE3D32B3875FF00ED7F49 /* deadline.swift */; };
@@ -44,6 +46,7 @@
 /* Begin PBXFileReference section */
 		14EF8833DE2050CC3AF8D574 /* Pods-Odnako.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Odnako.release.xcconfig"; path = "Target Support Files/Pods-Odnako/Pods-Odnako.release.xcconfig"; sourceTree = "<group>"; };
 		A1C8AC2F1445F50F7AD93E1D /* Pods-Odnako.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Odnako.debug.xcconfig"; path = "Target Support Files/Pods-Odnako/Pods-Odnako.debug.xcconfig"; sourceTree = "<group>"; };
+		A57B6B842B3B4DC1003E9D32 /* updateDeadLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = updateDeadLineViewController.swift; sourceTree = "<group>"; };
 		A59E386A2B37C28500809705 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		A59E386C2B37C2C200809705 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A59E38712B37C59400809705 /* MainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
@@ -64,6 +67,7 @@
 		CE35BB7F2B0BF3C900196A57 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CE35BB812B0BF41400196A57 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CE35BB832B0BF43F00196A57 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		CE5892C22B3C7AC300429844 /* HeaderCellCollectionViewMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCellCollectionViewMain.swift; sourceTree = "<group>"; };
 		CE68566B2B325AB500C69E67 /* AuthenticationValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationValidator.swift; sourceTree = "<group>"; };
 		CEBAE3D12B3875EC00ED7F49 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		CEBAE3D32B3875FF00ED7F49 /* deadline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = deadline.swift; sourceTree = "<group>"; };
@@ -181,8 +185,8 @@
 				CE35BB722B0BF2DD00196A57 /* LaunchScreen.storyboard */,
 				CE35BB752B0BF2DD00196A57 /* Info.plist */,
 				D4B0CD7B2B20BD8C00407607 /* MainModule */,
-				CE35BB7D2B0BF3A900196A57 /* CalendarViewController.swift */,
 				CE35BB812B0BF41400196A57 /* SettingsViewController.swift */,
+				CE35BB7D2B0BF3A900196A57 /* CalendarViewController.swift */,
 				A59E386C2B37C2C200809705 /* Constants.swift */,
 				CE03B6452B2F72D90029DDCA /* GoogleService-Info.plist */,
 				CEBAE3D12B3875EC00ED7F49 /* APIManager.swift */,
@@ -216,7 +220,9 @@
 			isa = PBXGroup;
 			children = (
 				CE35BB7B2B0BF31500196A57 /* addDeadLineViewController.swift */,
+				A57B6B842B3B4DC1003E9D32 /* updateDeadLineViewController.swift */,
 				CE35BB7F2B0BF3C900196A57 /* MainViewController.swift */,
+				CE5892C22B3C7AC300429844 /* HeaderCellCollectionViewMain.swift */,
 				A59E38712B37C59400809705 /* MainCell.swift */,
 			);
 			path = View;
@@ -363,6 +369,7 @@
 				D4B0CD7A2B20BC7F00407607 /* MainBuilder.swift in Sources */,
 				CE35BB7C2B0BF31500196A57 /* addDeadLineViewController.swift in Sources */,
 				A59E386D2B37C2C200809705 /* Constants.swift in Sources */,
+				CE5892C32B3C7AC300429844 /* HeaderCellCollectionViewMain.swift in Sources */,
 				CE35BB822B0BF41400196A57 /* SettingsViewController.swift in Sources */,
 				CE68566C2B325AB500C69E67 /* AuthenticationValidator.swift in Sources */,
 				D4B0CD782B20BA9D00407607 /* MainPresenter.swift in Sources */,
@@ -371,6 +378,7 @@
 				CE03B6512B2F9FEC0029DDCA /* RegisterUserRequest.swift in Sources */,
 				CE35BB6C2B0BF2D900196A57 /* ViewController.swift in Sources */,
 				CE35BB802B0BF3C900196A57 /* MainViewController.swift in Sources */,
+				A57B6B852B3B4DC1003E9D32 /* updateDeadLineViewController.swift in Sources */,
 				CE35BB682B0BF2D900196A57 /* AppDelegate.swift in Sources */,
 				CE35BB6A2B0BF2D900196A57 /* SceneDelegate.swift in Sources */,
 			);
@@ -532,6 +540,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -563,6 +572,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
