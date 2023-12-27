@@ -10,7 +10,7 @@ final class LoginViewController: UIViewController {
     // Элементы интерфейса пользователя
     private let emailField = CustomTextField(fieldType: .email)
     private let passwordField = CustomTextField(fieldType: .password)
-    private let loginImage = UIImageView(image: UIImage(named: "cat_image"))
+    private let loginImage = UIImageView(image: UIImage(named: "LoginImage"))
     private let signUpButton = CustomAuthButton(title: "Зарегистрироваться", fontSize: .med)
     private let signInButton = CustomAuthButton(title: "Войти", fontSize: .big)
     
