@@ -15,7 +15,7 @@ struct Deadline: Codable {
     let complexity: Int
     let commentary: String
     let userId: String // Добавляем поле userId
-    
+
     static let noDate: String = "не\n указано"
     
     // Инициализатор

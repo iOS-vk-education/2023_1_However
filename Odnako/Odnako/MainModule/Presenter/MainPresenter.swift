@@ -15,6 +15,8 @@ protocol MainPresenterOutput: AnyObject {
     /// Сообщает, что была нажата кнопка добавления дедлайн.
     func addDeadlineButtonDidTapped(_ vc: addDeadLineViewController)
     
+    func updateDeadlineButtonDidTapped(_ vc: updateDeadLineViewController)
+    
     func addButtonFilterDidTapped(_ vc: UITableView)
     
     func getUserDeadlines(collection: String, UserID: String)
@@ -27,6 +29,10 @@ class MainPresenter: MainPresenterOutput {
     init() { }
     
     func addDeadlineButtonDidTapped(_ vc: addDeadLineViewController) {
+        self.viewInput?.addModule(vc)
+    }
+    
+    func updateDeadlineButtonDidTapped(_ vc: updateDeadLineViewController) {
         self.viewInput?.addModule(vc)
     }
     
