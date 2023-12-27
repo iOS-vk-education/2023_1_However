@@ -27,7 +27,7 @@ protocol EditDeadlineDelegate: AnyObject {
 class MainViewController: UIViewController {
     
     // MARK: - Private properties
-    
+    var calendarDelegate: CalendarViewControllerDelegate?
     var filterButtonTableView = UITableView()
     private var collectionView: UICollectionView!
     private var filterButton = UIButton()
@@ -264,6 +264,7 @@ extension MainViewController: MainViewInput {
     func addDeadlines(deadlines: [Deadline]){
         self.deadlines = deadlines
         self.collectionView.reloadData()
+        self.calendarDelegate?.updateDeadlineDates(dates: Deadline.getDates(deadlines: deadlines))
     }
 
 }

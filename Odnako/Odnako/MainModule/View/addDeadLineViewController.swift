@@ -222,6 +222,7 @@ final class addDeadLineViewController : UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+
     }
     
     // MARK: - Functions
@@ -249,9 +250,7 @@ final class addDeadLineViewController : UIViewController{
 
     @objc
     func didTapSaveButton(sender: UIButton){
-        
-        print(self.deadlineDateToggleSwitch.isOn)
-        
+                
         let date: Date
         let hasDate: Bool
         

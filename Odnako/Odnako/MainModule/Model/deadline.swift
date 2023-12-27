@@ -38,5 +38,15 @@ struct Deadline: Codable {
     func isTitleFilled() -> Bool {
         return self.title != ""
     }
+    
+    static func getDates(deadlines: [Deadline]) -> [Date] {
+        var dates: [Date] = []
+        for deadline in deadlines {
+            if deadline.hasDate {
+                dates.append(deadline.date)
+            }
+        }
+        return dates
+    }
 }
 
