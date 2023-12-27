@@ -28,7 +28,7 @@ class SortingDeadline {
     }
     
     static func sortByDate(deadlines: [Deadline]) -> [Deadline] {
-
+        
         let sortedDeadlines = deadlines.sorted { (firstDeadline, secondDeadline) -> Bool in
             if firstDeadline.hasDate && !secondDeadline.hasDate {
                 return true
@@ -43,4 +43,12 @@ class SortingDeadline {
         return sortedDeadlines
     }
     
+    static func sortByCompleted(deadlines: [Deadline]) -> [Deadline] {
+        var sortedDeadlines = deadlines
+        
+        sortedDeadlines.sort {
+            !$0.isCompleted && $1.isCompleted
+        }
+        return sortedDeadlines
+    }
 }

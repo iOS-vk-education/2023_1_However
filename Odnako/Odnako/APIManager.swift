@@ -45,12 +45,14 @@ class APIManager {
                        var date = (data["date"] as? Timestamp)?.dateValue(),
                        let complexity = data["complexity"] as? Int,
                        let commentary = data["commentary"] as? String,
-                       let userId = data["userId"] as? String {
+                       let userId = data["userId"] as? String,
+                       let isCompleted = data["isCompleted"] as? Bool {
                         if !hasDate {
                             date = Date()
                         }
                         // Создаем объект Deadline
-                        let deadline = Deadline(title: title, hasDate: hasDate, date: date, complexity: complexity, commentary: commentary, userId: userId)
+                        let deadline = Deadline(title: title, hasDate: hasDate, date: date, complexity: complexity, commentary: commentary, userId: userId, isCompleted: isCompleted)
+                        print(deadline)
                         deadlinesArray.append(deadline)
                     }
                 }
@@ -71,7 +73,8 @@ class APIManager {
                 "date": deadline.date,
                 "complexity": deadline.complexity,
                 "commentary": deadline.commentary,
-                "userId": deadline.userId
+                "userId": deadline.userId,
+                "isCompleted": deadline.isCompleted
                 // Добавьте другие поля, если они есть
             ]
             
@@ -107,6 +110,7 @@ class APIManager {
                         "date": deadline.date,
                         "complexity": deadline.complexity,
                         "commentary": deadline.commentary,
+                        "isCompleted": deadline.isCompleted
                     ])
                     print("Document successfully updated!")
                 }

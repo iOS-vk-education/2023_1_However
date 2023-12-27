@@ -7,7 +7,7 @@ final class addDeadLineViewController : UIViewController{
     // MARK: - Private let
     
     weak var addDeadlineDelegate: AddDeadlineDelegate?
-    var deadline = Deadline(title: "", hasDate: false, date: Date(), complexity: 1, commentary: "", userId: "")
+    var deadline = Deadline(title: "", hasDate: false, date: Date(), complexity: 1, commentary: "", userId: "", isCompleted: false)
     
     // Image
     let addDeadlineImage = UIImageView(image: UIImage(named: "addDeadlineImage"))
@@ -272,7 +272,8 @@ final class addDeadLineViewController : UIViewController{
                           date: date,
                           complexity: complexity,
                           commentary: commentary,
-                          userId: userID)
+                          userId: userID,
+                          isCompleted: false)
         
         if !dl.isCorrectDate() {
             let alert = UIAlertController(title: "Ошибка", message: "Дата некорректна. Дата задается, начиная с текущего дня и далее", preferredStyle: .alert)

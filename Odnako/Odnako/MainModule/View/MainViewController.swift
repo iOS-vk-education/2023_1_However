@@ -27,7 +27,7 @@ protocol EditDeadlineDelegate: AnyObject {
 class MainViewController: UIViewController {
     
     // MARK: - Private properties
-    var calendarDelegate: CalendarViewControllerDelegate?
+    //var calendarDelegate: CalendarViewControllerDelegate?
     var filterButtonTableView = UITableView()
     private var collectionView: UICollectionView!
     private var filterButton = UIButton()
@@ -167,6 +167,15 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         if deadline.hasDate {
             let timeDelta = TimeDelta.DaysBetween(Date(), and: deadline.date)
             cell.dayAmount.text = String(timeDelta) +  " \nдней"
+            if timeDelta < 0 && !deadline.isCompleted {
+                cell.contentView.backgroundColor = .red
+            }
+            else if deadline.isCompleted {
+                cell.contentView.backgroundColor = .cyan
+            }
+            else {
+                cell.contentView.backgroundColor = .customDeadlineMainColor
+            }
         } else {
             cell.dayAmount.text = Deadline.noDate
         }
@@ -177,12 +186,17 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedDeadline = deadlines[indexPath.item]
-
+        
         let alertController = UIAlertController(title: "Выбрана задача \(selectedDeadline.title)", message: "Следующие действия:", preferredStyle: .actionSheet)
         
         let completeDeadline = UIAlertAction(title: "Завершить", style: .default) { _ in
             if let cell = collectionView.cellForItem(at: indexPath) as? MainCell {
                 cell.contentView.backgroundColor = .green
+                self.deadlines[indexPath.item].isCompleted = true
+                APIManager.shared.updateDeadlineInFirestore(collection: "deadlines", deadline: self.deadlines[indexPath.item], title: self.deadlines[indexPath.item].title)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    self.didEditDeadline()
+                }
             }
         }
         alertController.addAction(completeDeadline)
@@ -242,8 +256,12 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         case filterButtonOptions.date:
             self.deadlines = SortingDeadline.sortByDate(deadlines: self.deadlines)
             self.collectionView.reloadData()
+            
+        case filterButtonOptions.isCompleted:
+            self.deadlines = SortingDeadline.sortByCompleted(deadlines: self.deadlines)
+            self.collectionView.reloadData()
         }
-        tableView.frame = CGRect(x: 20, y: 110, width: 170, height: 0)
+        tableView.frame = CGRect(x: 20, y: 110, width: 220, height: 0)
     }
 }
 
@@ -255,16 +273,16 @@ extension MainViewController: MainViewInput {
     
     func showDropdownFilterMenu(_ vc: UITableView){
         if vc.frame.height == 0 {
-            vc.frame = CGRect(x: 20, y: 110, width: 170, height: 125)
+            vc.frame = CGRect(x: 20, y: 110, width: 220, height: 180)
         } else {
-            vc.frame = CGRect(x: 20, y: 110, width: 170, height: 0)
+            vc.frame = CGRect(x: 20, y: 110, width: 220, height: 0)
         }
     }
     
     func addDeadlines(deadlines: [Deadline]){
         self.deadlines = deadlines
         self.collectionView.reloadData()
-        self.calendarDelegate?.updateDeadlineDates(dates: Deadline.getDates(deadlines: deadlines))
+        //self.calendarDelegate?.updateDeadlineDates(dates: Deadline.getDates(deadlines: deadlines))
     }
 
 }

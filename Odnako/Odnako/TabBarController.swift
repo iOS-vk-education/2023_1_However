@@ -36,8 +36,8 @@ final class TabBarController : UITabBarController{
         
         
         let calendarViewController = CalendarViewController()
-        calendarViewController.mainVC = mainViewController
-        mainViewController.calendarDelegate = calendarViewController
+ //       calendarViewController.mainVC = mainViewController
+ //       mainViewController.calendarDelegate = calendarViewController
         let calendarBarItem = UITabBarItem()
         calendarBarItem.image = UIImage(named: "calendarImageTabBarItem")
 //        calendarBarItem.imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: -4, right: 0)

@@ -26,6 +26,7 @@ enum filterButtonOptions : String {
     case alphabet = "По алфавиту"
     case date = "По дате"
     case complexity = "По сложности"
+    case isCompleted = "По статусу выполения"
     
-    static let allOptions = [alphabet, date, complexity]
+    static let allOptions = [alphabet, date, complexity, isCompleted]
 }

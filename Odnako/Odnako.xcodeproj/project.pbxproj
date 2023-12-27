@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		74D5BA588B18ADD970AD2513 /* Pods_Odnako.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF5676AC58CD67F27292335 /* Pods_Odnako.framework */; };
 		A57B6B852B3B4DC1003E9D32 /* updateDeadLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57B6B842B3B4DC1003E9D32 /* updateDeadLineViewController.swift */; };
 		A59E386B2B37C28500809705 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59E386A2B37C28500809705 /* UIImage+Extension.swift */; };
 		A59E386D2B37C2C200809705 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59E386C2B37C2C200809705 /* Constants.swift */; };
@@ -39,16 +40,16 @@
 		CECA1A762B2FD0DA00C760CA /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA1A752B2FD0DA00C760CA /* UIColor+Extension.swift */; };
 		D4B0CD782B20BA9D00407607 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B0CD772B20BA9D00407607 /* MainPresenter.swift */; };
 		D4B0CD7A2B20BC7F00407607 /* MainBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B0CD792B20BC7F00407607 /* MainBuilder.swift */; };
-		F3254C02C41AE43F5C07FDE7 /* Pods_Odnako.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E74E5729BD8D3774AE0556E9 /* Pods_Odnako.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		14EF8833DE2050CC3AF8D574 /* Pods-Odnako.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Odnako.release.xcconfig"; path = "Target Support Files/Pods-Odnako/Pods-Odnako.release.xcconfig"; sourceTree = "<group>"; };
-		A1C8AC2F1445F50F7AD93E1D /* Pods-Odnako.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Odnako.debug.xcconfig"; path = "Target Support Files/Pods-Odnako/Pods-Odnako.debug.xcconfig"; sourceTree = "<group>"; };
+		0C5C0A1BC0FF827C64908710 /* Pods-Odnako.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Odnako.debug.xcconfig"; path = "Target Support Files/Pods-Odnako/Pods-Odnako.debug.xcconfig"; sourceTree = "<group>"; };
+		5AF5676AC58CD67F27292335 /* Pods_Odnako.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Odnako.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A57B6B842B3B4DC1003E9D32 /* updateDeadLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = updateDeadLineViewController.swift; sourceTree = "<group>"; };
 		A59E386A2B37C28500809705 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		A59E386C2B37C2C200809705 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A59E38712B37C59400809705 /* MainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
+		BC6140F05BDC664C68CC7BF3 /* Pods-Odnako.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Odnako.release.xcconfig"; path = "Target Support Files/Pods-Odnako/Pods-Odnako.release.xcconfig"; sourceTree = "<group>"; };
 		CE03B6452B2F72D90029DDCA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CE03B64D2B2F9FD20029DDCA /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		CE03B6502B2F9FEC0029DDCA /* RegisterUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserRequest.swift; sourceTree = "<group>"; };
@@ -79,7 +80,6 @@
 		CECA1A752B2FD0DA00C760CA /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		D4B0CD772B20BA9D00407607 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		D4B0CD792B20BC7F00407607 /* MainBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBuilder.swift; sourceTree = "<group>"; };
-		E74E5729BD8D3774AE0556E9 /* Pods_Odnako.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Odnako.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,28 +87,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3254C02C41AE43F5C07FDE7 /* Pods_Odnako.framework in Frameworks */,
+				74D5BA588B18ADD970AD2513 /* Pods_Odnako.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06C4F9E560DD1C8B167A413A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5AF5676AC58CD67F27292335 /* Pods_Odnako.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		23933A2AEFF80151EB5E23B3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A1C8AC2F1445F50F7AD93E1D /* Pods-Odnako.debug.xcconfig */,
-				14EF8833DE2050CC3AF8D574 /* Pods-Odnako.release.xcconfig */,
+				0C5C0A1BC0FF827C64908710 /* Pods-Odnako.debug.xcconfig */,
+				BC6140F05BDC664C68CC7BF3 /* Pods-Odnako.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		8E9EEA85543554136DFD060F /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E74E5729BD8D3774AE0556E9 /* Pods_Odnako.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		A59E38692B37C23A00809705 /* Extension */ = {
@@ -157,7 +157,7 @@
 				CE35BB662B0BF2D900196A57 /* Odnako */,
 				CE35BB652B0BF2D900196A57 /* Products */,
 				23933A2AEFF80151EB5E23B3 /* Pods */,
-				8E9EEA85543554136DFD060F /* Frameworks */,
+				06C4F9E560DD1C8B167A413A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -240,11 +240,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE35BB782B0BF2DD00196A57 /* Build configuration list for PBXNativeTarget "Odnako" */;
 			buildPhases = (
-				A853AF779BDA4FA2E048FBFA /* [CP] Check Pods Manifest.lock */,
+				7AAD33709690C3202BC8FFF7 /* [CP] Check Pods Manifest.lock */,
 				CE35BB602B0BF2D900196A57 /* Sources */,
 				CE35BB612B0BF2D900196A57 /* Frameworks */,
 				CE35BB622B0BF2D900196A57 /* Resources */,
-				3C53F7A0037960C4A0031344 /* [CP] Embed Pods Frameworks */,
+				EFB153EADC37644B6A1A5FBA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -303,24 +303,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3C53F7A0037960C4A0031344 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Odnako/Pods-Odnako-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Odnako/Pods-Odnako-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Odnako/Pods-Odnako-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A853AF779BDA4FA2E048FBFA /* [CP] Check Pods Manifest.lock */ = {
+		7AAD33709690C3202BC8FFF7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -340,6 +323,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EFB153EADC37644B6A1A5FBA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Odnako/Pods-Odnako-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Odnako/Pods-Odnako-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Odnako/Pods-Odnako-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -520,14 +520,14 @@
 		};
 		CE35BB792B0BF2DD00196A57 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A1C8AC2F1445F50F7AD93E1D /* Pods-Odnako.debug.xcconfig */;
+			baseConfigurationReference = 0C5C0A1BC0FF827C64908710 /* Pods-Odnako.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3GBZ34S3JW;
+				DEVELOPMENT_TEAM = BMA5QWL5H6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Odnako/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = FireLine;
@@ -536,6 +536,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -551,14 +552,14 @@
 		};
 		CE35BB7A2B0BF2DD00196A57 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 14EF8833DE2050CC3AF8D574 /* Pods-Odnako.release.xcconfig */;
+			baseConfigurationReference = BC6140F05BDC664C68CC7BF3 /* Pods-Odnako.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3GBZ34S3JW;
+				DEVELOPMENT_TEAM = BMA5QWL5H6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Odnako/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = FireLine;
@@ -567,6 +568,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

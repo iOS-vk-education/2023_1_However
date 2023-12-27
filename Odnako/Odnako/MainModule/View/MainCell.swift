@@ -86,7 +86,7 @@ class MainCell: UICollectionViewCell {
         mainText.font = .boldSystemFont(ofSize: 20)
         mainText.adjustsFontSizeToFitWidth = true
 
-        contentView.backgroundColor = UIColor.customDeadlineMainColor
+        //contentView.backgroundColor = UIColor.customDeadlineMainColor
         contentView.layer.cornerRadius = 30
 
     }

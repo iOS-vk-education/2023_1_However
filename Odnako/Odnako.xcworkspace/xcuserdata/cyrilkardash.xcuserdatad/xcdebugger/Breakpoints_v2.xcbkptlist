@@ -14,10 +14,8 @@
             filePath = "Odnako/MainModule/View/addDeadLineViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "299"
-            endingLineNumber = "299"
-            landmarkName = "addDeadLineViewController"
-            landmarkType = "3">
+            startingLineNumber = "300"
+            endingLineNumber = "300">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
