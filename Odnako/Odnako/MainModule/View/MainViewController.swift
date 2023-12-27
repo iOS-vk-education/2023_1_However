@@ -249,6 +249,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
                     cell.contentView.backgroundColor = .customRedUnCompletedColor
                     cell.deadlineLeftView.backgroundColor = .customRedUnCompletedColor
                     cell.deadlineRightView.backgroundColor = .customRedUnCompletedColor
+                    cell.dayAmount.text = "срок\nвышел"
                 }
             } else {
                 cell.dayAmount.text = Deadline.noDate
