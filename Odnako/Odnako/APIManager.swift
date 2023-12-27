@@ -92,10 +92,10 @@ class APIManager {
         }
     }
     
-    func updateDeadlineInFirestore(collection: String, deadline: Deadline) {
+    func updateDeadlineInFirestore(collection: String, deadline: Deadline, title: String) {
         let db = ConfigureFB()
         
-        db.collection(collection).whereField("title", isEqualTo: deadline.title).getDocuments { (querySnapshot, error) in
+        db.collection(collection).whereField("title", isEqualTo: title).getDocuments { (querySnapshot, error) in
             if error != nil {
                 print("Document missed! - \(String(describing: error?.localizedDescription))")
             } else {

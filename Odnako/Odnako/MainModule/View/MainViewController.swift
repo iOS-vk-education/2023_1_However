@@ -21,7 +21,7 @@ protocol AddDeadlineDelegate: AnyObject {
 }
 
 protocol EditDeadlineDelegate: AnyObject {
-    func didEditNewDeadline()
+    func didEditDeadline()
 }
 
 class MainViewController: UIViewController {
@@ -287,7 +287,7 @@ extension MainViewController: AddDeadlineDelegate {
 }
 
 extension MainViewController: EditDeadlineDelegate {
-    func didEditNewDeadline() {
+    func didEditDeadline() {
         let uid = Auth.auth().currentUser?.uid
         output?.getUserDeadlines(collection: "deadlines", UserID: uid!)
     }

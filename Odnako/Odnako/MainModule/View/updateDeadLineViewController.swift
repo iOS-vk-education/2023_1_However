@@ -307,8 +307,8 @@ final class updateDeadLineViewController : UIViewController{
         
         dismiss(animated: true)
         
-        APIManager.shared.updateDeadlineInFirestore(collection: "deadlines", deadline: dl)
-        editDeadlineDelegate?.didEditNewDeadline()
+        APIManager.shared.updateDeadlineInFirestore(collection: "deadlines", deadline: dl, title: deadline.title)
+        editDeadlineDelegate?.didEditDeadline()
     }
 }
 
