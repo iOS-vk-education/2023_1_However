@@ -187,7 +187,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         }
         alertController.addAction(completeDeadline)
         
-        let editDeadline = UIAlertAction(title: "Редактировать", style: .default) { _ in
+        let editDeadline = UIAlertAction(title: "Открыть", style: .default) { _ in
             let editDeadlineVC = updateDeadLineViewController()
             editDeadlineVC.editDeadlineDelegate = self
             editDeadlineVC.deadline = selectedDeadline
