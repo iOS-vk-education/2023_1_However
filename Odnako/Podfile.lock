@@ -677,7 +677,6 @@ PODS:
     - FirebaseCore (~> 10.0)
     - FirebaseCoreExtension (~> 10.0)
     - GTMSessionFetcher/Core (< 4.0, >= 2.1)
-  - FSCalendar (2.8.4)
   - GoogleUtilities/AppDelegateSwizzler (7.12.0):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -763,16 +762,15 @@ PODS:
   - nanopb/encode (2.30909.1)
   - PromisesObjC (2.3.1)
   - RecaptchaInterop (100.0.0)
-  - SDWebImage (5.18.7):
-    - SDWebImage/Core (= 5.18.7)
-  - SDWebImage/Core (5.18.7)
+  - SDWebImage (5.18.8):
+    - SDWebImage/Core (= 5.18.8)
+  - SDWebImage/Core (5.18.8)
 
 DEPENDENCIES:
   - FirebaseAuth
   - FirebaseCore
   - FirebaseFirestore
   - FirebaseStorage
-  - FSCalendar
   - SDWebImage
 
 SPEC REPOS:
@@ -789,7 +787,6 @@ SPEC REPOS:
     - FirebaseFirestoreInternal
     - FirebaseSharedSwift
     - FirebaseStorage
-    - FSCalendar
     - GoogleUtilities
     - "gRPC-C++"
     - gRPC-Core
@@ -813,7 +810,6 @@ SPEC CHECKSUMS:
   FirebaseFirestoreInternal: a15405fb607dfd14edd568bba77028f4c7a69688
   FirebaseSharedSwift: f34eeb7d3ea87a34497629b6ca41657beadef76a
   FirebaseStorage: 1e0b9c9c18fb73ee3c5728a370c0e7355f8e88e3
-  FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
   GoogleUtilities: 0759d1a57ebb953965c2dfe0ba4c82e95ccc2e34
   "gRPC-C++": 2df8cba576898bdacd29f0266d5236fa0e26ba6a
   gRPC-Core: a21a60aefc08c68c247b439a9ef97174b0c54f96
@@ -822,8 +818,8 @@ SPEC CHECKSUMS:
   nanopb: d4d75c12cd1316f4a64e3c6963f879ecd4b5e0d5
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
-  SDWebImage: f9258c58221ed854cfa0e2b80ee4033710b1c6d3
+  SDWebImage: a81bbb3ba4ea5f810f4069c68727cb118467a04a
 
-PODFILE CHECKSUM: 131b29c858fcc5b379469e4a3232af841ae5fc25
+PODFILE CHECKSUM: c7596c149d7ff58de48b13b912f85004c3698189
 
 COCOAPODS: 1.14.3

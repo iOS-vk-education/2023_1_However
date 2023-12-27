@@ -9,7 +9,7 @@ pod 'FirebaseAuth'
 pod 'FirebaseFirestore'
 pod 'FirebaseStorage'
 pod 'SDWebImage'
-pod 'FSCalendar'
+#pod 'FSCalendar'
   # Pods for Odnako
 
 end
