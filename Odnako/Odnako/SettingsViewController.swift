@@ -45,31 +45,17 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         // Fetch and load user avatar from Firebase Storage
         loadUserAvatar()
         
-        // Кнопка переавторизации
-        signInButton.setTitle("Выйти", for: .normal)
-        signInButton.setTitleColor(.white, for: .normal)
-        signInButton.setTitleColor(.black, for: .highlighted)
-        signInButton.backgroundColor = UIColor.customDarkPurpleColor
-        signInButton.layer.cornerRadius = 5
-        signInButton.titleLabel?.font = UIFont.systemFont(ofSize: 24)
-        signInButton.addTarget(self, action: #selector(addButtonTouched), for: .touchUpInside)
-        // Установка фрейма кнопки
-        signInButton.frame = CGRect(x: view.bounds.width * 0.1, y: view.bounds.height * 0.8, width: view.bounds.width * 0.8, height: 50)
-        view.addSubview(signInButton)
-        
         
         // Картинка - аватарка
         view.addSubview(Avatar_Image)
         Avatar_Image.translatesAutoresizingMaskIntoConstraints = false
         Avatar_Image.contentMode = .scaleAspectFill
         Avatar_Image.layer.masksToBounds = true
-        Avatar_Image.widthAnchor.constraint(equalToConstant: 230).isActive = true
-        Avatar_Image.heightAnchor.constraint(equalToConstant: 230).isActive = true
-        Avatar_Image.layer.cornerRadius = Avatar_Image.frame.size.width / 0.6
-        Avatar_Image.layer.cornerRadius = Avatar_Image.frame.size.height / 0.6
-        Avatar_Image.clipsToBounds = true
+        Avatar_Image.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        Avatar_Image.heightAnchor.constraint(equalToConstant: 250).isActive = true
+        Avatar_Image.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         Avatar_Image.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        Avatar_Image.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+
         
         // Создание лейбла "Имя пользователя:"
         title_name_Label.text = "Имя пользователя:"
@@ -132,7 +118,6 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
             email_Label.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         
-        
         // Кнопка изменения аватарки
         change_Avatar_Button.setTitle("изменить аватарку", for: .normal)
         change_Avatar_Button.setTitleColor(.black, for: .normal)
@@ -142,10 +127,19 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         change_Avatar_Button.titleLabel?.font = UIFont.systemFont(ofSize: 24)
         change_Avatar_Button.addTarget(self, action: #selector(change_Avatar_Touched), for: .touchUpInside)
         // Установка фрейма кнопки
-        change_Avatar_Button.frame = CGRect(x: view.bounds.width * 0.2, y: view.bounds.height * 0.65, width: view.bounds.width * 0.6, height: 50)
+        change_Avatar_Button.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(change_Avatar_Button)
-        
-        //cv.backgroundColor = UIColor.customBackGroundColor
+        // Установка ограничений для кнопки
+        NSLayoutConstraint.activate([
+            // Ограничение по вертикали (30 пунктов вниз от email_Label)
+            change_Avatar_Button.topAnchor.constraint(equalTo: email_Label.bottomAnchor, constant: 30),
+            // Ограничение по горизонтали (20% ширины экрана от левого края)
+            change_Avatar_Button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: view.bounds.width * 0.2),
+            // Ограничение по ширине (60% ширины экрана)
+            change_Avatar_Button.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6),
+            // Ограничение по высоте (50 пунктов)
+            change_Avatar_Button.heightAnchor.constraint(equalToConstant: 50)
+        ])
         
         // Создание лейбла "Тёмная тема:"
         switchLabel.text = "Тёмная тема:"
@@ -164,7 +158,8 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         // Создание экземпляра переключателя
         switchButton = UISwitch()
         // Настройка положения и размера переключателя
-        switchButton.frame = CGRect(x: view.bounds.width * 0.55, y: view.bounds.height * 0.735, width: 0, height: 0)
+        switchButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(switchButton)
         // Установка начального значения переключателя
         switchButton.isOn = false
         if MTUserDefaults.shared.theme.getUserInterfaceStyle() == .dark {
@@ -184,8 +179,33 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         // Установка цвета шарика переключателя
         switchButton.thumbTintColor = UIColor.customDarkPurpleColor
         switchButton.onTintColor = UIColor.customLightPurpleColor
-        // Добавление переключателя на экран
-        view.addSubview(switchButton)
+        // Установка ограничений для переключателя
+        NSLayoutConstraint.activate([
+            switchButton.centerYAnchor.constraint(equalTo: switchLabel.centerYAnchor),
+            switchButton.leadingAnchor.constraint(equalTo: switchLabel.trailingAnchor, constant: 30)
+        ])
+
+        // Кнопка переавторизации
+        signInButton.setTitle("Выйти", for: .normal)
+        signInButton.setTitleColor(.white, for: .normal)
+        signInButton.setTitleColor(.black, for: .highlighted)
+        signInButton.backgroundColor = UIColor.customDarkPurpleColor
+        signInButton.layer.cornerRadius = 5
+        signInButton.titleLabel?.font = UIFont.systemFont(ofSize: 24)
+        signInButton.addTarget(self, action: #selector(addButtonTouched), for: .touchUpInside)
+         signInButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(signInButton)
+        // Установка ограничений для кнопки
+        NSLayoutConstraint.activate([
+            // Ограничение по вертикали (30 пунктов вниз от switchLabel)
+            signInButton.topAnchor.constraint(equalTo: switchLabel.bottomAnchor, constant: 30),
+            // Ограничение по горизонтали (10% ширины экрана от левого края)
+            signInButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: view.bounds.width * 0.1),
+            // Ограничение по ширине (80% ширины экрана)
+            signInButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
+            // Ограничение по высоте (50 пунктов)
+            signInButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
     }
             
     // Обработчик события изменения состояния переключателя

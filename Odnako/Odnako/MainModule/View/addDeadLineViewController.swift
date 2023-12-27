@@ -7,6 +7,7 @@ final class addDeadLineViewController : UIViewController{
     // MARK: - Private let
     
     weak var addDeadlineDelegate: AddDeadlineDelegate?
+    var deadline = Deadline(title: "", hasDate: false, date: Date(), complexity: 1, commentary: "", userId: "")
     
     // Image
     let addDeadlineImage = UIImageView(image: UIImage(named: "addDeadlineImage"))
@@ -221,9 +222,18 @@ final class addDeadLineViewController : UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        
+        deadlineNameTextField.text = deadline.title
+        deadlineComplexitySegmentedControl.selectedSegmentIndex = deadline.complexity
+        deadlineCommentaryTextView.text = deadline.commentary
+
     }
     
     // MARK: - Functions
+    
+    func dataSource() -> Void {
+        
+    }
     
     @objc
     func didTapCloseButton(sender: UIButton){
@@ -248,9 +258,7 @@ final class addDeadLineViewController : UIViewController{
 
     @objc
     func didTapSaveButton(sender: UIButton){
-        
-        print(self.deadlineDateToggleSwitch.isOn)
-        
+                
         let date: Date
         let hasDate: Bool
         
@@ -291,6 +299,7 @@ final class addDeadLineViewController : UIViewController{
         }
         
         dismiss(animated: true)
+        
         APIManager.shared.saveDeadlineToFirestore(collection: "deadlines", deadline: dl)
         addDeadlineDelegate?.didAddNewDeadline()
     }

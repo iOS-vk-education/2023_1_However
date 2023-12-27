@@ -9,7 +9,7 @@ import UIKit
 
 final class MainBuilder {
     
-    static func build() -> UIViewController {
+    static func build() -> MainViewController {
         let presenter = MainPresenter()
         let viewController = MainViewController(output: presenter)
         presenter.viewInput = viewController
