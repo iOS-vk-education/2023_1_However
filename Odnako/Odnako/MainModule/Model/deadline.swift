@@ -15,17 +15,19 @@ struct Deadline: Codable {
     let complexity: Int
     let commentary: String
     let userId: String // Добавляем поле userId
+    var isComplete: Bool
 
     static let noDate: String = "не\n указано"
     
     // Инициализатор
-    init(title: String, hasDate: Bool, date: Date, complexity: Int, commentary: String, userId: String) {
+    init(title: String, hasDate: Bool, date: Date, complexity: Int, commentary: String, userId: String, isComplete: Bool) {
         self.title = title
         self.hasDate = hasDate
         self.date = date
         self.complexity = complexity
         self.commentary = commentary
         self.userId = userId
+        self.isComplete = isComplete
     }
     
     func isCorrectDate() -> Bool {
