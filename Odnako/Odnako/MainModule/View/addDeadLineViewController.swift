@@ -226,9 +226,7 @@ final class addDeadLineViewController : UIViewController{
         deadlineNameTextField.text = deadline.title
         deadlineComplexitySegmentedControl.selectedSegmentIndex = deadline.complexity
         deadlineCommentaryTextView.text = deadline.commentary
-        if deadlineDateToggleSwitch.isOn {
-            datePicker.date = deadline.date
-        }
+
     }
     
     // MARK: - Functions
@@ -260,9 +258,7 @@ final class addDeadLineViewController : UIViewController{
 
     @objc
     func didTapSaveButton(sender: UIButton){
-        
-        print(self.deadlineDateToggleSwitch.isOn)
-        
+                
         let date: Date
         let hasDate: Bool
         
@@ -304,7 +300,7 @@ final class addDeadLineViewController : UIViewController{
         
         dismiss(animated: true)
         
-        APIManager.shared.updateDeadlineInFirestore(collection: "deadlines", deadline: dl)
+        APIManager.shared.saveDeadlineToFirestore(collection: "deadlines", deadline: dl)
         addDeadlineDelegate?.didAddNewDeadline()
     }
 }

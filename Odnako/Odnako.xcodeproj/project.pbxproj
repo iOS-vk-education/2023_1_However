@@ -26,6 +26,7 @@
 		CE35BB822B0BF41400196A57 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB812B0BF41400196A57 /* SettingsViewController.swift */; };
 		CE35BB842B0BF43F00196A57 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35BB832B0BF43F00196A57 /* TabBarController.swift */; };
 		CE68566C2B325AB500C69E67 /* AuthenticationValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE68566B2B325AB500C69E67 /* AuthenticationValidator.swift */; };
+		CE72C9232B3B9A4400723C74 /* CalendarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE72C9222B3B9A4400723C74 /* CalendarPresenter.swift */; };
 		CEBAE3D22B3875EC00ED7F49 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBAE3D12B3875EC00ED7F49 /* APIManager.swift */; };
 		CEBAE3D52B3875FF00ED7F49 /* deadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBAE3D32B3875FF00ED7F49 /* deadline.swift */; };
 		CEBAE3D62B3875FF00ED7F49 /* EmojiComplexity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBAE3D42B3875FF00ED7F49 /* EmojiComplexity.swift */; };
@@ -65,6 +66,7 @@
 		CE35BB812B0BF41400196A57 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CE35BB832B0BF43F00196A57 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		CE68566B2B325AB500C69E67 /* AuthenticationValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationValidator.swift; sourceTree = "<group>"; };
+		CE72C9222B3B9A4400723C74 /* CalendarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPresenter.swift; sourceTree = "<group>"; };
 		CEBAE3D12B3875EC00ED7F49 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		CEBAE3D32B3875FF00ED7F49 /* deadline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = deadline.swift; sourceTree = "<group>"; };
 		CEBAE3D42B3875FF00ED7F49 /* EmojiComplexity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiComplexity.swift; sourceTree = "<group>"; };
@@ -181,7 +183,7 @@
 				CE35BB722B0BF2DD00196A57 /* LaunchScreen.storyboard */,
 				CE35BB752B0BF2DD00196A57 /* Info.plist */,
 				D4B0CD7B2B20BD8C00407607 /* MainModule */,
-				CE35BB7D2B0BF3A900196A57 /* CalendarViewController.swift */,
+				CE72C91F2B3B999F00723C74 /* CalendarModule */,
 				CE35BB812B0BF41400196A57 /* SettingsViewController.swift */,
 				A59E386C2B37C2C200809705 /* Constants.swift */,
 				CE03B6452B2F72D90029DDCA /* GoogleService-Info.plist */,
@@ -190,6 +192,31 @@
 				A59E38692B37C23A00809705 /* Extension */,
 			);
 			path = Odnako;
+			sourceTree = "<group>";
+		};
+		CE72C91F2B3B999F00723C74 /* CalendarModule */ = {
+			isa = PBXGroup;
+			children = (
+				CE72C9212B3B99BF00723C74 /* Presenter */,
+				CE72C9202B3B99B900723C74 /* View */,
+			);
+			path = CalendarModule;
+			sourceTree = "<group>";
+		};
+		CE72C9202B3B99B900723C74 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE35BB7D2B0BF3A900196A57 /* CalendarViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE72C9212B3B99BF00723C74 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CE72C9222B3B9A4400723C74 /* CalendarPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		CECA1A6D2B2FC15500C760CA /* View */ = {
@@ -366,6 +393,7 @@
 				CE35BB822B0BF41400196A57 /* SettingsViewController.swift in Sources */,
 				CE68566C2B325AB500C69E67 /* AuthenticationValidator.swift in Sources */,
 				D4B0CD782B20BA9D00407607 /* MainPresenter.swift in Sources */,
+				CE72C9232B3B9A4400723C74 /* CalendarPresenter.swift in Sources */,
 				CECA1A6C2B2FC01C00C760CA /* RegistrationViewController.swift in Sources */,
 				CEBAE3D62B3875FF00ED7F49 /* EmojiComplexity.swift in Sources */,
 				CE03B6512B2F9FEC0029DDCA /* RegisterUserRequest.swift in Sources */,
