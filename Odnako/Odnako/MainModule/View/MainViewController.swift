@@ -229,130 +229,144 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifier.cellIdentifier, for: indexPath) as! MainCell
                 
         switch indexPath.section {
-        case 0:
-            let deadline = self.deadlines[indexPath.item]
-            cell.mainText.textColor = .black
-            cell.mainText.text = deadline.title
-            cell.emoji.text = EmojiComplexity.getEmojiFromValue(id: deadline.complexity)
-            if deadline.hasDate {
-                let timeDelta = TimeDelta.DaysBetween(Date(), and: deadline.date)
-                cell.dayAmount.text = String(timeDelta) +  " \nдней"
-                cell.dayAmount.textColor = .black
-                if timeDelta >= 0 && !deadline.isComplete {
-                    cell.contentView.backgroundColor = .customDeadlineMainColor
-                    cell.deadlineLeftView.backgroundColor = .customDeadlineMainColor
-                    cell.deadlineRightView.backgroundColor = .customDeadlineMainColor
+            case 0:
+                let deadline = self.deadlines[indexPath.item]
+                cell.mainText.text = deadline.title
+                cell.emoji.text = EmojiComplexity.getEmojiFromValue(id: deadline.complexity)
+                if deadline.hasDate {
+                    let timeDelta = TimeDelta.DaysBetween(Date(), and: deadline.date)
+                    cell.dayAmount.text = String(timeDelta) +  " \nдней"
+                    if timeDelta >= 0 && !deadline.isComplete {
+                        cell.contentView.backgroundColor = .customDeadlineMainColor
+                        cell.deadlineLeftView.backgroundColor = .customDeadlineMainColor
+                        cell.deadlineRightView.backgroundColor = .customDeadlineMainColor
+                    }
+                } else {
+                    cell.dayAmount.text = Deadline.noDate
+                    if !deadline.isComplete {
+                        cell.contentView.backgroundColor = .customDeadlineMainColor
+                        cell.deadlineLeftView.backgroundColor = .customDeadlineMainColor
+                        cell.deadlineRightView.backgroundColor = .customDeadlineMainColor
+                    }
                 }
-            } else {
-                cell.dayAmount.text = Deadline.noDate
-            }
-            cell.dayAmount.textColor = .black
-        case 1:
-            let deadline = self.overdueDeadlines[indexPath.item]
-            cell.mainText.textColor = .black
-            cell.mainText.text = deadline.title
-            cell.emoji.text = EmojiComplexity.getEmojiFromValue(id: deadline.complexity)
-            if deadline.hasDate {
-                let timeDelta = TimeDelta.DaysBetween(Date(), and: deadline.date)
-                cell.dayAmount.text = String(timeDelta) +  " \nдней"
-                if timeDelta < 0 && !deadline.isComplete {
-                    cell.contentView.backgroundColor = .customRedUnCompletedColor
-                    cell.deadlineLeftView.backgroundColor = .customRedUnCompletedColor
-                    cell.deadlineRightView.backgroundColor = .customRedUnCompletedColor
-                    cell.dayAmount.text = "срок\nвышел"
+                
+            case 1:
+                let deadline = self.overdueDeadlines[indexPath.item]
+                cell.mainText.text = deadline.title
+                cell.emoji.text = EmojiComplexity.getEmojiFromValue(id: deadline.complexity)
+                if deadline.hasDate {
+                    let timeDelta = TimeDelta.DaysBetween(Date(), and: deadline.date)
+                    cell.dayAmount.text = String(timeDelta) +  " \nдней"
+                    if timeDelta < 0 && !deadline.isComplete {
+                        cell.contentView.backgroundColor = .customRedUnCompletedColor
+                        cell.deadlineLeftView.backgroundColor = .customRedUnCompletedColor
+                        cell.deadlineRightView.backgroundColor = .customRedUnCompletedColor
+                        cell.dayAmount.text = "срок\nвышел"
+                    }
+                } else {
+                    cell.dayAmount.text = Deadline.noDate
+                    if !deadline.isComplete {
+                        cell.contentView.backgroundColor = .customRedUnCompletedColor
+                        cell.deadlineLeftView.backgroundColor = .customRedUnCompletedColor
+                        cell.deadlineRightView.backgroundColor = .customRedUnCompletedColor
+                    }
                 }
-            } else {
-                cell.dayAmount.text = Deadline.noDate
-            }
-            cell.dayAmount.textColor = .black
-        case 2:
-            let deadline = self.doneDeadlines[indexPath.item]
-            cell.mainText.textColor = .black
-            cell.mainText.text = deadline.title
-            cell.emoji.text = EmojiComplexity.getEmojiFromValue(id: deadline.complexity)
-            if deadline.hasDate {
-                let timeDelta = TimeDelta.DaysBetween(Date(), and: deadline.date)
-                cell.dayAmount.text = String(timeDelta) +  " \nдней"
+            case 2:
+                let deadline = self.doneDeadlines[indexPath.item]
+                cell.mainText.text = deadline.title
+                cell.emoji.text = EmojiComplexity.getEmojiFromValue(id: deadline.complexity)
+                if deadline.hasDate {
+                    let timeDelta = TimeDelta.DaysBetween(Date(), and: deadline.date)
+                    cell.dayAmount.text = String(timeDelta) +  " \nдней"
+                    
+                } else {
+                    cell.dayAmount.text = Deadline.noDate
+                }
                 if deadline.isComplete {
                     cell.contentView.backgroundColor = .customGreenCompletedColor
                     cell.deadlineLeftView.backgroundColor = .customGreenCompletedColor
                     cell.deadlineRightView.backgroundColor = .customGreenCompletedColor
                 }
-                
-            } else {
-                cell.dayAmount.text = Deadline.noDate
-            }
-            cell.dayAmount.textColor = .black
-        default:
-            break
+            default:
+                break
         }
-        
-        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        var selectedDeadline: Deadline = .init(title: "", hasDate: true, date: Date(), complexity: 0, commentary: "", userId: "", isComplete: false)
-        
-        if indexPath.section == 0 {
-            selectedDeadline = deadlines[indexPath.item]
-        } else if indexPath.section == 1 {
-            selectedDeadline = overdueDeadlines[indexPath.item]
-        } else if indexPath.section == 2 {
-            selectedDeadline = doneDeadlines[indexPath.item]
-        }
-        
-        let alertController = UIAlertController(title: "Выбрана задача \(selectedDeadline.title)", message: "Следующие действия:", preferredStyle: .actionSheet)
-        
-        let completeDeadline = UIAlertAction(title: "Завершить", style: .default) { _ in
-            
-//            self.deadlines.remove(at: indexPath.item)
-            
-            selectedDeadline.isComplete = true
-            
-            APIManager.shared.updateDeadlineInFirestore(collection: "deadlines", deadline: selectedDeadline, title: selectedDeadline.title)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                self.didEditDeadline()
-            }
-            self.collectionView.reloadData()
-        }
-        
-        alertController.addAction(completeDeadline)
-        
-        let editDeadline = UIAlertAction(title: "Открыть", style: .default) { _ in
-            let editDeadlineVC = updateDeadLineViewController()
-            editDeadlineVC.editDeadlineDelegate = self
-            editDeadlineVC.deadline = selectedDeadline
-            self.output?.updateDeadlineButtonDidTapped(editDeadlineVC)
-            self.collectionView.reloadData()
-        }
-        alertController.addAction(editDeadline)
-        
-        let deleteDeadline = UIAlertAction(title: "Удалить", style: .destructive) { _ in
-            if indexPath.section == 0 {
-                self.deadlines.remove(at: indexPath.item)
-            }
-            if indexPath.section == 1 {
-                self.overdueDeadlines.remove(at: indexPath.item)
-            }
-            if indexPath.section == 2 {
-                self.doneDeadlines.remove(at: indexPath.item)
-            }
-            
-//            self.deadlines.remove(at: indexPath.item)
-            self.collectionView.deleteItems(at: [indexPath])
-            APIManager.shared.deleteDeadlineFromFirestore(collection: "deadlines", deadline: selectedDeadline)
-            self.collectionView.reloadData()
-        }
-        alertController.addAction(deleteDeadline)
-        
-        
-        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
-        alertController.addAction(cancelAction)
-        
-        present(alertController, animated: true, completion: nil)
-    }
+          
+          var selectedDeadline: Deadline = .init(title: "", hasDate: true, date: Date(), complexity: 0, commentary: "", userId: "", isComplete: false)
+          
+          if indexPath.section == 0 {
+              selectedDeadline = deadlines[indexPath.item]
+          } else if indexPath.section == 1 {
+              selectedDeadline = overdueDeadlines[indexPath.item]
+          } else if indexPath.section == 2 {
+              selectedDeadline = doneDeadlines[indexPath.item]
+          }
+          
+          let alertController = UIAlertController(title: "Выбрана задача \(selectedDeadline.title)", message: "Следующие действия:", preferredStyle: .actionSheet)
+          if selectedDeadline.isComplete {
+              let completeDeadline = UIAlertAction(title: "Вернуть", style: .default) { _ in
+                  
+                  selectedDeadline.isComplete = false
+                  
+                  APIManager.shared.updateDeadlineInFirestore(collection: "deadlines", deadline: selectedDeadline, title: selectedDeadline.title)
+                  DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                      self.didEditDeadline()
+                  }
+                  self.collectionView.reloadData()
+              }
+              alertController.addAction(completeDeadline)
+          }
+          else {
+              let completeDeadline = UIAlertAction(title: "Завершить", style: .default) { _ in
+                  
+                  selectedDeadline.isComplete = true
+                  
+                  APIManager.shared.updateDeadlineInFirestore(collection: "deadlines", deadline: selectedDeadline, title: selectedDeadline.title)
+                  DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                      self.didEditDeadline()
+                  }
+                  self.collectionView.reloadData()
+              }
+              alertController.addAction(completeDeadline)
+          }
+          
+          
+          let editDeadline = UIAlertAction(title: "Открыть", style: .default) { _ in
+              let editDeadlineVC = updateDeadLineViewController()
+              editDeadlineVC.editDeadlineDelegate = self
+              editDeadlineVC.deadline = selectedDeadline
+              self.output?.updateDeadlineButtonDidTapped(editDeadlineVC)
+              self.collectionView.reloadData()
+          }
+          alertController.addAction(editDeadline)
+          
+          let deleteDeadline = UIAlertAction(title: "Удалить", style: .destructive) { _ in
+              if indexPath.section == 0 {
+                  self.deadlines.remove(at: indexPath.item)
+              }
+              if indexPath.section == 1 {
+                  self.overdueDeadlines.remove(at: indexPath.item)
+              }
+              if indexPath.section == 2 {
+                  self.doneDeadlines.remove(at: indexPath.item)
+              }
+              
+  //            self.deadlines.remove(at: indexPath.item)
+              self.collectionView.deleteItems(at: [indexPath])
+              APIManager.shared.deleteDeadlineFromFirestore(collection: "deadlines", deadline: selectedDeadline)
+              self.collectionView.reloadData()
+          }
+          alertController.addAction(deleteDeadline)
+          
+          
+          let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
+          alertController.addAction(cancelAction)
+          
+          present(alertController, animated: true, completion: nil)
+      }
 
 }
 
