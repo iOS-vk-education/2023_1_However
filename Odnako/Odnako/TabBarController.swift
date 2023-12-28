@@ -14,8 +14,7 @@ final class TabBarController : UITabBarController{
         
         setUpTabs()
         self.selectedIndex = 1
-        self.tabBar.backgroundColor = UIColor.customTabBarColor
-                 
+        self.tabBar.backgroundColor = UIColor(named: "BackgroundColor")
     }
     
     func setUpTabs(){

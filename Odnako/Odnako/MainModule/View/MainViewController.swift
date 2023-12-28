@@ -104,8 +104,8 @@ class MainViewController: UIViewController {
     
     private func addCollectionView() {
         let cv = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        view.backgroundColor = .customBackGroundColor
-        cv.backgroundColor = .customBackGroundColor
+//        view.backgroundColor = .customBackGroundColor
+        cv.backgroundColor = UIColor(named: "BackgroundColor")
         view.addSubview(cv)
         cv.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
