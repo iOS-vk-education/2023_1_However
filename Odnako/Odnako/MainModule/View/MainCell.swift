@@ -72,6 +72,8 @@ class MainCell: UICollectionViewCell {
         ])
         dayAmount.textAlignment = .center
         dayAmount.numberOfLines = 0
+        dayAmount.textColor = .black
+        
         emoji.font = UIFont.systemFont(ofSize: 30)
 
         NSLayoutConstraint.activate([
@@ -85,6 +87,7 @@ class MainCell: UICollectionViewCell {
         mainText.numberOfLines = 0
         mainText.font = .boldSystemFont(ofSize: 20)
         mainText.adjustsFontSizeToFitWidth = true
+        mainText.textColor = .black
 
         contentView.backgroundColor = UIColor.customDeadlineMainColor
         contentView.layer.cornerRadius = 30

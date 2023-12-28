@@ -43,7 +43,7 @@ final class updateDeadLineViewController : UIViewController{
         deadlineComplexitySegmentedControl.selectedSegmentIndex = 0
         deadlineComplexitySegmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged(_:)), for: .valueChanged)
         deadlineComplexitySegmentedControl.translatesAutoresizingMaskIntoConstraints = false
-        let font = UIFont.systemFont(ofSize: 32.0) // Установка размера шрифта
+        let font = UIFont.systemFont(ofSize: 28.0) // Установка размера шрифта
         let attributes = [NSAttributedString.Key.font: font]
         deadlineComplexitySegmentedControl.setTitleTextAttributes(attributes, for: .normal)
     }
